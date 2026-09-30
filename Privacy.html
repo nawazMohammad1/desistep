@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Privacy Policy | Vastraa</title>
+
+  <meta name="description"
+    content="Read the Vastraa Boutique Privacy Policy to understand how we collect, use, and protect your information.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    /* =========================================================
+       VASTRAA
+       PRIVACY POLICY PAGE
+    ========================================================= */
+
+    :root {
+      --emerald: #14382b;
+      --deep: #081d15;
+      --sage: #7d9a83;
+      --gold: #c6a15b;
+      --gold-light: #e2ca91;
+
+      --cream: #fbfaf5;
+      --paper: #f0eadc;
+      --white: #ffffff;
+
+      --ink: #18241f;
+      --muted: #68736d;
+
+      --line: rgba(20, 56, 43, 0.13);
+
+      --shadow: 0 25px 70px rgba(14, 41, 32, 0.12);
+
+      --radius: 22px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* =========================================================
+       PRELOADER
+    ========================================================= */
+
+    .preloader {
+      position: fixed;
+      inset: 0;
+      background: var(--deep);
+      z-index: 9999;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      transition:
+        opacity 0.7s ease,
+        visibility 0.7s ease;
+    }
+
+    .preloader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-content {
+      text-align: center;
+      color: white;
+    }
+
+    .loader-logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 4rem;
+      letter-spacing: 0.08em;
+      color: var(--gold-light);
+    }
+
+    .loader-line {
+      width: 90px;
+      height: 1px;
+      background: var(--gold);
+      margin: 15px auto;
+
+      animation: loaderLine 1.5s infinite ease-in-out;
+    }
+
+    .loader-content p {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    @keyframes loaderLine {
+      0% {
+        transform: scaleX(0);
+      }
+
+      50% {
+        transform: scaleX(1);
+      }
+
+      100% {
+        transform: scaleX(0);
+      }
+    }
+
+    /* =========================================================
+       ANNOUNCEMENT BAR
+    ========================================================= */
+
+    .announcement {
+      height: 34px;
+      background: var(--deep);
+      color: var(--gold-light);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+
+      overflow: hidden;
+    }
+
+    .announcement span {
+      animation: announcementMove 12s linear infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes announcementMove {
+      from {
+        transform: translateX(100%);
+      }
+
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background: rgba(251, 250, 245, 0.92);
+      backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-container {
+      max-width: 1350px;
+      min-height: 82px;
+
+      margin: auto;
+      padding: 0 35px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.25rem;
+      font-weight: 700;
+
+      color: var(--emerald);
+      letter-spacing: 0.08em;
+
+      position: relative;
+    }
+
+    .logo::after {
+      content: "Tradition. Style. You.";
+
+      position: absolute;
+      left: 2px;
+      bottom: -13px;
+
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.42rem;
+      font-weight: 500;
+
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 600;
+
+      color: var(--ink);
+      position: relative;
+
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+
+      width: 0;
+      height: 1px;
+
+      background: var(--gold);
+
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-icon {
+      width: 40px;
+      height: 40px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid var(--line);
+      border-radius: 50%;
+
+      color: var(--emerald);
+
+      transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .nav-icon:hover {
+      background: var(--emerald);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .menu-btn {
+      display: none;
+
+      width: 42px;
+      height: 42px;
+
+      border: 1px solid var(--line);
+      background: transparent;
+      border-radius: 50%;
+
+      cursor: pointer;
+      color: var(--emerald);
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .page-hero {
+      position: relative;
+      min-height: 430px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 100px 25px;
+
+      background:
+        radial-gradient(circle at 20% 20%,
+          rgba(198, 161, 91, 0.12),
+          transparent 30%),
+        radial-gradient(circle at 80% 70%,
+          rgba(125, 154, 131, 0.14),
+          transparent 32%),
+        var(--paper);
+
+      overflow: hidden;
+    }
+
+    .hero-orb {
+      position: absolute;
+
+      width: 300px;
+      height: 300px;
+
+      border: 1px solid rgba(198, 161, 91, 0.2);
+      border-radius: 50%;
+
+      animation: rotateOrb 20s linear infinite;
+    }
+
+    .hero-orb::before,
+    .hero-orb::after {
+      content: "";
+
+      position: absolute;
+      inset: 35px;
+
+      border: 1px solid rgba(198, 161, 91, 0.13);
+      border-radius: 50%;
+    }
+
+    .hero-orb::after {
+      inset: 75px;
+    }
+
+    @keyframes rotateOrb {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+
+      max-width: 800px;
+
+      animation: heroReveal 1s ease both;
+    }
+
+    @keyframes heroReveal {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      color: var(--gold);
+
+      font-size: 0.7rem;
+      font-weight: 700;
+
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      width: 35px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .page-hero h1 {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+
+      font-weight: 600;
+
+      color: var(--emerald);
+
+      margin-bottom: 25px;
+    }
+
+    .page-hero h1 span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .page-hero p {
+      max-width: 650px;
+      margin: auto;
+
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* =========================================================
+       POLICY LAYOUT
+    ========================================================= */
+
+    .policy-section {
+      max-width: 1200px;
+
+      margin: auto;
+      padding: 100px 30px;
+    }
+
+    .policy-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    /* =========================================================
+       SIDEBAR
+    ========================================================= */
+
+    .policy-sidebar {
+      position: sticky;
+      top: 120px;
+
+      padding: 28px;
+
+      background: white;
+
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+
+      box-shadow: var(--shadow);
+    }
+
+    .sidebar-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.5rem;
+      color: var(--emerald);
+
+      margin-bottom: 20px;
+    }
+
+    .policy-sidebar a {
+      display: block;
+
+      padding: 9px 0;
+
+      color: var(--muted);
+
+      font-size: 0.82rem;
+
+      border-bottom: 1px solid rgba(20, 56, 43, 0.07);
+
+      transition:
+        color 0.3s ease,
+        padding-left 0.3s ease;
+    }
+
+    .policy-sidebar a:last-child {
+      border-bottom: none;
+    }
+
+    .policy-sidebar a:hover {
+      color: var(--gold);
+      padding-left: 5px;
+    }
+
+    /* =========================================================
+       POLICY CONTENT
+    ========================================================= */
+
+    .policy-content {
+      background: white;
+
+      padding: clamp(30px, 5vw, 65px);
+
+      border-radius: var(--radius);
+
+      border: 1px solid var(--line);
+
+      box-shadow: var(--shadow);
+    }
+
+    .updated {
+      display: inline-flex;
+
+      align-items: center;
+      gap: 8px;
+
+      padding: 8px 14px;
+
+      border-radius: 50px;
+
+      background: rgba(198, 161, 91, 0.1);
+
+      color: var(--gold);
+
+      font-size: 0.72rem;
+      font-weight: 700;
+
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+
+      margin-bottom: 35px;
+    }
+
+    .policy-content h2 {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 2rem;
+      line-height: 1.1;
+
+      color: var(--emerald);
+
+      margin-top: 45px;
+      margin-bottom: 15px;
+    }
+
+    .policy-content h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .policy-content h3 {
+      font-size: 1rem;
+      color: var(--emerald);
+
+      margin-top: 25px;
+      margin-bottom: 8px;
+    }
+
+    .policy-content p {
+      color: var(--muted);
+
+      font-size: 0.94rem;
+
+      margin-bottom: 16px;
+    }
+
+    .policy-content ul {
+      margin: 15px 0 20px 22px;
+    }
+
+    .policy-content li {
+      color: var(--muted);
+
+      font-size: 0.92rem;
+
+      padding: 5px 0;
+    }
+
+    .policy-content li::marker {
+      color: var(--gold);
+    }
+
+    .policy-note {
+      margin: 30px 0;
+      padding: 22px 25px;
+
+      border-left: 3px solid var(--gold);
+
+      background: var(--paper);
+
+      color: var(--muted);
+
+      font-size: 0.9rem;
+    }
+
+    .policy-content strong {
+      color: var(--emerald);
+    }
+
+    .policy-content a {
+      color: var(--emerald);
+      font-weight: 600;
+
+      border-bottom: 1px solid var(--gold);
+    }
+
+    /* =========================================================
+       CONTACT CARD
+    ========================================================= */
+
+    .privacy-contact {
+      margin-top: 45px;
+
+      padding: 30px;
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(135deg,
+          var(--emerald),
+          var(--deep));
+
+      color: white;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .privacy-contact::after {
+      content: "";
+
+      position: absolute;
+
+      width: 180px;
+      height: 180px;
+
+      border: 1px solid rgba(226, 202, 145, 0.3);
+      border-radius: 50%;
+
+      right: -60px;
+      top: -60px;
+    }
+
+    .privacy-contact h3 {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 1.8rem;
+
+      color: var(--gold-light);
+
+      margin-bottom: 8px;
+    }
+
+    .privacy-contact p {
+      color: rgba(255, 255, 255, 0.7);
+
+      margin-bottom: 18px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+
+      align-items: center;
+      gap: 10px;
+
+      padding: 12px 18px;
+
+      background: var(--gold);
+      color: var(--deep);
+
+      border-radius: 50px;
+
+      font-size: 0.78rem;
+      font-weight: 700;
+
+      transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-3px);
+      background: var(--gold-light);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      background: var(--deep);
+      color: white;
+
+      padding: 70px 30px 30px;
+    }
+
+    .footer-container {
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .footer-top {
+      display: grid;
+
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+
+      gap: 50px;
+
+      padding-bottom: 55px;
+
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-brand h2 {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 2.5rem;
+      color: var(--gold-light);
+
+      margin-bottom: 10px;
+    }
+
+    .footer-brand p {
+      max-width: 330px;
+
+      color: rgba(255, 255, 255, 0.6);
+
+      font-size: 0.85rem;
+    }
+
+    .footer-heading {
+      font-size: 0.75rem;
+
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+
+      color: var(--gold-light);
+
+      margin-bottom: 18px;
+    }
+
+    .footer-links a {
+      display: block;
+
+      color: rgba(255, 255, 255, 0.62);
+
+      font-size: 0.82rem;
+
+      margin-bottom: 10px;
+
+      transition:
+        color 0.3s ease,
+        padding-left 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: white;
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      padding-top: 25px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+
+      color: rgba(255, 255, 255, 0.45);
+
+      font-size: 0.75rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-links a {
+      width: 35px;
+      height: 35px;
+
+      border: 1px solid rgba(255, 255, 255, 0.12);
+
+      border-radius: 50%;
+
+      display: grid;
+      place-items: center;
+
+      transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--gold);
+      color: var(--deep);
+
+      transform: translateY(-3px);
+    }
+
+    /* =========================================================
+       BACK TO TOP
+    ========================================================= */
+
+    .back-top {
+      position: fixed;
+
+      right: 25px;
+      bottom: 25px;
+
+      width: 48px;
+      height: 48px;
+
+      display: grid;
+      place-items: center;
+
+      border: none;
+      border-radius: 50%;
+
+      background: var(--emerald);
+      color: white;
+
+      cursor: pointer;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transform: translateY(15px);
+
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.3s ease;
+
+      z-index: 500;
+    }
+
+    .back-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-top:hover {
+      background: var(--gold);
+      color: var(--deep);
+    }
+
+    /* =========================================================
+       REVEAL ANIMATION
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 1100px) {
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .policy-grid {
+        grid-template-columns: 220px 1fr;
+        gap: 35px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1.5fr 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 850px) {
+
+      .nav-container {
+        min-height: 72px;
+        padding: 0 20px;
+      }
+
+      .nav-links {
+        position: absolute;
+
+        top: 72px;
+        left: 0;
+        right: 0;
+
+        background: var(--cream);
+
+        border-bottom: 1px solid var(--line);
+
+        display: flex;
+        flex-direction: column;
+
+        padding: 25px;
+
+        gap: 18px;
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(-10px);
+
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .menu-btn {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav-icons {
+        margin-left: auto;
+      }
+
+      .nav-icons .nav-icon {
+        display: none;
+      }
+
+      .policy-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .policy-sidebar {
+        position: static;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .announcement {
+        font-size: 0.6rem;
+      }
+
+      .logo {
+        font-size: 1.9rem;
+      }
+
+      .page-hero {
+        min-height: 360px;
+        padding: 80px 20px;
+      }
+
+      .page-hero h1 {
+        font-size: 3.4rem;
+      }
+
+      .policy-section {
+        padding: 60px 16px;
+      }
+
+      .policy-content {
+        padding: 28px 22px;
+      }
+
+      .policy-content h2 {
+        font-size: 1.7rem;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =======================================================
+       PRELOADER
+  ======================================================== -->
+
+  <div class="preloader" id="preloader">
+
+    <div class="loader-content">
+
+      <div class="loader-logo">
+        Vastraa
+      </div>
+
+      <div class="loader-line"></div>
+
+      <p>
+        Tradition. Style. You.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       ANNOUNCEMENT
+  ======================================================== -->
+
+  <div class="announcement">
+    <span>
+      ✦ Handpicked Indian Elegance &nbsp; • &nbsp;
+      WhatsApp Orders Available &nbsp; • &nbsp;
+      Tradition. Style. You. &nbsp; ✦
+    </span>
+  </div>
+
+
+  <!-- =======================================================
+       NAVBAR
+  ======================================================== -->
+
+  <header class="navbar">
+
+    <div class="nav-container">
+
+      <a href="index.html" class="logo">
+        Vastraa
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+
+        <a href="index.html">Home</a>
+
+        <a href="collections.html">Collections</a>
+
+        <a href="sarees.html">Sarees</a>
+
+        <a href="kurtis.html">Kurtis</a>
+
+        <a href="lehengas.html">Lehengas</a>
+
+        <a href="dresses.html">Dresses</a>
+
+        <a href="new-arrivals.html">New Arrivals</a>
+
+        <a href="faq.html">FAQs</a>
+
+      </nav>
+
+      <div class="nav-icons">
+
+        <a href="contact.html" class="nav-icon" aria-label="Contact">
+          <i class="fa-regular fa-envelope"></i>
+        </a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" type="button">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =======================================================
+       HERO
+  ======================================================== -->
+
+  <section class="page-hero">
+
+    <div class="hero-orb"></div>
+
+    <div class="hero-content">
+
+      <span class="eyebrow">
+        Your Privacy Matters
+      </span>
+
+      <h1>
+        Privacy <span>Policy</span>
+      </h1>
+
+      <p>
+        We believe beautiful shopping experiences should also
+        respect your privacy. Here's how Vastraa handles
+        information when you visit and shop with us.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       PRIVACY POLICY
+  ======================================================== -->
+
+  <main class="policy-section">
+
+    <div class="policy-grid">
+
+      <!-- SIDEBAR -->
+
+      <aside class="policy-sidebar reveal">
+
+        <div class="sidebar-title">
+          On this page
+        </div>
+
+        <a href="#information">
+          Information We Collect
+        </a>
+
+        <a href="#use">
+          How We Use Information
+        </a>
+
+        <a href="#whatsapp">
+          WhatsApp Orders
+        </a>
+
+        <a href="#cookies">
+          Cookies
+        </a>
+
+        <a href="#sharing">
+          Information Sharing
+        </a>
+
+        <a href="#security">
+          Data Security
+        </a>
+
+        <a href="#rights">
+          Your Choices
+        </a>
+
+        <a href="#changes">
+          Policy Updates
+        </a>
+
+        <a href="#contact">
+          Contact Us
+        </a>
+
+      </aside>
+
+
+      <!-- CONTENT -->
+
+      <article class="policy-content reveal">
+
+        <div class="updated">
+          <i class="fa-regular fa-calendar"></i>
+          Last updated: September 2026
+        </div>
+
+
+        <p>
+          At <strong>Vastraa</strong>, we value the trust you place
+          in us. This Privacy Policy explains what information
+          we may collect, how we use it, and the choices available
+          to you when you browse our website or communicate with us.
+        </p>
+
+        <p>
+          By using the Vastraa website, you acknowledge the practices
+          described in this policy.
+        </p>
+
+
+        <!-- INFORMATION -->
+
+        <h2 id="information">
+          01. Information We Collect
+        </h2>
+
+        <p>
+          Depending on how you interact with Vastraa, we may receive
+          information that you voluntarily provide to us.
+        </p>
+
+        <h3>Information you provide</h3>
+
+        <ul>
+          <li>Your name</li>
+          <li>Phone number</li>
+          <li>Email address</li>
+          <li>Shipping or delivery details</li>
+          <li>Product preferences and order details</li>
+          <li>Messages or information you send to us</li>
+        </ul>
+
+        <h3>Information collected automatically</h3>
+
+        <p>
+          When you browse our website, certain technical information
+          may be collected automatically, such as your browser type,
+          device type, approximate location, pages visited, and
+          general website usage information.
+        </p>
+
+
+        <!-- USE -->
+
+        <h2 id="use">
+          02. How We Use Your Information
+        </h2>
+
+        <p>
+          We may use information we receive for purposes such as:
+        </p>
+
+        <ul>
+          <li>Responding to your questions and enquiries.</li>
+          <li>Processing and managing orders.</li>
+          <li>Communicating about products and services.</li>
+          <li>Providing customer support.</li>
+          <li>Improving our website and shopping experience.</li>
+          <li>Understanding general website usage.</li>
+          <li>Preventing misuse, fraud, or unauthorized activity.</li>
+        </ul>
+
+
+        <!-- WHATSAPP -->
+
+        <h2 id="whatsapp">
+          03. WhatsApp Orders
+        </h2>
+
+        <p>
+          Vastraa may use WhatsApp as a convenient channel for
+          customers to enquire about products and place orders.
+        </p>
+
+        <p>
+          When you contact us through WhatsApp, information you
+          voluntarily share with us may include your name,
+          phone number, delivery details, product selections,
+          measurements, and other information necessary to
+          respond to your request.
+        </p>
+
+        <div class="policy-note">
+          <strong>Important:</strong>
+          WhatsApp is a third-party communication service.
+          Information exchanged through WhatsApp may also be
+          subject to WhatsApp's own terms and privacy practices.
+        </div>
+
+
+        <!-- COOKIES -->
+
+        <h2 id="cookies">
+          04. Cookies & Similar Technologies
+        </h2>
+
+        <p>
+          Vastraa may use cookies or similar technologies to help
+          the website function properly and understand how visitors
+          interact with our pages.
+        </p>
+
+        <p>
+          Cookies may help remember preferences, improve website
+          performance, and provide basic usage information.
+        </p>
+
+        <p>
+          You can manage or disable cookies through your browser
+          settings. Some website features may not work as expected
+          when cookies are disabled.
+        </p>
+
+
+        <!-- SHARING -->
+
+        <h2 id="sharing">
+          05. Information Sharing
+        </h2>
+
+        <p>
+          Vastraa does not intend to sell your personal information.
+        </p>
+
+        <p>
+          Information may be shared when reasonably necessary to
+          operate the website, process an order, provide a requested
+          service, communicate with you, or comply with applicable
+          legal requirements.
+        </p>
+
+        <p>
+          For example, information may be provided to service
+          providers involved in website hosting, delivery,
+          payment processing, communication, or technical support,
+          where applicable.
+        </p>
+
+
+        <!-- SECURITY -->
+
+        <h2 id="security">
+          06. Data Security
+        </h2>
+
+        <p>
+          We take reasonable measures designed to protect information
+          from unauthorized access, alteration, disclosure, or misuse.
+        </p>
+
+        <p>
+          However, no internet transmission or electronic storage
+          system can be guaranteed to be completely secure.
+        </p>
+
+
+        <!-- RIGHTS -->
+
+        <h2 id="rights">
+          07. Your Choices
+        </h2>
+
+        <p>
+          Depending on applicable law, you may have rights relating
+          to your personal information.
+        </p>
+
+        <p>
+          You may contact Vastraa to ask questions about information
+          you have provided to us or to request appropriate changes
+          where applicable.
+        </p>
+
+        <p>
+          You can also choose not to provide certain information,
+          although this may prevent us from providing some services
+          or completing an order.
+        </p>
+
+
+        <!-- CHILDREN -->
+
+        <h2>
+          08. Children's Privacy
+        </h2>
+
+        <p>
+          Vastraa's website is not intended to knowingly collect
+          personal information directly from children without
+          appropriate consent.
+        </p>
+
+
+        <!-- THIRD PARTY -->
+
+        <h2>
+          09. Third-Party Websites
+        </h2>
+
+        <p>
+          Our website may contain links to third-party websites,
+          social media platforms, payment services, or other
+          external services.
+        </p>
+
+        <p>
+          Vastraa is not responsible for the privacy practices
+          or content of third-party websites. We recommend reviewing
+          their privacy policies before providing personal information.
+        </p>
+
+
+        <!-- CHANGES -->
+
+        <h2 id="changes">
+          10. Changes to This Policy
+        </h2>
+
+        <p>
+          We may update this Privacy Policy from time to time to
+          reflect changes to our services, website, or applicable
+          requirements.
+        </p>
+
+        <p>
+          When changes are made, the updated version will be posted
+          on this page with a revised "Last updated" date.
+        </p>
+
+
+        <!-- CONTACT -->
+
+        <h2 id="contact">
+          11. Contact Vastraa
+        </h2>
+
+        <p>
+          If you have questions about this Privacy Policy or how
+          your information is handled, please contact us.
+        </p>
+
+
+        <div class="privacy-contact">
+
+          <h3>
+            We're here to help.
+          </h3>
+
+          <p>
+            Have a privacy question? Send us a message and
+            we'll be happy to assist.
+          </p>
+
+          <a href="mailto:hello@vastraa.com" class="contact-link">
+            <i class="fa-regular fa-envelope"></i>
+            hello@vastraa.com
+          </a>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <div class="footer-container">
+
+      <div class="footer-top">
+
+        <div class="footer-brand">
+
+          <h2>
+            Vastraa
+          </h2>
+
+          <p>
+            Thoughtfully chosen Indian fashion for the
+            woman who carries tradition with her own style.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <div class="footer-heading">
+            Shop
+          </div>
+
+          <div class="footer-links">
+
+            <a href="collections.html">
+              Collections
+            </a>
+
+            <a href="sarees.html">
+              Sarees
+            </a>
+
+            <a href="kurtis.html">
+              Kurtis
+            </a>
+
+            <a href="lehengas.html">
+              Lehengas
+            </a>
+
+            <a href="dresses.html">
+              Dresses
+            </a>
+
+            <a href="new-arrivals.html">
+              New Arrivals
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <div class="footer-heading">
+            Explore
+          </div>
+
+          <div class="footer-links">
+
+            <a href="about.html">
+              Our Story
+            </a>
+
+            <a href="journal.html">
+              Journal
+            </a>
+
+            <a href="size-guide.html">
+              Size Guide
+            </a>
+
+            <a href="faq.html">
+              FAQs
+            </a>
+
+            <a href="contact.html">
+              Contact
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <div class="footer-heading">
+            Legal
+          </div>
+
+          <div class="footer-links">
+
+            <a href="privacy.html">
+              Privacy Policy
+            </a>
+
+            <a href="terms.html">
+              Terms & Conditions
+            </a>
+
+            <a href="contact.html">
+              Customer Support
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <p>
+          © 2026 Vastraa. All rights reserved.
+        </p>
+
+        <div class="social-links">
+
+          <a href="#" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="#" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+
+          <a href="#" aria-label="Pinterest">
+            <i class="fa-brands fa-pinterest-p"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       BACK TO TOP
+  ======================================================== -->
+
+  <button class="back-top" id="backTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+    /* =====================================================
+       PRELOADER
+    ===================================================== */
+
+    window.addEventListener("load", () => {
+
+      const preloader =
+        document.getElementById("preloader");
+
+      setTimeout(() => {
+
+        preloader.classList.add("hide");
+
+      }, 700);
+
+    });
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    const menuBtn =
+      document.getElementById("menuBtn");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+
+      navLinks.classList.toggle("active");
+
+      const icon =
+        menuBtn.querySelector("i");
+
+      if (navLinks.classList.contains("active")) {
+
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+
+      } else {
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+
+      }
+
+    });
+
+
+    /* Close mobile menu after clicking a link */
+
+    document
+      .querySelectorAll(".nav-links a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          navLinks.classList.remove("active");
+
+          const icon =
+            menuBtn.querySelector("i");
+
+          icon.classList.remove("fa-xmark");
+          icon.classList.add("fa-bars");
+
+        });
+
+      });
+
+
+    /* =====================================================
+       REVEAL ON SCROLL
+    ===================================================== */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const revealObserver =
+      new IntersectionObserver(
+        (entries) => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("active");
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    revealElements.forEach(element => {
+
+      revealObserver.observe(element);
+
+    });
+
+
+    /* =====================================================
+       BACK TO TOP
+    ===================================================== */
+
+    const backTop =
+      document.getElementById("backTop");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 500) {
+
+        backTop.classList.add("show");
+
+      } else {
+
+        backTop.classList.remove("show");
+
+      }
+
+    });
+
+
+    backTop.addEventListener("click", () => {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    });
+
+
+    /* =====================================================
+       SMOOTH SIDEBAR LINKS
+    ===================================================== */
+
+    document
+      .querySelectorAll(".policy-sidebar a")
+      .forEach(link => {
+
+        link.addEventListener("click", function (event) {
+
+          const targetId =
+            this.getAttribute("href");
+
+          const target =
+            document.querySelector(targetId);
+
+          if (target) {
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+
+          }
+
+        });
+
+      });
+
+  </script>
+
+</body>
+
+</html>

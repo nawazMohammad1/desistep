@@ -1,0 +1,3778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+    content="Vastraa Lehengas — bridal, festive, royal and contemporary lehengas. Tradition. Style. You.">
+
+  <title>Vastraa | Lehengas — Tradition. Style. You.</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    /* =========================================================
+       VASTRAA — LEHENGAS
+       Single File HTML + CSS + JavaScript
+    ========================================================= */
+
+    :root {
+      --ruby: #8b263e;
+      --ruby-dark: #570f22;
+      --wine: #2a0c14;
+      --blush: #d6959f;
+      --rose: #efc9cf;
+      --gold: #d4af37;
+      --gold-light: #ead48b;
+
+      --cream: #fffaf6;
+      --paper: #f8efea;
+      --white: #ffffff;
+
+      --ink: #21181b;
+      --muted: #75666a;
+
+      --line: rgba(139, 38, 62, 0.14);
+
+      --shadow:
+        0 25px 80px rgba(42, 12, 20, 0.13);
+
+      --shadow-soft:
+        0 15px 45px rgba(42, 12, 20, 0.09);
+
+      --ease: cubic-bezier(.2, .75, .2, 1);
+    }
+
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+
+    /* =========================================================
+       SCROLL PROGRESS
+    ========================================================= */
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg,
+          var(--ruby),
+          var(--gold),
+          var(--blush));
+      z-index: 10000;
+    }
+
+
+    /* =========================================================
+       PRELOADER
+    ========================================================= */
+
+    .preloader {
+      position: fixed;
+      inset: 0;
+      background: var(--wine);
+      color: white;
+      display: grid;
+      place-items: center;
+      z-index: 9999;
+      transition:
+        opacity .8s ease,
+        visibility .8s ease;
+    }
+
+    .preloader.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-content {
+      text-align: center;
+    }
+
+    .loader-logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(4rem, 10vw, 8rem);
+      line-height: .8;
+      font-weight: 600;
+      letter-spacing: -.06em;
+    }
+
+    .loader-logo span {
+      color: var(--blush);
+    }
+
+    .loader-line {
+      width: 130px;
+      height: 1px;
+      background: var(--gold);
+      margin: 28px auto 15px;
+      transform-origin: left;
+      animation: loaderLine 1.5s infinite;
+    }
+
+    .loader-content small {
+      font-size: .62rem;
+      letter-spacing: .3em;
+      color: #dfcfd3;
+    }
+
+    @keyframes loaderLine {
+      0% {
+        transform: scaleX(.1);
+      }
+
+      50% {
+        transform: scaleX(1);
+      }
+
+      100% {
+        transform: scaleX(.1);
+      }
+    }
+
+
+    /* =========================================================
+       ANNOUNCEMENT
+    ========================================================= */
+
+    .announcement {
+      height: 36px;
+      background: var(--wine);
+      color: #f9e9ed;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .announcement-track {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      white-space: nowrap;
+      min-width: max-content;
+
+      animation: announcementMove 28s linear infinite;
+
+      font-size: .62rem;
+      letter-spacing: .2em;
+      font-weight: 700;
+    }
+
+    .announcement-track i {
+      color: var(--gold);
+      font-size: .45rem;
+    }
+
+    @keyframes announcementMove {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background: rgba(255, 250, 246, .88);
+      backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-container {
+      width: min(1320px, 92%);
+      height: 82px;
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.25rem;
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: -.06em;
+      color: var(--wine);
+    }
+
+    .logo span {
+      color: var(--ruby);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+    }
+
+    .nav-menu a {
+      position: relative;
+
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+
+      color: #493b3f;
+    }
+
+    .nav-menu a::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      bottom: -9px;
+
+      width: 0;
+      height: 2px;
+
+      background: var(--ruby);
+
+      transition: width .35s ease;
+    }
+
+    .nav-menu a:hover::after,
+    .nav-menu a.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .nav-actions button,
+    .nav-actions a {
+      border: 1px solid var(--line);
+      border-radius: 100px;
+
+      padding: 11px 16px;
+
+      background: transparent;
+
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+
+      cursor: pointer;
+
+      transition: .3s ease;
+    }
+
+    .nav-actions button:hover,
+    .nav-actions a:hover {
+      transform: translateY(-2px);
+      border-color: var(--ruby);
+    }
+
+    .nav-actions .whatsapp {
+      background: var(--ruby);
+      color: white;
+      border-color: var(--ruby);
+    }
+
+    .nav-actions .whatsapp:hover {
+      background: var(--ruby-dark);
+    }
+
+    .menu-toggle {
+      display: none;
+
+      width: 44px;
+      height: 44px;
+
+      border: 1px solid var(--line);
+      border-radius: 50%;
+
+      background: white;
+      color: var(--wine);
+
+      cursor: pointer;
+    }
+
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+
+      background: rgba(20, 5, 10, .55);
+      backdrop-filter: blur(6px);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition: .4s ease;
+
+      z-index: 1100;
+    }
+
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu {
+      position: fixed;
+
+      top: 0;
+      right: 0;
+
+      width: min(390px, 88%);
+      height: 100vh;
+
+      padding: 30px;
+
+      background: var(--cream);
+
+      transform: translateX(100%);
+      transition: transform .55s var(--ease);
+
+      z-index: 1200;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+
+    .mobile-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding-bottom: 25px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mobile-menu-header span {
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .2em;
+      color: var(--ruby);
+    }
+
+    .mobile-close {
+      width: 42px;
+      height: 42px;
+
+      border: 1px solid var(--line);
+      border-radius: 50%;
+
+      background: white;
+      cursor: pointer;
+    }
+
+    .mobile-links {
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+    }
+
+    .mobile-links a {
+      padding: 17px 0;
+
+      border-bottom: 1px solid var(--line);
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      color: var(--wine);
+
+      transition: .3s;
+    }
+
+    .mobile-links a:hover {
+      color: var(--ruby);
+      padding-left: 8px;
+    }
+
+    .mobile-bottom {
+      margin-top: auto;
+    }
+
+    .mobile-bottom p {
+      color: var(--muted);
+      font-size: .8rem;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .mobile-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      padding: 15px;
+
+      background: var(--ruby);
+      color: white;
+
+      border-radius: 100px;
+
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      min-height: calc(100vh - 118px);
+
+      position: relative;
+      overflow: hidden;
+
+      background:
+        radial-gradient(circle at 85% 20%,
+          rgba(214, 175, 55, .16),
+          transparent 28%),
+        linear-gradient(135deg,
+          #fbf1ed,
+          #f7e7e4);
+    }
+
+    .hero::before {
+      content: "LEHENGA";
+
+      position: absolute;
+
+      right: -4vw;
+      top: 3vh;
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(9rem, 19vw, 21rem);
+      font-weight: 700;
+      line-height: .8;
+
+      color: rgba(139, 38, 62, .035);
+
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .hero-grid {
+      width: min(1360px, 92%);
+      min-height: 700px;
+
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: 44% 56%;
+
+      align-items: center;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-copy {
+      padding: 70px 20px 70px 4vw;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      color: var(--ruby);
+
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: .28em;
+
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+
+      width: 35px;
+      height: 1px;
+
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(4.8rem, 8vw, 9.5rem);
+      line-height: .76;
+
+      letter-spacing: -.07em;
+
+      color: var(--wine);
+      font-weight: 600;
+    }
+
+    .hero h1 em {
+      color: var(--ruby);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .hero-description {
+      max-width: 520px;
+
+      margin: 35px 0;
+
+      color: var(--muted);
+
+      font-size: .94rem;
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+
+      padding: 15px 22px;
+
+      border-radius: 100px;
+
+      font-size: .67rem;
+      font-weight: 800;
+
+      letter-spacing: .1em;
+      text-transform: uppercase;
+
+      transition:
+        transform .35s var(--ease),
+        box-shadow .35s ease,
+        background .35s ease;
+    }
+
+    .btn-primary {
+      background: var(--ruby);
+      color: white;
+
+      box-shadow:
+        0 15px 35px rgba(139, 38, 62, .2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-5px);
+      box-shadow:
+        0 23px 45px rgba(139, 38, 62, .28);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, .8);
+      border: 1px solid var(--line);
+      color: var(--wine);
+    }
+
+    .btn-ghost:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+    }
+
+
+    /* =========================================================
+       HERO VISUAL
+    ========================================================= */
+
+    .hero-visual {
+      height: 680px;
+
+      position: relative;
+
+      padding: 30px 30px 30px 0;
+
+      perspective: 1200px;
+    }
+
+    .hero-image-frame {
+      width: 78%;
+      height: 100%;
+
+      margin-left: auto;
+
+      overflow: hidden;
+
+      border-radius:
+        260px 260px 15px 15px;
+
+      box-shadow: var(--shadow);
+
+      position: relative;
+
+      transform:
+        rotateY(-2deg) translateZ(0);
+
+      transition: transform 1s var(--ease);
+    }
+
+    .hero-visual:hover .hero-image-frame {
+      transform:
+        rotateY(0deg) scale(1.015);
+    }
+
+    .hero-image-frame::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(180deg,
+          rgba(42, 12, 20, .02),
+          rgba(42, 12, 20, .18));
+
+      pointer-events: none;
+    }
+
+    .hero-image-frame img {
+      transition:
+        transform 1.2s var(--ease);
+    }
+
+    .hero-visual:hover .hero-image-frame img {
+      transform: scale(1.045);
+    }
+
+    .hero-badge {
+      position: absolute;
+
+      left: 2%;
+      top: 10%;
+
+      width: 135px;
+      height: 135px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(circle at 30% 25%,
+          #f0d98a,
+          var(--gold));
+
+      color: white;
+
+      display: grid;
+      place-items: center;
+
+      text-align: center;
+
+      box-shadow:
+        0 20px 40px rgba(212, 175, 55, .3);
+
+      z-index: 4;
+
+      animation: floating 4s ease-in-out infinite;
+    }
+
+    .hero-badge strong {
+      display: block;
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.3rem;
+      line-height: .8;
+    }
+
+    .hero-badge small {
+      font-size: .5rem;
+      letter-spacing: .16em;
+    }
+
+    @keyframes floating {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0);
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(3deg);
+      }
+    }
+
+    .hero-note {
+      position: absolute;
+
+      left: 0;
+      bottom: 10%;
+
+      padding: 18px 23px;
+
+      background: white;
+
+      border-left: 3px solid var(--ruby);
+
+      box-shadow: var(--shadow-soft);
+
+      z-index: 4;
+    }
+
+    .hero-note span {
+      display: block;
+
+      color: var(--muted);
+
+      font-size: .53rem;
+      letter-spacing: .16em;
+    }
+
+    .hero-note strong {
+      display: block;
+
+      margin-top: 4px;
+
+      color: var(--wine);
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.45rem;
+    }
+
+    .hero-side-label {
+      position: absolute;
+
+      right: -8px;
+      top: 50%;
+
+      transform:
+        translateY(-50%) rotate(90deg);
+
+      color: var(--ruby);
+
+      font-size: .55rem;
+      font-weight: 800;
+
+      letter-spacing: .3em;
+    }
+
+
+    /* =========================================================
+       CATEGORY RAIL
+    ========================================================= */
+
+    .category-rail {
+      position: sticky;
+      top: 82px;
+      z-index: 500;
+
+      padding: 16px 0;
+
+      background: var(--wine);
+
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, .08);
+    }
+
+    .category-scroll {
+      width: min(1240px, 92%);
+      margin: auto;
+
+      display: flex;
+      gap: 9px;
+
+      overflow-x: auto;
+
+      scrollbar-width: none;
+    }
+
+    .category-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category-pill {
+      flex: 0 0 auto;
+
+      border: 1px solid rgba(255, 255, 255, .14);
+
+      border-radius: 100px;
+
+      padding: 11px 17px;
+
+      color: #e8d8dc;
+
+      font-size: .6rem;
+      font-weight: 700;
+
+      letter-spacing: .12em;
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      transition: .3s ease;
+    }
+
+    .category-pill:hover,
+    .category-pill.active {
+      background: white;
+      color: var(--wine);
+      border-color: white;
+    }
+
+
+    /* =========================================================
+       COMMON SECTIONS
+    ========================================================= */
+
+    .section {
+      padding: 115px 0;
+    }
+
+    .wrap {
+      width: min(1240px, 92%);
+      margin: auto;
+    }
+
+    .section-kicker {
+      color: var(--ruby);
+
+      font-size: .6rem;
+      font-weight: 800;
+
+      letter-spacing: .25em;
+
+      margin-bottom: 14px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      gap: 40px;
+
+      margin-bottom: 50px;
+    }
+
+    .section-head h2 {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(3.2rem, 5.5vw, 6rem);
+      line-height: .82;
+
+      letter-spacing: -.06em;
+
+      color: var(--wine);
+
+      font-weight: 600;
+    }
+
+    .section-head h2 em {
+      color: var(--ruby);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .section-head>p {
+      max-width: 430px;
+
+      color: var(--muted);
+
+      font-size: .88rem;
+      line-height: 1.9;
+    }
+
+
+    /* =========================================================
+       INTRO
+    ========================================================= */
+
+    .intro-grid {
+      display: grid;
+
+      grid-template-columns: 1.1fr .9fr;
+
+      gap: 90px;
+
+      align-items: end;
+    }
+
+    .intro-title {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(4rem, 7vw, 7.5rem);
+      line-height: .75;
+
+      letter-spacing: -.07em;
+
+      color: var(--wine);
+    }
+
+    .intro-title em {
+      color: var(--ruby);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .intro-text {
+      color: var(--muted);
+
+      font-size: .92rem;
+      line-height: 1.9;
+    }
+
+    .intro-text strong {
+      color: var(--wine);
+    }
+
+    .mini-stats {
+      display: flex;
+
+      gap: 35px;
+
+      margin-top: 35px;
+      padding-top: 25px;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .mini-stat strong {
+      display: block;
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 2.2rem;
+
+      color: var(--ruby);
+    }
+
+    .mini-stat span {
+      font-size: .58rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+
+    /* =========================================================
+       EDITORIAL
+    ========================================================= */
+
+    .feature {
+      display: grid;
+
+      grid-template-columns: 1.05fr .95fr;
+
+      min-height: 650px;
+
+      background: white;
+
+      box-shadow: var(--shadow);
+
+      overflow: hidden;
+    }
+
+    .feature-image {
+      min-height: 650px;
+      overflow: hidden;
+    }
+
+    .feature-image img {
+      transition:
+        transform 1.2s var(--ease);
+    }
+
+    .feature:hover .feature-image img {
+      transform: scale(1.05);
+    }
+
+    .feature-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding: 75px 65px;
+    }
+
+    .feature-copy h2 {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(3.5rem, 5vw, 6rem);
+
+      line-height: .76;
+
+      letter-spacing: -.06em;
+
+      color: var(--wine);
+    }
+
+    .feature-copy h2 em {
+      color: var(--ruby);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .feature-copy>p:not(.section-kicker) {
+      margin: 30px 0;
+
+      color: var(--muted);
+
+      line-height: 1.9;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 12px;
+
+      margin-bottom: 32px;
+    }
+
+    .feature-list span {
+      padding: 12px 0;
+
+      border-bottom: 1px solid var(--line);
+
+      font-size: .68rem;
+      color: #544449;
+    }
+
+    .feature-list i {
+      margin-right: 7px;
+      color: var(--gold);
+    }
+
+
+    /* =========================================================
+       PRODUCTS
+    ========================================================= */
+
+    .products-section {
+      background: var(--paper);
+    }
+
+    .product-grid {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 22px;
+    }
+
+    .product-card {
+      background: white;
+
+      overflow: hidden;
+
+      position: relative;
+
+      transition:
+        transform .45s var(--ease),
+        box-shadow .45s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+
+      box-shadow: var(--shadow-soft);
+    }
+
+    .product-card.hidden {
+      display: none;
+    }
+
+    .product-image {
+      height: 525px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background: #eee;
+    }
+
+    .product-image img {
+      transition:
+        transform .8s var(--ease);
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.07);
+    }
+
+    .product-tag {
+      position: absolute;
+
+      top: 16px;
+      left: 16px;
+
+      z-index: 3;
+
+      padding: 8px 11px;
+
+      background: white;
+
+      color: var(--wine);
+
+      font-size: .55rem;
+      font-weight: 800;
+
+      letter-spacing: .12em;
+    }
+
+    .heart {
+      position: absolute;
+
+      top: 15px;
+      right: 15px;
+
+      width: 41px;
+      height: 41px;
+
+      border: 0;
+      border-radius: 50%;
+
+      background: rgba(255, 255, 255, .93);
+
+      color: var(--wine);
+
+      cursor: pointer;
+
+      z-index: 4;
+
+      transition: .3s ease;
+    }
+
+    .heart:hover {
+      transform: scale(1.12);
+    }
+
+    .heart.liked {
+      color: var(--ruby);
+      background: #fff0f3;
+    }
+
+    .product-overlay {
+      position: absolute;
+
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+
+      display: flex;
+      justify-content: center;
+
+      opacity: 0;
+      transform: translateY(20px);
+
+      transition: .35s ease;
+    }
+
+    .product-card:hover .product-overlay {
+      opacity: 1;
+      transform: none;
+    }
+
+    .quick-view {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 12px 20px;
+
+      border-radius: 100px;
+
+      background: var(--wine);
+      color: white;
+
+      font-size: .6rem;
+      font-weight: 800;
+
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .product-info {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: flex-start;
+
+      gap: 15px;
+
+      padding: 18px 5px 21px;
+    }
+
+    .product-info small {
+      display: block;
+
+      color: var(--muted);
+
+      font-size: .56rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .product-info h3 {
+      margin-top: 4px;
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 1.65rem;
+
+      color: var(--wine);
+    }
+
+    .product-price {
+      color: var(--ruby);
+
+      font-size: .8rem;
+      font-weight: 800;
+
+      white-space: nowrap;
+    }
+
+
+    /* =========================================================
+       LOOKBOOK
+    ========================================================= */
+
+    .lookbook-grid {
+      display: grid;
+
+      grid-template-columns: 1.15fr .85fr .85fr;
+
+      grid-template-rows: 270px 270px;
+
+      gap: 15px;
+    }
+
+    .look {
+      position: relative;
+
+      overflow: hidden;
+
+      min-height: 200px;
+    }
+
+    .look:first-child {
+      grid-row: 1 / 3;
+    }
+
+    .look img {
+      transition:
+        transform 1s var(--ease);
+    }
+
+    .look:hover img {
+      transform: scale(1.08);
+    }
+
+    .look::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(transparent 35%,
+          rgba(42, 12, 20, .72));
+    }
+
+    .look-caption {
+      position: absolute;
+
+      left: 22px;
+      bottom: 20px;
+
+      color: white;
+
+      z-index: 2;
+    }
+
+    .look-caption small {
+      font-size: .54rem;
+      letter-spacing: .15em;
+    }
+
+    .look-caption strong {
+      display: block;
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 1.65rem;
+      line-height: 1;
+    }
+
+
+    /* =========================================================
+       STYLE GUIDE
+    ========================================================= */
+
+    .style-guide {
+      background:
+        radial-gradient(circle at 90% 20%,
+          rgba(212, 175, 55, .1),
+          transparent 30%),
+        var(--wine);
+
+      color: white;
+    }
+
+    .style-grid {
+      display: grid;
+
+      grid-template-columns: .85fr 1.15fr;
+
+      gap: 85px;
+
+      align-items: center;
+    }
+
+    .style-guide .section-kicker {
+      color: var(--gold);
+    }
+
+    .style-guide h2 {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(3.5rem, 5.5vw, 6rem);
+
+      line-height: .78;
+
+      letter-spacing: -.06em;
+    }
+
+    .style-guide h2 em {
+      color: var(--blush);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .style-guide-copy {
+      color: #d6c5c9;
+
+      margin: 28px 0;
+
+      line-height: 1.9;
+    }
+
+    .style-cards {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 14px;
+    }
+
+    .style-card {
+      min-height: 190px;
+
+      padding: 25px;
+
+      border: 1px solid rgba(255, 255, 255, .12);
+
+      transition:
+        transform .4s var(--ease),
+        border-color .4s ease,
+        background .4s ease;
+    }
+
+    .style-card:hover {
+      transform: translateY(-8px);
+
+      border-color: var(--gold);
+
+      background: rgba(255, 255, 255, .045);
+    }
+
+    .style-card i {
+      display: block;
+
+      color: var(--gold);
+
+      font-size: 1.25rem;
+
+      margin-bottom: 28px;
+    }
+
+    .style-card h3 {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 1.55rem;
+    }
+
+    .style-card span {
+      display: block;
+
+      margin-top: 8px;
+
+      color: #aa999e;
+
+      font-size: .66rem;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+
+    .cta {
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 110px 0;
+
+      background:
+        linear-gradient(135deg,
+          var(--blush),
+          #c9828d);
+    }
+
+    .cta::before {
+      content: "VASTRAA";
+
+      position: absolute;
+
+      right: -4%;
+      bottom: -30px;
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 17vw;
+      font-weight: 700;
+
+      line-height: .8;
+
+      letter-spacing: -.08em;
+
+      color: rgba(255, 255, 255, .12);
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 2;
+
+      text-align: center;
+    }
+
+    .cta-inner small {
+      color: white;
+
+      font-size: .58rem;
+      font-weight: 800;
+
+      letter-spacing: .25em;
+    }
+
+    .cta-inner h2 {
+      margin: 20px auto 25px;
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: clamp(4rem, 7vw, 7.5rem);
+
+      line-height: .78;
+
+      letter-spacing: -.07em;
+
+      color: white;
+    }
+
+    .cta-inner h2 em {
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .cta-inner p {
+      max-width: 560px;
+
+      margin: auto auto 30px;
+
+      color: white;
+
+      font-size: .9rem;
+
+      line-height: 1.8;
+    }
+
+    .cta .btn {
+      background: white;
+      color: var(--wine);
+
+      box-shadow: 0 15px 35px rgba(42, 12, 20, .15);
+    }
+
+    .cta .btn:hover {
+      transform: translateY(-5px);
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      padding: 75px 0 25px;
+
+      background: #19070c;
+
+      color: white;
+    }
+
+    .footer-grid {
+      width: min(1240px, 92%);
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+
+      gap: 40px;
+
+      padding-bottom: 55px;
+    }
+
+    .footer-logo {
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 2.6rem;
+
+      font-weight: 600;
+
+      letter-spacing: -.05em;
+    }
+
+    .footer-logo span {
+      color: var(--blush);
+    }
+
+    .footer-brand p {
+      margin: 10px 0 25px;
+
+      color: #a9989d;
+
+      font-size: .8rem;
+    }
+
+    .socials {
+      display: flex;
+      gap: 9px;
+    }
+
+    .socials a {
+      width: 38px;
+      height: 38px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid rgba(255, 255, 255, .12);
+
+      border-radius: 50%;
+
+      color: white;
+
+      font-size: .72rem;
+
+      transition: .3s ease;
+    }
+
+    .socials a:hover {
+      background: var(--ruby);
+      border-color: var(--ruby);
+
+      transform: translateY(-3px);
+    }
+
+    footer h4 {
+      margin-bottom: 20px;
+
+      color: var(--gold);
+
+      font-size: .62rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    footer ul {
+      display: grid;
+
+      gap: 12px;
+
+      list-style: none;
+    }
+
+    footer li a {
+      color: #b6a5aa;
+
+      font-size: .76rem;
+
+      transition: .25s;
+    }
+
+    footer li a:hover {
+      color: white;
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      width: min(1240px, 92%);
+
+      margin: auto;
+
+      padding-top: 20px;
+
+      border-top: 1px solid rgba(255, 255, 255, .1);
+
+      display: flex;
+
+      justify-content: space-between;
+
+      color: #7f6e73;
+
+      font-size: .62rem;
+    }
+
+
+    /* =========================================================
+       REVEAL ANIMATION
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(40px);
+
+      transition:
+        opacity .9s ease,
+        transform .9s var(--ease);
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: none;
+    }
+
+    .delay-1 {
+      transition-delay: .12s;
+    }
+
+    .delay-2 {
+      transition-delay: .22s;
+    }
+
+    .delay-3 {
+      transition-delay: .32s;
+    }
+
+
+    /* =========================================================
+       BACK TO TOP
+    ========================================================= */
+
+    .back-top {
+      position: fixed;
+
+      right: 22px;
+      bottom: 22px;
+
+      width: 46px;
+      height: 46px;
+
+      border: 0;
+      border-radius: 50%;
+
+      background: var(--ruby);
+      color: white;
+
+      cursor: pointer;
+
+      z-index: 900;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transform: translateY(15px);
+
+      transition: .35s ease;
+
+      box-shadow:
+        0 12px 30px rgba(139, 38, 62, .3);
+    }
+
+    .back-top.show {
+      opacity: 1;
+      visibility: visible;
+
+      transform: none;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 1100px) {
+
+      .nav-menu {
+        gap: 16px;
+      }
+
+      .nav-actions a:not(.whatsapp) {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        padding:
+          80px 0 25px;
+      }
+
+      .hero-visual {
+        height: 620px;
+        padding-right: 0;
+      }
+
+      .intro-grid,
+      .feature,
+      .style-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-copy {
+        padding: 60px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.4fr 1fr 1fr;
+      }
+    }
+
+
+    @media (max-width: 760px) {
+
+      .announcement {
+        height: 32px;
+      }
+
+      .nav-container {
+        height: 70px;
+      }
+
+      .nav-menu,
+      .nav-actions {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-copy {
+        padding-top: 75px;
+      }
+
+      .hero h1 {
+        font-size: 4.8rem;
+      }
+
+      .hero-visual {
+        height: 530px;
+        padding: 25px 0;
+      }
+
+      .hero-image-frame {
+        width: 87%;
+        border-radius:
+          170px 170px 12px 12px;
+      }
+
+      .hero-badge {
+        width: 105px;
+        height: 105px;
+        left: 0;
+      }
+
+      .hero-note {
+        left: 0;
+      }
+
+      .hero-side-label {
+        display: none;
+      }
+
+      .category-rail {
+        top: 70px;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head>p {
+        margin-top: 20px;
+      }
+
+      .feature-copy {
+        padding: 45px 28px;
+      }
+
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 500px;
+      }
+
+      .lookbook-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 260px 220px 220px;
+      }
+
+      .look:first-child {
+        grid-column: 1 / 3;
+        grid-row: auto;
+      }
+
+      .style-grid {
+        gap: 45px;
+      }
+
+      .style-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        display: block;
+        line-height: 2;
+      }
+    }
+
+
+    @media (max-width: 480px) {
+
+      .hero h1 {
+        font-size: 3.9rem;
+      }
+
+      .hero-description {
+        font-size: .86rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .mini-stats {
+        gap: 18px;
+      }
+
+      .mini-stat strong {
+        font-size: 1.7rem;
+      }
+
+      .mini-stat span {
+        font-size: .5rem;
+      }
+
+      .lookbook-grid {
+        display: block;
+      }
+
+      .look {
+        height: 330px;
+        margin-bottom: 12px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
+
+      .mobile-menu {
+        padding: 25px;
+      }
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =======================================================
+       SCROLL PROGRESS
+  ======================================================== -->
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+
+  <!-- =======================================================
+       PRELOADER
+  ======================================================== -->
+
+  <div class="preloader" id="preloader">
+
+    <div class="loader-content">
+
+      <div class="loader-logo">
+        <span>V</span>astraa
+      </div>
+
+      <div class="loader-line"></div>
+
+      <small>
+        THE LEHENGA EDIT · 2026
+      </small>
+
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       ANNOUNCEMENT
+  ======================================================== -->
+
+  <div class="announcement">
+
+    <div class="announcement-track">
+
+      <span>THE LEHENGA EDIT 2026</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>ROYAL CELEBRATION WEAR</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>HANDPICKED INDIAN COUTURE</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>ORDER DIRECTLY ON WHATSAPP</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>THE LEHENGA EDIT 2026</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>ROYAL CELEBRATION WEAR</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>HANDPICKED INDIAN COUTURE</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>ORDER DIRECTLY ON WHATSAPP</span>
+      <i class="fa-solid fa-star"></i>
+
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       NAVBAR
+  ======================================================== -->
+
+  <header class="navbar">
+
+    <div class="nav-container">
+
+      <a href="index.html" class="logo">
+        <span>V</span>astraa
+      </a>
+
+
+      <nav class="nav-menu">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="sarees.html">
+          Sarees
+        </a>
+
+        <a href="kurtis.html">
+          Kurtis
+        </a>
+
+        <a href="lehengas.html" class="active">
+          Lehengas
+        </a>
+
+        <a href="dresses.html">
+          Dresses
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+      </nav>
+
+
+      <div class="nav-actions">
+
+        <button aria-label="Go to products"
+          onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <a href="#products">
+          Explore
+        </a>
+
+        <a href="https://wa.me/919999999999?text=Hello%20Vastraa!%20I%20would%20like%20to%20explore%20your%20lehenga%20collection"
+          target="_blank" rel="noopener" class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+          WhatsApp
+        </a>
+
+      </div>
+
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- =======================================================
+       MOBILE MENU
+  ======================================================== -->
+
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <aside class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-header">
+
+      <span>
+        VASTRAA MENU
+      </span>
+
+      <button class="mobile-close" id="mobileClose" aria-label="Close menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+    </div>
+
+
+    <nav class="mobile-links">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="collections.html">
+        Collections
+      </a>
+
+      <a href="sarees.html">
+        Sarees
+      </a>
+
+      <a href="kurtis.html">
+        Kurtis
+      </a>
+
+      <a href="lehengas.html">
+        Lehengas
+      </a>
+
+      <a href="dresses.html">
+        Dresses
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+    </nav>
+
+
+    <div class="mobile-bottom">
+
+      <p>
+        Discover timeless Indian silhouettes,
+        thoughtfully curated by Vastraa.
+      </p>
+
+      <a class="mobile-whatsapp"
+        href="https://wa.me/919999999999?text=Hello%20Vastraa!%20I%20would%20like%20to%20explore%20your%20lehenga%20collection"
+        target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i>
+        Chat on WhatsApp
+      </a>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =======================================================
+       HERO
+  ======================================================== -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-grid">
+
+
+      <div class="hero-copy reveal">
+
+        <p class="eyebrow">
+          THE VASTRAA LEHENGA EDIT
+        </p>
+
+        <h1>
+          Made for
+          <br>
+          <em>unforgettable moments.</em>
+        </h1>
+
+        <p class="hero-description">
+          Discover royal silhouettes, exquisite embroidery,
+          luminous fabrics, and majestic flares curated
+          for weddings, receptions, and grand celebrations.
+        </p>
+
+        <div class="hero-actions">
+
+          <a href="#products" class="btn btn-primary">
+            Shop Lehengas
+            <i class="fa-solid fa-arrow-down"></i>
+          </a>
+
+          <a href="#story" class="btn btn-ghost">
+            The Craft Story
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-visual reveal delay-1">
+
+        <div class="hero-image-frame">
+
+          <img src="https://images.unsplash.com/photo-1703514785560-36bfec8cebfe?auto=format&fit=crop&w=1600&q=90"
+            alt="Woman wearing an ornate traditional Indian lehenga">
+
+        </div>
+
+
+        <div class="hero-badge">
+
+          <div>
+
+            <strong>05</strong>
+
+            <small>
+              ROYAL
+              <br>
+              EDITS
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-note">
+
+          <span>
+            FEATURED CREATION
+          </span>
+
+          <strong>
+            Bridal Scarlet
+          </strong>
+
+        </div>
+
+
+        <div class="hero-side-label">
+          TRADITION · STYLE · YOU
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       CATEGORY FILTER
+  ======================================================== -->
+
+  <div class="category-rail" id="collections">
+
+    <div class="category-scroll">
+
+      <button class="category-pill active" data-filter="all">
+        All Lehengas
+      </button>
+
+      <button class="category-pill" data-filter="bridal">
+        Bridal
+      </button>
+
+      <button class="category-pill" data-filter="reception">
+        Reception Glam
+      </button>
+
+      <button class="category-pill" data-filter="festive">
+        Festive Flare
+      </button>
+
+      <button class="category-pill" data-filter="pastel">
+        Pastel Grace
+      </button>
+
+      <button class="category-pill" data-filter="velvet">
+        Velvet Royal
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       INTRO
+  ======================================================== -->
+
+  <section class="section" id="story">
+
+    <div class="wrap intro-grid">
+
+
+      <div class="reveal">
+
+        <p class="section-kicker">
+          01 / THE COLLECTION
+        </p>
+
+        <h2 class="intro-title">
+          Grandeur in every
+          <em>flare.</em>
+        </h2>
+
+      </div>
+
+
+      <div class="reveal delay-1">
+
+        <p class="intro-text">
+
+          Vastraa's Lehenga Edit celebrates the pinnacle
+          of Indian craftsmanship. From intricate embroidery
+          to flowing georgette flares, every piece is chosen
+          to make your special moments feel magnificent.
+
+        </p>
+
+
+        <div class="mini-stats">
+
+          <div class="mini-stat">
+
+            <strong>05</strong>
+
+            <span>
+              Signature Edits
+            </span>
+
+          </div>
+
+
+          <div class="mini-stat">
+
+            <strong>16+</strong>
+
+            <span>
+              Curated Sets
+            </span>
+
+          </div>
+
+
+          <div class="mini-stat">
+
+            <strong>01</strong>
+
+            <span>
+              Vastraa Majesty
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       FEATURE STORY
+  ======================================================== -->
+
+  <section class="section" style="padding-top: 0;">
+
+    <div class="wrap">
+
+      <div class="feature reveal">
+
+
+        <div class="feature-image">
+
+          <img src="https://images.unsplash.com/photo-1614881064213-180b1c28f743?auto=format&fit=crop&w=1500&q=90"
+            alt="Bride wearing a gorgeous traditional Indian lehenga" loading="lazy" decoding="async">
+
+        </div>
+
+
+        <div class="feature-copy">
+
+          <p class="section-kicker">
+            02 / SIGNATURE EDIT
+          </p>
+
+          <h2>
+            The Bridal
+            <br>
+            <em>Masterpiece</em>
+          </h2>
+
+
+          <p>
+            Rich heritage tones, intricate threadwork,
+            elegant silhouettes, and magnificent details
+            designed to create an unforgettable entrance.
+          </p>
+
+
+          <div class="feature-list">
+
+            <span>
+              <i class="fa-solid fa-check"></i>
+              Intricate embroidery
+            </span>
+
+            <span>
+              <i class="fa-solid fa-check"></i>
+              Voluminous flares
+            </span>
+
+            <span>
+              <i class="fa-solid fa-check"></i>
+              Coordinated dupatta
+            </span>
+
+            <span>
+              <i class="fa-solid fa-check"></i>
+              Custom fit support
+            </span>
+
+          </div>
+
+
+          <a href="#products" class="btn btn-primary">
+            Explore Bridal
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       PRODUCTS
+  ======================================================== -->
+
+  <section class="section products-section" id="products">
+
+    <div class="wrap">
+
+
+      <div class="section-head reveal">
+
+        <div>
+
+          <p class="section-kicker">
+            03 / SHOP THE EDIT
+          </p>
+
+          <h2>
+            Choose your
+            <em>celebration.</em>
+          </h2>
+
+        </div>
+
+
+        <p>
+          Handpicked designer lehengas for weddings,
+          sangeet nights, receptions, and festive
+          celebrations.
+        </p>
+
+      </div>
+
+
+      <div class="product-grid" id="productGrid">
+
+
+        <!-- PRODUCT 01 -->
+
+        <article class="product-card reveal" data-category="velvet">
+
+          <div class="product-image">
+
+            <span class="product-tag">
+              ROYAL VELVET
+            </span>
+
+            <button class="heart" aria-label="Add Crimson Empress to wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+
+            <img src="https://images.unsplash.com/photo-1703514785560-36bfec8cebfe?auto=format&fit=crop&w=1200&q=90"
+              alt="Crimson Indian wedding lehenga" loading="lazy" decoding="async">
+
+
+            <div class="product-overlay">
+
+              <a href="product.html" class="quick-view">
+                Quick View
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <small>
+                Velvet Masterpiece
+              </small>
+
+              <h3>
+                Crimson Empress
+              </h3>
+
+            </div>
+
+            <div class="product-price">
+              ₹8,999
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 02 -->
+
+        <article class="product-card reveal delay-1" data-category="reception">
+
+          <div class="product-image">
+
+            <span class="product-tag">
+              RECEPTION GLAM
+            </span>
+
+            <button class="heart" aria-label="Add Midnight Starlight to wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+
+            <img src="https://images.unsplash.com/photo-1774437777906-22fabf44f30c?auto=format&fit=crop&w=1200&q=90"
+              alt="Designer lehenga for celebration" loading="lazy" decoding="async">
+
+
+            <div class="product-overlay">
+
+              <a href="product.html" class="quick-view">
+                Quick View
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <small>
+                Shimmer Georgette
+              </small>
+
+              <h3>
+                Midnight Starlight
+              </h3>
+
+            </div>
+
+            <div class="product-price">
+              ₹6,499
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 03 -->
+
+        <article class="product-card reveal delay-2" data-category="pastel">
+
+          <div class="product-image">
+
+            <span class="product-tag">
+              PASTEL ELEGANCE
+            </span>
+
+            <button class="heart" aria-label="Add Roseate Dream to wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+
+            <img src="https://images.unsplash.com/photo-1760461804065-febded675ae2?auto=format&fit=crop&w=1200&q=90"
+              alt="Pastel pink ethnic lehenga" loading="lazy" decoding="async">
+
+
+            <div class="product-overlay">
+
+              <a href="product.html" class="quick-view">
+                Quick View
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <small>
+                Blush Organza
+              </small>
+
+              <h3>
+                Roseate Dream
+              </h3>
+
+            </div>
+
+            <div class="product-price">
+              ₹5,799
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 04 -->
+
+        <article class="product-card reveal" data-category="festive">
+
+          <div class="product-image">
+
+            <span class="product-tag">
+              FESTIVE EDIT
+            </span>
+
+            <button class="heart" aria-label="Add Sunburst Flare to wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+
+            <img src="https://images.unsplash.com/photo-1771992228816-e84f7d23b509?auto=format&fit=crop&w=1200&q=90"
+              alt="Yellow festive lehenga" loading="lazy" decoding="async">
+
+
+            <div class="product-overlay">
+
+              <a href="product.html" class="quick-view">
+                Quick View
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <small>
+                Haldi Special
+              </small>
+
+              <h3>
+                Sunburst Flare
+              </h3>
+
+            </div>
+
+            <div class="product-price">
+              ₹4,899
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 05 -->
+
+        <article class="product-card reveal delay-1" data-category="bridal">
+
+          <div class="product-image">
+
+            <span class="product-tag">
+              EDITOR'S PICK
+            </span>
+
+            <button class="heart" aria-label="Add Emerald Heirloom to wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+
+            <img src="https://images.unsplash.com/photo-1774437562202-4d7fe5cc53fc?auto=format&fit=crop&w=1200&q=90"
+              alt="Traditional Indian lehenga fashion" loading="lazy" decoding="async">
+
+
+            <div class="product-overlay">
+
+              <a href="product.html" class="quick-view">
+                Quick View
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <small>
+                Embroidered Silk
+              </small>
+
+              <h3>
+                Emerald Heirloom
+              </h3>
+
+            </div>
+
+            <div class="product-price">
+              ₹7,299
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 06 -->
+
+        <article class="product-card reveal delay-2" data-category="reception">
+
+          <div class="product-image">
+
+            <span class="product-tag">
+              LIMITED DROP
+            </span>
+
+            <button class="heart" aria-label="Add Golden Aura to wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+
+            <img src="https://images.unsplash.com/photo-1774437891961-306466b8a3a6?auto=format&fit=crop&w=1200&q=90"
+              alt="Elegant celebration wear lehenga" loading="lazy" decoding="async">
+
+
+            <div class="product-overlay">
+
+              <a href="product.html" class="quick-view">
+                Quick View
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <small>
+                Royal Brocade
+              </small>
+
+              <h3>
+                Golden Aura
+              </h3>
+
+            </div>
+
+            <div class="product-price">
+              ₹6,999
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       LOOKBOOK
+  ======================================================== -->
+
+  <section class="section">
+
+    <div class="wrap">
+
+
+      <div class="section-head reveal">
+
+        <div>
+
+          <p class="section-kicker">
+            04 / VISUAL JOURNAL
+          </p>
+
+          <h2>
+            The lehenga,
+            <em>in motion.</em>
+          </h2>
+
+        </div>
+
+        <p>
+          Capturing the grace, movement, and royal spirit
+          of the Vastraa celebration edit.
+        </p>
+
+      </div>
+
+
+      <div class="lookbook-grid">
+
+
+        <div class="look reveal">
+
+          <img src="https://images.unsplash.com/photo-1614881064213-180b1c28f743?auto=format&fit=crop&w=1200&q=90"
+            alt="Bridal lehenga editorial" loading="lazy" decoding="async">
+
+          <div class="look-caption">
+
+            <small>
+              THE BRIDAL MOOD
+            </small>
+
+            <strong>
+              Royal Splendour
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="look reveal delay-1">
+
+          <img src="https://images.unsplash.com/photo-1703514785560-36bfec8cebfe?auto=format&fit=crop&w=1000&q=90"
+            alt="Ornate lehenga look" loading="lazy" decoding="async">
+
+          <div class="look-caption">
+
+            <small>
+              THE SANGEET MOOD
+            </small>
+
+            <strong>
+              Evening Glow
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="look reveal delay-2">
+
+          <img src="https://images.unsplash.com/photo-1774437777906-22fabf44f30c?auto=format&fit=crop&w=1000&q=90"
+            alt="Reception lehenga style" loading="lazy" decoding="async">
+
+          <div class="look-caption">
+
+            <small>
+              THE RECEPTION MOOD
+            </small>
+
+            <strong>
+              Starlit Glamour
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="look reveal delay-1">
+
+          <img src="https://images.unsplash.com/photo-1774437562202-4d7fe5cc53fc?auto=format&fit=crop&w=1000&q=90"
+            alt="Festive lehenga outfit" loading="lazy" decoding="async">
+
+          <div class="look-caption">
+
+            <small>
+              THE HERITAGE MOOD
+            </small>
+
+            <strong>
+              Timeless Weave
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="look reveal delay-2">
+
+          <img src="https://images.unsplash.com/photo-1774437891961-306466b8a3a6?auto=format&fit=crop&w=1000&q=90"
+            alt="Traditional Indian celebration wear" loading="lazy" decoding="async">
+
+          <div class="look-caption">
+
+            <small>
+              THE CELEBRATION MOOD
+            </small>
+
+            <strong>
+              Festive Joy
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       STYLE GUIDE
+  ======================================================== -->
+
+  <section class="section style-guide">
+
+    <div class="wrap style-grid">
+
+
+      <div class="reveal">
+
+        <p class="section-kicker">
+          05 / STYLE NOTES
+        </p>
+
+        <h2>
+          Curating your
+          <br>
+          <em>grand look.</em>
+        </h2>
+
+        <p class="style-guide-copy">
+          A lehenga is more than an outfit.
+          Pair your Vastraa piece with traditional
+          jewellery, statement accessories, and
+          confident grace.
+        </p>
+
+
+        <a href="https://wa.me/919999999999?text=Hello%20Vastraa!%20I%20need%20help%20choosing%20a%20lehenga"
+          target="_blank" rel="noopener" class="btn btn-ghost">
+          Consult Our Stylist
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+
+
+      <div class="style-cards">
+
+
+        <div class="style-card reveal delay-1">
+
+          <i class="fa-solid fa-crown"></i>
+
+          <h3>
+            Bridal Ceremony
+          </h3>
+
+          <span>
+            Deep jewel tones, intricate embroidery,
+            and traditional statement jewellery.
+          </span>
+
+        </div>
+
+
+        <div class="style-card reveal delay-2">
+
+          <i class="fa-solid fa-music"></i>
+
+          <h3>
+            Sangeet & Reception
+          </h3>
+
+          <span>
+            Shimmering fabrics, contemporary cuts,
+            and glamorous accessories.
+          </span>
+
+        </div>
+
+
+        <div class="style-card reveal delay-1">
+
+          <i class="fa-solid fa-sun"></i>
+
+          <h3>
+            Day Wedding
+          </h3>
+
+          <span>
+            Pastels, soft organza, floral details,
+            and lightweight silhouettes.
+          </span>
+
+        </div>
+
+
+        <div class="style-card reveal delay-2">
+
+          <i class="fa-solid fa-star"></i>
+
+          <h3>
+            Festive Evening
+          </h3>
+
+          <span>
+            Vibrant colours, rich textures,
+            and classic statement earrings.
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       WHATSAPP CTA
+  ======================================================== -->
+
+  <section class="cta">
+
+    <div class="wrap cta-inner reveal">
+
+      <small>
+        YOUR DREAM LEHENGA IS A MESSAGE AWAY
+      </small>
+
+      <h2>
+        Found your
+        <em>Vastraa?</em>
+      </h2>
+
+      <p>
+        Send us the lehenga name you love.
+        We can assist you with measurements,
+        custom tailoring, blouse patterns,
+        and delivery details.
+      </p>
+
+
+      <a class="btn"
+        href="https://wa.me/919999999999?text=Hello%20Vastraa!%20I%20found%20a%20lehenga%20I%20love%20and%20would%20like%20to%20place%20an%20order"
+        target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i>
+        Start on WhatsApp
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <div class="footer-grid">
+
+
+      <div class="footer-brand">
+
+        <a href="index.html" class="footer-logo">
+          <span>V</span>astraa
+        </a>
+
+        <p>
+          Tradition. Style. You.
+        </p>
+
+
+        <div class="socials">
+
+          <a href="#" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="#" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+
+          <a href="#" aria-label="Pinterest">
+            <i class="fa-brands fa-pinterest-p"></i>
+          </a>
+
+          <a href="https://wa.me/919999999999" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Explore
+        </h4>
+
+        <ul>
+
+          <li>
+            <a href="collections.html">
+              Collections
+            </a>
+          </li>
+
+          <li>
+            <a href="sarees.html">
+              Sarees
+            </a>
+          </li>
+
+          <li>
+            <a href="kurtis.html">
+              Kurtis
+            </a>
+          </li>
+
+          <li>
+            <a href="lehengas.html">
+              Lehengas
+            </a>
+          </li>
+
+          <li>
+            <a href="dresses.html">
+              Dresses
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Vastraa
+        </h4>
+
+        <ul>
+
+          <li>
+            <a href="new-arrivals.html">
+              New Arrivals
+            </a>
+          </li>
+
+          <li>
+            <a href="about.html">
+              Our Story
+            </a>
+          </li>
+
+          <li>
+            <a href="faq.html">
+              FAQs
+            </a>
+          </li>
+
+          <li>
+            <a href="contact.html">
+              Contact
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Let's Talk
+        </h4>
+
+        <ul>
+
+          <li>
+            <a href="https://wa.me/919999999999" target="_blank" rel="noopener">
+              Chat on WhatsApp
+            </a>
+          </li>
+
+          <li>
+            <a href="mailto:hello@vastraa.com">
+              hello@vastraa.com
+            </a>
+          </li>
+
+          <li>
+            <a href="#products">
+              Browse Lehengas
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 Vastraa. All Rights Reserved.
+      </span>
+
+      <span>
+        Tradition · Style · You.
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       BACK TO TOP
+  ======================================================== -->
+
+  <button class="back-top" id="backTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+    /* =====================================================
+       PRELOADER
+    ===================================================== */
+
+    const preloader =
+      document.getElementById("preloader");
+
+    window.addEventListener("load", () => {
+
+      setTimeout(() => {
+
+        preloader.classList.add("hide");
+
+      }, 500);
+
+    });
+
+
+    /* =====================================================
+       REVEAL ON SCROLL
+    ===================================================== */
+
+    const revealObserver =
+      new IntersectionObserver(
+
+        (entries, observer) => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("show");
+
+              observer.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.12
+        }
+
+      );
+
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach(element => {
+
+        revealObserver.observe(element);
+
+      });
+
+
+    /* =====================================================
+       WISHLIST HEARTS
+    ===================================================== */
+
+    document
+      .querySelectorAll(".heart")
+      .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+          const icon =
+            button.querySelector("i");
+
+          const liked =
+            button.classList.toggle("liked");
+
+
+          if (liked) {
+
+            icon.classList.remove("fa-regular");
+
+            icon.classList.add("fa-solid");
+
+          } else {
+
+            icon.classList.remove("fa-solid");
+
+            icon.classList.add("fa-regular");
+
+          }
+
+        });
+
+      });
+
+
+    /* =====================================================
+       PRODUCT FILTER
+    ===================================================== */
+
+    const filterButtons =
+      document.querySelectorAll(".category-pill");
+
+    const productCards =
+      document.querySelectorAll(".product-card");
+
+
+    filterButtons.forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const filter =
+          button.dataset.filter;
+
+
+        filterButtons.forEach(btn => {
+
+          btn.classList.remove("active");
+
+        });
+
+
+        button.classList.add("active");
+
+
+        productCards.forEach(card => {
+
+          const category =
+            card.dataset.category;
+
+
+          if (
+            filter === "all" ||
+            category === filter
+          ) {
+
+            card.classList.remove("hidden");
+
+          } else {
+
+            card.classList.add("hidden");
+
+          }
+
+        });
+
+      });
+
+    });
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    const menuToggle =
+      document.getElementById("menuToggle");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+    const menuOverlay =
+      document.getElementById("menuOverlay");
+
+    const mobileClose =
+      document.getElementById("mobileClose");
+
+
+    function openMenu() {
+
+      mobileMenu.classList.add("active");
+
+      menuOverlay.classList.add("active");
+
+      document.body.classList.add("menu-open");
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        "true"
+      );
+
+    }
+
+
+    function closeMenu() {
+
+      mobileMenu.classList.remove("active");
+
+      menuOverlay.classList.remove("active");
+
+      document.body.classList.remove("menu-open");
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+    }
+
+
+    menuToggle.addEventListener(
+      "click",
+      openMenu
+    );
+
+
+    mobileClose.addEventListener(
+      "click",
+      closeMenu
+    );
+
+
+    menuOverlay.addEventListener(
+      "click",
+      closeMenu
+    );
+
+
+    document
+      .querySelectorAll(".mobile-links a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          closeMenu
+        );
+
+      });
+
+
+    /* =====================================================
+       BACK TO TOP
+    ===================================================== */
+
+    const backTop =
+      document.getElementById("backTop");
+
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 700) {
+
+        backTop.classList.add("show");
+
+      } else {
+
+        backTop.classList.remove("show");
+
+      }
+
+    });
+
+
+    backTop.addEventListener("click", () => {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    });
+
+
+    /* =====================================================
+       SCROLL PROGRESS
+    ===================================================== */
+
+    const scrollProgress =
+      document.getElementById("scrollProgress");
+
+
+    window.addEventListener("scroll", () => {
+
+      const scrollTop =
+        window.scrollY;
+
+      const pageHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+      const progress =
+        (scrollTop / pageHeight) * 100;
+
+
+      scrollProgress.style.width =
+        progress + "%";
+
+    });
+
+
+    /* =====================================================
+       HERO PARALLAX
+    ===================================================== */
+
+    const heroVisual =
+      document.querySelector(".hero-visual");
+
+    const heroFrame =
+      document.querySelector(".hero-image-frame");
+
+
+    if (
+      heroVisual &&
+      window.matchMedia("(pointer: fine)").matches
+    ) {
+
+      heroVisual.addEventListener(
+        "mousemove",
+        event => {
+
+          const rect =
+            heroVisual.getBoundingClientRect();
+
+          const x =
+            event.clientX - rect.left;
+
+          const y =
+            event.clientY - rect.top;
+
+          const rotateY =
+            ((x / rect.width) - .5) * 4;
+
+          const rotateX =
+            ((y / rect.height) - .5) * -3;
+
+
+          heroFrame.style.transform =
+            `rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             scale(1.01)`;
+
+        }
+      );
+
+
+      heroVisual.addEventListener(
+        "mouseleave",
+        () => {
+
+          heroFrame.style.transform =
+            "rotateY(-2deg)";
+
+        }
+      );
+
+    }
+
+
+    /* =====================================================
+       ESCAPE KEY CLOSES MOBILE MENU
+    ===================================================== */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape" &&
+          mobileMenu.classList.contains("active")
+        ) {
+
+          closeMenu();
+
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       ACTIVE NAVIGATION
+    ===================================================== */
+
+    const currentPage =
+      window.location.pathname
+        .split("/")
+        .pop();
+
+
+    document
+      .querySelectorAll(".nav-menu a")
+      .forEach(link => {
+
+        const linkPage =
+          link.getAttribute("href");
+
+
+        if (
+          linkPage === currentPage
+        ) {
+
+          link.classList.add("active");
+
+        }
+
+      });
+
+  </script>
+
+</body>
+
+</html>

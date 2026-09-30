@@ -1,0 +1,4258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+    content="Vastraa Sarees — curated silk, festive, heritage and contemporary sarees. Tradition. Style. You.">
+
+  <title>Vastraa | Sarees — Tradition. Style. You.</title>
+
+  <!-- ================================
+         GOOGLE FONTS
+    ================================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- ================================
+         FONT AWESOME
+    ================================= -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    /* =========================================================
+           VASTRAA — SAREES PAGE
+           HTML + CSS + JAVASCRIPT
+        ========================================================= */
+
+    :root {
+
+      --wine: #641d47;
+      --wine-dark: #2a0e1e;
+      --wine-soft: #8d456d;
+
+      --rose: #d29aaa;
+      --rose-light: #efd5dc;
+
+      --gold: #c5a05a;
+      --gold-light: #e5cd9a;
+
+      --cream: #fffaf5;
+      --cream-2: #f8eee8;
+      --cream-3: #f2e4dc;
+
+      --white: #ffffff;
+
+      --ink: #211b1e;
+      --muted: #756a70;
+
+      --line: rgba(100, 29, 71, 0.13);
+
+      --shadow:
+        0 25px 70px rgba(42, 14, 30, 0.12);
+
+      --shadow-heavy:
+        0 35px 100px rgba(42, 14, 30, 0.18);
+
+      --serif: "Cormorant Garamond", serif;
+      --sans: "DM Sans", sans-serif;
+
+      --ease: cubic-bezier(.22, 1, .36, 1);
+    }
+
+
+    /* =========================================================
+           RESET
+        ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+
+    /* =========================================================
+           CUSTOM CURSOR
+        ========================================================= */
+
+    .cursor {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--wine);
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition:
+        width .25s ease,
+        height .25s ease,
+        background .25s ease;
+    }
+
+    .cursor-ring {
+      position: fixed;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(100, 29, 71, .4);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition:
+        transform .12s ease,
+        width .25s ease,
+        height .25s ease;
+    }
+
+    body.cursor-hover .cursor {
+      width: 22px;
+      height: 22px;
+      background: var(--gold);
+    }
+
+    body.cursor-hover .cursor-ring {
+      width: 58px;
+      height: 58px;
+    }
+
+    @media(max-width: 800px) {
+
+      .cursor,
+      .cursor-ring {
+        display: none;
+      }
+    }
+
+
+    /* =========================================================
+           PRELOADER
+        ========================================================= */
+
+    .preloader {
+      position: fixed;
+      inset: 0;
+      background: var(--wine-dark);
+      z-index: 99999;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      transition:
+        opacity .8s ease,
+        visibility .8s ease;
+    }
+
+    .preloader.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-content {
+      text-align: center;
+      color: white;
+    }
+
+    .loader-logo {
+      font-family: var(--serif);
+      font-size: clamp(4rem, 9vw, 8rem);
+      line-height: .8;
+      letter-spacing: -.06em;
+      font-weight: 600;
+    }
+
+    .loader-logo span {
+      color: var(--rose);
+    }
+
+    .loader-line {
+      width: 130px;
+      height: 1px;
+      background: var(--gold);
+      margin: 30px auto 15px;
+      transform-origin: left;
+      animation: loaderLine 1.5s ease infinite;
+    }
+
+    .loader-content small {
+      font-size: .58rem;
+      letter-spacing: .3em;
+      color: #e8dce2;
+    }
+
+    @keyframes loaderLine {
+
+      0% {
+        transform: scaleX(.1);
+      }
+
+      50% {
+        transform: scaleX(1);
+      }
+
+      100% {
+        transform: scaleX(.1);
+      }
+    }
+
+
+    /* =========================================================
+           ANNOUNCEMENT BAR
+        ========================================================= */
+
+    .announcement {
+      height: 36px;
+      background: var(--wine-dark);
+      color: white;
+      overflow: hidden;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .announcement-track {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+
+      min-width: max-content;
+
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+
+      animation: marquee 25s linear infinite;
+    }
+
+    .announcement-track i {
+      color: var(--gold);
+      font-size: .45rem;
+    }
+
+    @keyframes marquee {
+
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+
+    /* =========================================================
+           NAVBAR
+        ========================================================= */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+
+      background: rgba(255, 250, 245, .9);
+      backdrop-filter: blur(20px);
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-container {
+      width: min(1320px, 92%);
+      height: 82px;
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 2.3rem;
+      font-weight: 600;
+      letter-spacing: -.06em;
+      color: var(--wine-dark);
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--wine);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .nav-menu a {
+      position: relative;
+
+      padding: 31px 0;
+
+      color: #493d43;
+
+      font-size: .69rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .nav-menu a::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      bottom: 22px;
+
+      width: 0;
+      height: 2px;
+
+      background: var(--wine);
+
+      transition: width .35s var(--ease);
+    }
+
+    .nav-menu a:hover::after,
+    .nav-menu a.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-actions button,
+    .nav-actions a {
+      min-height: 40px;
+
+      border: 1px solid var(--line);
+      border-radius: 100px;
+
+      padding: 10px 15px;
+
+      background: transparent;
+
+      color: var(--wine-dark);
+
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+
+      transition: .35s var(--ease);
+    }
+
+    .nav-actions button:hover,
+    .nav-actions a:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold);
+    }
+
+    .nav-actions .whatsapp {
+      background: var(--wine);
+      border-color: var(--wine);
+      color: white;
+    }
+
+    .nav-actions .whatsapp:hover {
+      background: var(--wine-dark);
+    }
+
+
+    /* =========================================================
+           MOBILE MENU BUTTON
+        ========================================================= */
+
+    .menu-toggle {
+      display: none;
+
+      width: 44px;
+      height: 44px;
+
+      border: 1px solid var(--line);
+      border-radius: 50%;
+
+      background: transparent;
+      color: var(--wine-dark);
+
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+      z-index: 3000;
+    }
+
+    .menu-toggle span {
+      position: absolute;
+
+      width: 20px;
+      height: 2px;
+
+      background: var(--wine-dark);
+      border-radius: 5px;
+
+      transition: .35s var(--ease);
+    }
+
+    .menu-toggle span:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    .menu-toggle span:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+
+
+    /* =========================================================
+           MOBILE NAVIGATION
+        ========================================================= */
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+
+      background: var(--cream);
+
+      z-index: 2500;
+
+      padding: 130px 8% 50px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      transform: translateX(100%);
+      transition: transform .65s var(--ease);
+
+      visibility: hidden;
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+      visibility: visible;
+    }
+
+    .mobile-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mobile-links a {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 12vw, 5.5rem);
+      line-height: .9;
+
+      color: var(--wine-dark);
+
+      transform: translateX(50px);
+      opacity: 0;
+
+      transition:
+        transform .7s var(--ease),
+        opacity .7s ease;
+    }
+
+    .mobile-menu.active .mobile-links a {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .mobile-menu.active .mobile-links a:nth-child(1) {
+      transition-delay: .05s;
+    }
+
+    .mobile-menu.active .mobile-links a:nth-child(2) {
+      transition-delay: .1s;
+    }
+
+    .mobile-menu.active .mobile-links a:nth-child(3) {
+      transition-delay: .15s;
+    }
+
+    .mobile-menu.active .mobile-links a:nth-child(4) {
+      transition-delay: .2s;
+    }
+
+    .mobile-menu.active .mobile-links a:nth-child(5) {
+      transition-delay: .25s;
+    }
+
+    .mobile-menu.active .mobile-links a:nth-child(6) {
+      transition-delay: .3s;
+    }
+
+    .mobile-menu.active .mobile-links a:nth-child(7) {
+      transition-delay: .35s;
+    }
+
+    .mobile-links a:hover {
+      color: var(--wine);
+      padding-left: 15px;
+    }
+
+    .mobile-bottom {
+      border-top: 1px solid var(--line);
+      padding-top: 25px;
+
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      color: var(--muted);
+      font-size: .7rem;
+    }
+
+
+    /* =========================================================
+           HERO
+        ========================================================= */
+
+    .hero {
+      min-height: calc(100vh - 118px);
+
+      background:
+        radial-gradient(circle at 15% 30%,
+          rgba(210, 154, 170, .2),
+          transparent 30%),
+        var(--cream-2);
+
+      position: relative;
+      overflow: hidden;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .hero::before {
+      content: "SAREES";
+
+      position: absolute;
+      right: -4vw;
+      top: 4vh;
+
+      font-family: var(--serif);
+      font-size: clamp(9rem, 20vw, 22rem);
+      line-height: .8;
+
+      font-weight: 700;
+
+      color: rgba(100, 29, 71, .035);
+
+      letter-spacing: -.08em;
+
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 450px;
+      height: 450px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(197, 160, 90, .25);
+
+      left: -220px;
+      bottom: -220px;
+
+      animation: rotateSlow 30s linear infinite;
+    }
+
+    @keyframes rotateSlow {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .hero-grid {
+      width: min(1320px, 92%);
+      min-height: 700px;
+
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+
+      align-items: center;
+      gap: 50px;
+
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-copy {
+      padding-left: 3vw;
+    }
+
+    .eyebrow {
+      color: var(--wine);
+
+      font-size: .62rem;
+      font-weight: 800;
+
+      letter-spacing: .3em;
+
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(5rem, 8vw, 9rem);
+      font-weight: 600;
+
+      line-height: .75;
+
+      letter-spacing: -.065em;
+
+      color: var(--wine-dark);
+    }
+
+    .hero h1 em {
+      color: var(--wine);
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .hero-description {
+      max-width: 480px;
+
+      margin: 35px 0;
+
+      color: var(--muted);
+
+      font-size: .92rem;
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+
+    /* =========================================================
+           BUTTONS
+        ========================================================= */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 12px;
+
+      padding: 15px 22px;
+
+      border-radius: 100px;
+
+      font-size: .66rem;
+      font-weight: 800;
+
+      letter-spacing: .1em;
+      text-transform: uppercase;
+
+      transition:
+        transform .4s var(--ease),
+        box-shadow .4s ease,
+        background .3s ease;
+    }
+
+    .btn-primary {
+      background: var(--wine);
+      color: white;
+
+      box-shadow:
+        0 15px 35px rgba(100, 29, 71, .2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-5px);
+      box-shadow:
+        0 22px 45px rgba(100, 29, 71, .3);
+    }
+
+    .btn-outline {
+      background: white;
+      color: var(--wine-dark);
+
+      border: 1px solid var(--line);
+    }
+
+    .btn-outline:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+    }
+
+
+    /* =========================================================
+           HERO IMAGE
+        ========================================================= */
+
+    .hero-visual {
+      height: 680px;
+      position: relative;
+    }
+
+    .hero-image {
+      width: 78%;
+      height: 100%;
+
+      margin-left: auto;
+
+      overflow: hidden;
+
+      border-radius:
+        280px 280px 18px 18px;
+
+      box-shadow: var(--shadow-heavy);
+
+      position: relative;
+    }
+
+    .hero-image::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(180deg,
+          transparent 65%,
+          rgba(42, 14, 30, .28));
+    }
+
+    .hero-image img {
+      transition:
+        transform 1.4s var(--ease);
+    }
+
+    .hero:hover .hero-image img {
+      transform: scale(1.06);
+    }
+
+    .hero-badge {
+      position: absolute;
+
+      left: 3%;
+      top: 12%;
+
+      width: 140px;
+      height: 140px;
+
+      border-radius: 50%;
+
+      background: var(--gold);
+
+      color: white;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      box-shadow:
+        0 20px 45px rgba(197, 160, 90, .3);
+
+      animation: floating 4s ease-in-out infinite;
+    }
+
+    .hero-badge strong {
+      display: block;
+
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      line-height: 1;
+    }
+
+    .hero-badge small {
+      display: block;
+
+      margin-top: 6px;
+
+      font-size: .5rem;
+      letter-spacing: .15em;
+    }
+
+    @keyframes floating {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0);
+      }
+
+      50% {
+        transform: translateY(-12px) rotate(4deg);
+      }
+    }
+
+    .hero-note {
+      position: absolute;
+
+      left: 0;
+      bottom: 9%;
+
+      background: white;
+
+      padding: 20px 25px;
+
+      border-left: 3px solid var(--wine);
+
+      box-shadow: var(--shadow);
+    }
+
+    .hero-note small {
+      display: block;
+
+      color: var(--muted);
+
+      font-size: .52rem;
+      letter-spacing: .17em;
+    }
+
+    .hero-note strong {
+      display: block;
+
+      margin-top: 5px;
+
+      color: var(--wine-dark);
+
+      font-family: var(--serif);
+      font-size: 1.4rem;
+    }
+
+
+    /* =========================================================
+           CATEGORY BAR
+        ========================================================= */
+
+    .category-bar {
+      position: sticky;
+      top: 82px;
+
+      z-index: 100;
+
+      background: var(--wine-dark);
+
+      padding: 17px 0;
+    }
+
+    .category-scroll {
+      width: min(1250px, 92%);
+      margin: auto;
+
+      display: flex;
+      gap: 10px;
+
+      overflow-x: auto;
+
+      scrollbar-width: none;
+    }
+
+    .category-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category-pill {
+      flex: 0 0 auto;
+
+      padding: 10px 17px;
+
+      border: 1px solid rgba(255, 255, 255, .13);
+
+      border-radius: 100px;
+
+      color: #d9cbd2;
+
+      font-size: .59rem;
+      font-weight: 700;
+
+      letter-spacing: .13em;
+      text-transform: uppercase;
+
+      transition: .3s ease;
+    }
+
+    .category-pill:hover,
+    .category-pill.active {
+      background: white;
+      color: var(--wine-dark);
+
+      border-color: white;
+    }
+
+
+    /* =========================================================
+           INTRO
+        ========================================================= */
+
+    .section {
+      padding: 120px 0;
+    }
+
+    .container {
+      width: min(1250px, 92%);
+      margin: auto;
+    }
+
+    .section-label {
+      color: var(--wine);
+
+      font-size: .6rem;
+      font-weight: 800;
+
+      letter-spacing: .27em;
+
+      margin-bottom: 14px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+
+      gap: 80px;
+
+      align-items: end;
+    }
+
+    .intro-title {
+      font-family: var(--serif);
+
+      font-size: clamp(4rem, 7vw, 7rem);
+
+      line-height: .78;
+
+      letter-spacing: -.06em;
+
+      font-weight: 600;
+
+      color: var(--wine-dark);
+    }
+
+    .intro-title em {
+      color: var(--wine);
+      font-weight: 500;
+    }
+
+    .intro-copy {
+      color: var(--muted);
+
+      font-size: .92rem;
+      line-height: 1.95;
+    }
+
+    .intro-copy strong {
+      color: var(--wine-dark);
+    }
+
+    .stats {
+      display: flex;
+
+      gap: 35px;
+
+      margin-top: 35px;
+      padding-top: 25px;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+
+      font-family: var(--serif);
+
+      font-size: 2.2rem;
+
+      color: var(--wine);
+    }
+
+    .stat span {
+      font-size: .55rem;
+
+      color: var(--muted);
+
+      letter-spacing: .14em;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+           FEATURE
+        ========================================================= */
+
+    .feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      min-height: 650px;
+
+      background: white;
+
+      box-shadow: var(--shadow);
+
+      overflow: hidden;
+    }
+
+    .feature-image {
+      min-height: 620px;
+
+      overflow: hidden;
+    }
+
+    .feature-image img {
+      transition:
+        transform 1.2s var(--ease);
+    }
+
+    .feature:hover .feature-image img {
+      transform: scale(1.06);
+    }
+
+    .feature-content {
+      padding: 75px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .feature-content h2 {
+      font-family: var(--serif);
+
+      font-size: clamp(4rem, 6vw, 6.5rem);
+
+      line-height: .75;
+
+      letter-spacing: -.06em;
+
+      color: var(--wine-dark);
+    }
+
+    .feature-content h2 em {
+      color: var(--wine);
+      font-weight: 500;
+    }
+
+    .feature-content p {
+      max-width: 500px;
+
+      margin: 30px 0;
+
+      color: var(--muted);
+
+      line-height: 1.9;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 10px;
+
+      margin-bottom: 35px;
+    }
+
+    .feature-list div {
+      padding: 12px 0;
+
+      border-bottom: 1px solid var(--line);
+
+      color: var(--ink);
+
+      font-size: .7rem;
+    }
+
+    .feature-list i {
+      color: var(--gold);
+      margin-right: 8px;
+    }
+
+
+    /* =========================================================
+           PRODUCTS
+        ========================================================= */
+
+    .products-section {
+      background: var(--cream-2);
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+
+      gap: 40px;
+
+      margin-bottom: 50px;
+    }
+
+    .section-heading h2 {
+      font-family: var(--serif);
+
+      font-size: clamp(4rem, 6vw, 6rem);
+
+      line-height: .78;
+
+      letter-spacing: -.06em;
+
+      color: var(--wine-dark);
+    }
+
+    .section-heading h2 em {
+      color: var(--wine);
+      font-weight: 500;
+    }
+
+    .section-heading>p {
+      max-width: 420px;
+
+      color: var(--muted);
+
+      font-size: .87rem;
+      line-height: 1.8;
+    }
+
+    .product-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 22px;
+    }
+
+    .product-card {
+      background: white;
+
+      position: relative;
+
+      overflow: hidden;
+
+      transition:
+        transform .5s var(--ease),
+        box-shadow .5s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-9px);
+      box-shadow: var(--shadow);
+    }
+
+    .product-image {
+      height: 510px;
+
+      overflow: hidden;
+
+      position: relative;
+
+      background: var(--cream-3);
+    }
+
+    .product-image img {
+      transition:
+        transform 1s var(--ease);
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.07);
+    }
+
+    .product-tag {
+      position: absolute;
+
+      left: 15px;
+      top: 15px;
+
+      z-index: 3;
+
+      background: white;
+
+      padding: 8px 11px;
+
+      color: var(--wine-dark);
+
+      font-size: .53rem;
+      font-weight: 800;
+
+      letter-spacing: .13em;
+    }
+
+    .wishlist {
+      position: absolute;
+
+      right: 15px;
+      top: 15px;
+
+      z-index: 4;
+
+      width: 42px;
+      height: 42px;
+
+      border: 0;
+
+      border-radius: 50%;
+
+      background: rgba(255, 255, 255, .92);
+
+      color: var(--wine-dark);
+
+      transition: .3s ease;
+    }
+
+    .wishlist:hover {
+      transform: scale(1.1);
+    }
+
+    .wishlist.active {
+      color: var(--wine);
+      background: white;
+    }
+
+    .product-overlay {
+      position: absolute;
+
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+
+      display: flex;
+      justify-content: center;
+
+      opacity: 0;
+
+      transform: translateY(20px);
+
+      transition: .4s var(--ease);
+    }
+
+    .product-card:hover .product-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .quick-view {
+      background: var(--wine-dark);
+
+      color: white;
+
+      padding: 12px 22px;
+
+      border-radius: 100px;
+
+      font-size: .6rem;
+      font-weight: 800;
+
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .product-info {
+      padding: 20px 5px 22px;
+
+      display: flex;
+      justify-content: space-between;
+
+      gap: 15px;
+    }
+
+    .product-info small {
+      color: var(--muted);
+
+      font-size: .55rem;
+
+      letter-spacing: .14em;
+
+      text-transform: uppercase;
+    }
+
+    .product-info h3 {
+      margin-top: 4px;
+
+      color: var(--wine-dark);
+
+      font-family: var(--serif);
+
+      font-size: 1.65rem;
+      font-weight: 600;
+    }
+
+    .price {
+      color: var(--wine);
+
+      font-size: .78rem;
+      font-weight: 800;
+
+      white-space: nowrap;
+    }
+
+
+    /* =========================================================
+           LOOKBOOK
+        ========================================================= */
+
+    .lookbook {
+      display: grid;
+
+      grid-template-columns: 1.15fr .85fr .85fr;
+
+      grid-template-rows: 280px 280px;
+
+      gap: 15px;
+    }
+
+    .look {
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .look:first-child {
+      grid-row: 1 / 3;
+    }
+
+    .look img {
+      transition:
+        transform 1s var(--ease);
+    }
+
+    .look:hover img {
+      transform: scale(1.08);
+    }
+
+    .look::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(transparent 45%,
+          rgba(25, 8, 18, .7));
+    }
+
+    .look-caption {
+      position: absolute;
+
+      left: 22px;
+      bottom: 20px;
+
+      z-index: 2;
+
+      color: white;
+    }
+
+    .look-caption small {
+      display: block;
+
+      font-size: .52rem;
+
+      letter-spacing: .17em;
+    }
+
+    .look-caption strong {
+      display: block;
+
+      margin-top: 3px;
+
+      font-family: var(--serif);
+
+      font-size: 1.7rem;
+      font-weight: 600;
+    }
+
+
+    /* =========================================================
+           STYLE GUIDE
+        ========================================================= */
+
+    .style-section {
+      background: var(--wine-dark);
+      color: white;
+    }
+
+    .style-grid {
+      display: grid;
+
+      grid-template-columns: .85fr 1.15fr;
+
+      gap: 80px;
+
+      align-items: center;
+    }
+
+    .style-section .section-label {
+      color: var(--gold);
+    }
+
+    .style-section h2 {
+      font-family: var(--serif);
+
+      font-size: clamp(4rem, 6vw, 6rem);
+
+      line-height: .78;
+
+      letter-spacing: -.06em;
+    }
+
+    .style-section h2 em {
+      color: var(--rose);
+      font-weight: 500;
+    }
+
+    .style-section>.container>.style-grid p {
+      color: #cdbec6;
+
+      line-height: 1.9;
+
+      margin: 28px 0;
+    }
+
+    .style-cards {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 14px;
+    }
+
+    .style-card {
+      min-height: 190px;
+
+      padding: 27px;
+
+      border: 1px solid rgba(255, 255, 255, .12);
+
+      transition:
+        transform .4s var(--ease),
+        border-color .3s ease,
+        background .3s ease;
+    }
+
+    .style-card:hover {
+      transform: translateY(-8px);
+
+      background: rgba(255, 255, 255, .04);
+
+      border-color: var(--gold);
+    }
+
+    .style-card i {
+      color: var(--gold);
+
+      font-size: 1.2rem;
+
+      margin-bottom: 30px;
+    }
+
+    .style-card h3 {
+      font-family: var(--serif);
+
+      font-size: 1.5rem;
+    }
+
+    .style-card span {
+      display: block;
+
+      margin-top: 8px;
+
+      color: #a99aa2;
+
+      font-size: .65rem;
+      line-height: 1.7;
+    }
+
+
+    /* =========================================================
+           CTA
+        ========================================================= */
+
+    .cta {
+      padding: 110px 0;
+
+      background:
+        radial-gradient(circle at 50% 0,
+          rgba(255, 255, 255, .2),
+          transparent 45%),
+        var(--rose);
+
+      position: relative;
+
+      overflow: hidden;
+
+      text-align: center;
+    }
+
+    .cta::before {
+      content: "VASTRAA";
+
+      position: absolute;
+
+      right: -4%;
+      bottom: -40px;
+
+      color: rgba(255, 255, 255, .12);
+
+      font-family: var(--serif);
+
+      font-size: 17vw;
+      font-weight: 700;
+
+      line-height: .8;
+
+      letter-spacing: -.08em;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta small {
+      color: white;
+
+      font-size: .58rem;
+      font-weight: 800;
+
+      letter-spacing: .25em;
+    }
+
+    .cta h2 {
+      margin: 18px auto 25px;
+
+      color: white;
+
+      font-family: var(--serif);
+
+      font-size: clamp(4rem, 7vw, 7rem);
+
+      line-height: .78;
+
+      letter-spacing: -.06em;
+    }
+
+    .cta h2 em {
+      font-weight: 500;
+    }
+
+    .cta p {
+      max-width: 550px;
+
+      margin: auto auto 30px;
+
+      color: white;
+
+      font-size: .9rem;
+
+      line-height: 1.8;
+    }
+
+    .cta .btn {
+      background: white;
+      color: var(--wine-dark);
+    }
+
+    .cta .btn:hover {
+      transform: translateY(-5px);
+    }
+
+
+    /* =========================================================
+           FOOTER
+        ========================================================= */
+
+    footer {
+      background: #1b0913;
+
+      color: white;
+
+      padding: 75px 0 25px;
+    }
+
+    .footer-grid {
+      width: min(1250px, 92%);
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+
+      gap: 45px;
+
+      padding-bottom: 55px;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+
+      font-size: 2.7rem;
+
+      font-weight: 600;
+
+      letter-spacing: -.05em;
+    }
+
+    .footer-logo span {
+      color: var(--rose);
+    }
+
+    .footer-brand p {
+      color: #a89aa1;
+
+      margin: 12px 0 25px;
+
+      font-size: .8rem;
+    }
+
+    .socials {
+      display: flex;
+      gap: 9px;
+    }
+
+    .socials a {
+      width: 38px;
+      height: 38px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid rgba(255, 255, 255, .12);
+
+      border-radius: 50%;
+
+      color: white;
+
+      font-size: .7rem;
+
+      transition: .3s ease;
+    }
+
+    .socials a:hover {
+      background: var(--rose);
+      border-color: var(--rose);
+
+      transform: translateY(-4px);
+    }
+
+    footer h4 {
+      color: var(--gold);
+
+      margin-bottom: 20px;
+
+      font-size: .6rem;
+      letter-spacing: .2em;
+
+      text-transform: uppercase;
+    }
+
+    footer ul {
+      list-style: none;
+
+      display: grid;
+
+      gap: 12px;
+    }
+
+    footer li a {
+      color: #b6aab1;
+
+      font-size: .74rem;
+
+      transition: .25s ease;
+    }
+
+    footer li a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+
+    .footer-bottom {
+      width: min(1250px, 92%);
+      margin: auto;
+
+      border-top: 1px solid rgba(255, 255, 255, .09);
+
+      padding-top: 20px;
+
+      display: flex;
+      justify-content: space-between;
+
+      color: #7e7078;
+
+      font-size: .62rem;
+    }
+
+
+    /* =========================================================
+           FLOATING WHATSAPP
+        ========================================================= */
+
+    .floating-whatsapp {
+      position: fixed;
+
+      right: 24px;
+      bottom: 24px;
+
+      width: 58px;
+      height: 58px;
+
+      border-radius: 50%;
+
+      background: #25d366;
+
+      color: white;
+
+      display: grid;
+      place-items: center;
+
+      z-index: 1500;
+
+      font-size: 1.45rem;
+
+      box-shadow:
+        0 15px 35px rgba(37, 211, 102, .28);
+
+      transition:
+        transform .35s var(--ease);
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.1) translateY(-5px);
+    }
+
+    .floating-whatsapp::before {
+      content: "";
+
+      position: absolute;
+
+      inset: -5px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(37, 211, 102, .4);
+
+      animation: whatsappPulse 2s infinite;
+    }
+
+    @keyframes whatsappPulse {
+
+      0% {
+        transform: scale(.9);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1.4);
+        opacity: 0;
+      }
+    }
+
+
+    /* =========================================================
+           BACK TO TOP
+        ========================================================= */
+
+    .back-top {
+      position: fixed;
+
+      right: 25px;
+      bottom: 95px;
+
+      width: 45px;
+      height: 45px;
+
+      border: 0;
+
+      border-radius: 50%;
+
+      background: var(--wine);
+
+      color: white;
+
+      z-index: 1400;
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      transform: translateY(15px);
+
+      transition: .35s ease;
+    }
+
+    .back-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+
+    /* =========================================================
+           SCROLL REVEAL
+        ========================================================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(45px);
+
+      transition:
+        opacity .9s ease,
+        transform .9s var(--ease);
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 {
+      transition-delay: .12s;
+    }
+
+    .delay-2 {
+      transition-delay: .24s;
+    }
+
+    .delay-3 {
+      transition-delay: .36s;
+    }
+
+
+    /* =========================================================
+           FLOATING DECORATION
+        ========================================================= */
+
+    .decor {
+      position: absolute;
+
+      width: 12px;
+      height: 12px;
+
+      border-radius: 50%;
+
+      background: var(--gold);
+
+      opacity: .55;
+
+      animation: decorFloat 5s ease-in-out infinite;
+    }
+
+    .decor-1 {
+      top: 20%;
+      left: 5%;
+    }
+
+    .decor-2 {
+      top: 70%;
+      right: 8%;
+
+      width: 7px;
+      height: 7px;
+
+      animation-delay: 1s;
+    }
+
+    .decor-3 {
+      top: 35%;
+      right: 35%;
+
+      width: 5px;
+      height: 5px;
+
+      animation-delay: 2s;
+    }
+
+    @keyframes decorFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+
+    /* =========================================================
+           TABLET
+        ========================================================= */
+
+    @media(max-width: 1100px) {
+
+      .nav-menu {
+        gap: 16px;
+      }
+
+      .nav-actions a:not(.whatsapp) {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        padding:
+          90px 0 20px;
+      }
+
+      .hero-visual {
+        height: 620px;
+      }
+
+      .intro-grid,
+      .style-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-image {
+        min-height: 600px;
+      }
+
+      .feature-content {
+        padding: 60px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns:
+          1.5fr 1fr 1fr;
+      }
+    }
+
+
+    /* =========================================================
+           MOBILE
+        ========================================================= */
+
+    @media(max-width: 800px) {
+
+      .announcement {
+        height: 32px;
+      }
+
+      .nav-container {
+        height: 70px;
+      }
+
+      .nav-menu,
+      .nav-actions {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .category-bar {
+        top: 70px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid {
+        min-height: auto;
+      }
+
+      .hero-copy {
+        padding:
+          80px 0 30px;
+      }
+
+      .hero h1 {
+        font-size: clamp(4.3rem, 18vw, 6rem);
+      }
+
+      .hero-description {
+        font-size: .85rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-visual {
+        height: 530px;
+      }
+
+      .hero-image {
+        width: 88%;
+
+        border-radius:
+          180px 180px 15px 15px;
+      }
+
+      .hero-badge {
+        width: 110px;
+        height: 110px;
+      }
+
+      .hero-note {
+        bottom: 7%;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .intro-title {
+        font-size: clamp(4rem, 16vw, 6rem);
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-heading>p {
+        margin-top: 25px;
+      }
+
+      .feature-content {
+        padding: 50px 30px;
+      }
+
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 500px;
+      }
+
+      .lookbook {
+        grid-template-columns: 1fr 1fr;
+
+        grid-template-rows:
+          300px 240px 240px;
+      }
+
+      .look:first-child {
+        grid-column: 1 / 3;
+        grid-row: auto;
+      }
+
+      .style-grid {
+        gap: 50px;
+      }
+
+      .style-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        display: block;
+        line-height: 2;
+      }
+    }
+
+
+    /* =========================================================
+           SMALL MOBILE
+        ========================================================= */
+
+    @media(max-width: 500px) {
+
+      .container {
+        width: 90%;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+      }
+
+      .hero-visual {
+        height: 470px;
+      }
+
+      .hero-image {
+        width: 90%;
+      }
+
+      .hero-badge {
+        width: 95px;
+        height: 95px;
+      }
+
+      .hero-badge strong {
+        font-size: 1.8rem;
+      }
+
+      .stats {
+        gap: 18px;
+      }
+
+      .stat strong {
+        font-size: 1.7rem;
+      }
+
+      .stat span {
+        font-size: .48rem;
+      }
+
+      .product-image {
+        height: 450px;
+      }
+
+      .lookbook {
+        display: block;
+      }
+
+      .look {
+        height: 340px;
+        margin-bottom: 12px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
+
+      .floating-whatsapp {
+        right: 18px;
+        bottom: 18px;
+      }
+
+      .back-top {
+        right: 20px;
+        bottom: 88px;
+      }
+
+      .mobile-bottom {
+        display: block;
+        line-height: 1.8;
+      }
+    }
+
+
+    /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+    @media(prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================================================
+         CUSTOM CURSOR
+    ========================================================= -->
+
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+
+  <!-- =========================================================
+         PRELOADER
+    ========================================================= -->
+
+  <div class="preloader" id="preloader">
+
+    <div class="loader-content">
+
+      <div class="loader-logo">
+        <span>V</span>astraa
+      </div>
+
+      <div class="loader-line"></div>
+
+      <small>
+        THE SAREE EDIT · 2026
+      </small>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+         ANNOUNCEMENT
+    ========================================================= -->
+
+  <div class="announcement">
+
+    <div class="announcement-track">
+
+      <span>THE SAREE EDIT 2026</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>HANDPICKED DRAPES</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>ORDER DIRECTLY ON WHATSAPP</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>TRADITION · STYLE · YOU</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>THE SAREE EDIT 2026</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>HANDPICKED DRAPES</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>ORDER DIRECTLY ON WHATSAPP</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>TRADITION · STYLE · YOU</span>
+      <i class="fa-solid fa-star"></i>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+         NAVBAR
+    ========================================================= -->
+
+  <header class="navbar">
+
+    <div class="nav-container">
+
+      <a href="index.html" class="logo">
+        <span>V</span>astraa
+      </a>
+
+
+      <nav class="nav-menu">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="sarees.html" class="active">
+          Sarees
+        </a>
+
+        <a href="kurtis.html">
+          Kurtis
+        </a>
+
+        <a href="lehengas.html">
+          Lehengas
+        </a>
+
+        <a href="dresses.html">
+          Dresses
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+      </nav>
+
+
+      <div class="nav-actions">
+
+        <button aria-label="Browse sarees"
+          onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+
+          <i class="fa-solid fa-magnifying-glass"></i>
+
+        </button>
+
+        <a href="#products">
+          Explore
+        </a>
+
+        <a class="whatsapp" target="_blank"
+          href="https://wa.me/919999999999?text=Hello%20Vastraa!%20I%20would%20like%20to%20explore%20your%20saree%20collection">
+
+          <i class="fa-brands fa-whatsapp"></i>
+
+          WhatsApp
+
+        </a>
+
+      </div>
+
+
+      <!-- MOBILE BUTTON -->
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================================
+         MOBILE MENU
+    ========================================================= -->
+
+  <div class="mobile-menu" id="mobileMenu">
+
+    <nav class="mobile-links">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="collections.html">
+        Collections
+      </a>
+
+      <a href="sarees.html">
+        Sarees
+      </a>
+
+      <a href="kurtis.html">
+        Kurtis
+      </a>
+
+      <a href="lehengas.html">
+        Lehengas
+      </a>
+
+      <a href="dresses.html">
+        Dresses
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+    </nav>
+
+
+    <div class="mobile-bottom">
+
+      <span>
+        Tradition · Style · You.
+      </span>
+
+      <a href="https://wa.me/919999999999" target="_blank">
+
+        <i class="fa-brands fa-whatsapp"></i>
+        Chat with Vastraa
+
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+         HERO
+    ========================================================= -->
+
+  <section class="hero" id="top">
+
+    <span class="decor decor-1"></span>
+    <span class="decor decor-2"></span>
+    <span class="decor decor-3"></span>
+
+
+    <div class="hero-grid">
+
+
+      <!-- HERO CONTENT -->
+
+      <div class="hero-copy reveal">
+
+        <p class="eyebrow">
+          THE VASTRAA SAREE EDIT
+        </p>
+
+        <h1>
+          Six yards.
+          <br>
+          <em>Endless stories.</em>
+        </h1>
+
+        <p class="hero-description">
+
+          Discover sarees chosen for the way you want
+          to feel — from luminous silk and festive drapes
+          to graceful everyday classics.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+          <a href="#products" class="btn btn-primary">
+
+            Shop the Edit
+
+            <i class="fa-solid fa-arrow-down"></i>
+
+          </a>
+
+          <a href="#story" class="btn btn-outline">
+
+            Our Saree Story
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- HERO IMAGE -->
+
+      <div class="hero-visual reveal delay-1">
+
+        <div class="hero-image">
+
+          <img src="https://images.unsplash.com/photo-1654764745388-978ac6cb8f82?auto=format&fit=crop&w=1600&q=90"
+            alt="Woman wearing an elegant Indian saree" loading="eager">
+
+        </div>
+
+
+        <div class="hero-badge">
+
+          <div>
+
+            <strong>06</strong>
+
+            <small>
+              CURATED
+              <br>
+              EDITS
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-note">
+
+          <small>
+            FEATURED WEAVE
+          </small>
+
+          <strong>
+            Heritage Silk
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+         CATEGORY BAR
+    ========================================================= -->
+
+  <div class="category-bar">
+
+    <div class="category-scroll">
+
+      <a href="#products" class="category-pill active">
+
+        All Sarees
+
+      </a>
+
+      <a href="#silk" class="category-pill">
+
+        Silk
+
+      </a>
+
+      <a href="#banarasi" class="category-pill">
+
+        Banarasi
+
+      </a>
+
+      <a href="#kanjeevaram" class="category-pill">
+
+        Kanjeevaram
+
+      </a>
+
+      <a href="#festive" class="category-pill">
+
+        Festive
+
+      </a>
+
+      <a href="#everyday" class="category-pill">
+
+        Everyday
+
+      </a>
+
+      <a href="#bridal" class="category-pill">
+
+        Bridal Edit
+
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+         INTRO
+    ========================================================= -->
+
+  <section class="section" id="story">
+
+    <div class="container">
+
+      <div class="intro-grid">
+
+
+        <div class="reveal">
+
+          <p class="section-label">
+            01 / THE COLLECTION
+          </p>
+
+          <h2 class="intro-title">
+
+            Draped in
+            <em>heritage.</em>
+
+            <br>
+
+            Made for now.
+
+          </h2>
+
+        </div>
+
+
+        <div class="reveal delay-1">
+
+          <p class="intro-copy">
+
+            The Vastraa Saree Edit brings together
+            <strong>timeless Indian craftsmanship</strong>
+            and a modern boutique sensibility.
+
+            Each drape is selected for its colour,
+            movement, texture and the occasion it can
+            become part of.
+
+          </p>
+
+
+          <div class="stats">
+
+            <div class="stat">
+
+              <strong>06</strong>
+
+              <span>
+                Signature Edits
+              </span>
+
+            </div>
+
+
+            <div class="stat">
+
+              <strong>24+</strong>
+
+              <span>
+                Curated Drapes
+              </span>
+
+            </div>
+
+
+            <div class="stat">
+
+              <strong>01</strong>
+
+              <span>
+                Vastraa Mood
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+         FEATURE — SILK
+    ========================================================= -->
+
+  <section class="section" id="silk" style="padding-top:0;">
+
+    <div class="container">
+
+      <div class="feature reveal">
+
+
+        <div class="feature-image">
+
+          <img src="https://images.unsplash.com/photo-1549261472-fcd48d0b6709?auto=format&fit=crop&w=1500&q=90"
+            alt="Woman wearing a traditional Indian saree" loading="lazy">
+
+        </div>
+
+
+        <div class="feature-content">
+
+          <p class="section-label">
+            02 / SIGNATURE EDIT
+          </p>
+
+          <h2>
+
+            The
+            <em>Silk</em>
+
+            <br>
+
+            Chapter
+
+          </h2>
+
+          <p>
+
+            Light-catching textures, elegant borders
+            and the quiet richness of silk.
+
+            A collection designed to move from intimate
+            celebrations to grand evenings.
+
+          </p>
+
+
+          <div class="feature-list">
+
+            <div>
+              <i class="fa-solid fa-check"></i>
+              Lustrous textures
+            </div>
+
+            <div>
+              <i class="fa-solid fa-check"></i>
+              Statement borders
+            </div>
+
+            <div>
+              <i class="fa-solid fa-check"></i>
+              Festive-ready tones
+            </div>
+
+            <div>
+              <i class="fa-solid fa-check"></i>
+              Timeless silhouettes
+            </div>
+
+          </div>
+
+
+          <a href="#products" class="btn btn-primary">
+
+            Explore Silk
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+         PRODUCTS
+    ========================================================= -->
+
+  <section class="section products-section" id="products">
+
+    <div class="container">
+
+
+      <div class="section-heading reveal">
+
+        <div>
+
+          <p class="section-label">
+            03 / SHOP THE EDIT
+          </p>
+
+          <h2>
+            Find your
+            <em>drape.</em>
+          </h2>
+
+        </div>
+
+
+        <p>
+
+          A visual-first edit of sarees for weddings,
+          celebrations, workdays and those ordinary
+          days that deserve a little more elegance.
+
+        </p>
+
+      </div>
+
+
+      <div class="product-grid">
+
+
+        <!-- PRODUCT 01 -->
+
+        <article class="product-card reveal" id="banarasi">
+
+          <div class="product-image">
+
+            <span class="product-tag">
+              HERITAGE
+            </span>
+
+
+            <button class="wishlist" aria-label="Add Ruby Zari to wishlist">
+
+              <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+
+            <img src="https://images.unsplash.com/photo-1760461804456-df82b15b07c0?auto=format&fit=crop&w=1200&q=90"
+              alt="Traditional Indian saree" loading="lazy">
+
+
+            <div class="product-overlay">
+
+              <a href="product.html" class="quick-view">
+
+                Quick View
+
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <small>
+                Banarasi-inspired
+              </small>
+
+              <h3>
+                Ruby Zari
+              </h3>
+
+            </div>
+
+            <div class="price">
+              ₹3,999
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 02 -->
+
+        <article class="product-card reveal delay-1" id="kanjeevaram">
+
+          <div class="product-image">
+
+            <span class="product-tag">
+              NEW
+            </span>
+
+
+            <button class="wishlist" aria-label="Add Peacock Bloom to wishlist">
+
+              <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+
+            <img src="https://images.unsplash.com/photo-1654764745388-978ac6cb8f82?auto=format&fit=crop&w=1200&q=90"
+              alt="Woman wearing pink and white saree" loading="lazy">
+
+
+            <div class="product-overlay">
+
+              <a href="product.html" class="quick-view">
+
+                Quick View
+
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <small>
+                Celebration Silk
+              </small>
+
+              <h3>
+                Peacock Bloom
+              </h3>
+
+            </div>
+
+            <div class="price">
+              ₹4,499
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 03 -->
+
+        <article class="product-card reveal delay-2" id="festive">
+
+          <div class="product-image">
+
+            <span class="product-tag">
+              FESTIVE
+            </span>
+
+
+            <button class="wishlist" aria-label="Add Marigold Glow to wishlist">
+
+              <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+
+            <img src="https://images.unsplash.com/photo-1549261472-fcd48d0b6709?auto=format&fit=crop&w=1200&q=90"
+              alt="Elegant Indian festive saree" loading="lazy">
+
+
+            <div class="product-overlay">
+
+              <a href="product.html" class="quick-view">
+
+                Quick View
+
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <small>
+                Haldi Edit
+              </small>
+
+              <h3>
+                Marigold Glow
+              </h3>
+
+            </div>
+
+            <div class="price">
+              ₹3,299
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 04 -->
+
+        <article class="product-card reveal" id="everyday">
+
+          <div class="product-image">
+
+            <span class="product-tag">
+              EVERYDAY
+            </span>
+
+
+            <button class="wishlist" aria-label="Add Indigo Bloom to wishlist">
+
+              <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+
+            <img src="https://images.unsplash.com/photo-1654764745388-978ac6cb8f82?auto=format&fit=crop&w=1200&q=90"
+              alt="Contemporary Indian saree" loading="lazy">
+
+
+            <div class="product-overlay">
+
+              <a href="product.html" class="quick-view">
+
+                Quick View
+
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <small>
+                Contemporary Saree
+              </small>
+
+              <h3>
+                Indigo Bloom
+              </h3>
+
+            </div>
+
+            <div class="price">
+              ₹2,799
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 05 -->
+
+        <article class="product-card reveal delay-1" id="bridal">
+
+          <div class="product-image">
+
+            <span class="product-tag">
+              BRIDAL EDIT
+            </span>
+
+
+            <button class="wishlist" aria-label="Add Monochrome Muse to wishlist">
+
+              <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+
+            <img src="https://images.unsplash.com/photo-1549261472-fcd48d0b6709?auto=format&fit=crop&w=1200&q=90"
+              alt="Traditional Indian silk saree" loading="lazy">
+
+
+            <div class="product-overlay">
+
+              <a href="product.html" class="quick-view">
+
+                Quick View
+
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <small>
+                Silk Classic
+              </small>
+
+              <h3>
+                Monochrome Muse
+              </h3>
+
+            </div>
+
+            <div class="price">
+              ₹3,499
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 06 -->
+
+        <article class="product-card reveal delay-2">
+
+          <div class="product-image">
+
+            <span class="product-tag">
+              EDITOR'S PICK
+            </span>
+
+
+            <button class="wishlist" aria-label="Add Rose Petal to wishlist">
+
+              <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+
+            <img src="https://images.unsplash.com/photo-1654764745388-978ac6cb8f82?auto=format&fit=crop&w=1200&q=90"
+              alt="Woman wearing a pink Indian saree" loading="lazy">
+
+
+            <div class="product-overlay">
+
+              <a href="product.html" class="quick-view">
+
+                Quick View
+
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <small>
+                Soft Silk
+              </small>
+
+              <h3>
+                Rose Petal
+              </h3>
+
+            </div>
+
+            <div class="price">
+              ₹2,999
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+         LOOKBOOK
+    ========================================================= -->
+
+  <section class="section">
+
+    <div class="container">
+
+
+      <div class="section-heading reveal">
+
+        <div>
+
+          <p class="section-label">
+            04 / VISUAL JOURNAL
+          </p>
+
+          <h2>
+            The saree,
+            <em>in motion.</em>
+          </h2>
+
+        </div>
+
+        <p>
+          Different colours.
+          Different moods.
+          One timeless silhouette.
+        </p>
+
+      </div>
+
+
+      <div class="lookbook">
+
+
+        <div class="look reveal">
+
+          <img src="https://images.unsplash.com/photo-1760461804456-df82b15b07c0?auto=format&fit=crop&w=1200&q=90"
+            alt="Indian fashion editorial" loading="lazy">
+
+          <div class="look-caption">
+
+            <small>
+              THE HERITAGE MOOD
+            </small>
+
+            <strong>
+              Quiet Luxury
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="look reveal delay-1">
+
+          <img src="https://images.unsplash.com/photo-1549261472-fcd48d0b6709?auto=format&fit=crop&w=1000&q=90"
+            alt="Woman wearing Indian saree" loading="lazy">
+
+          <div class="look-caption">
+
+            <small>
+              THE EVENING MOOD
+            </small>
+
+            <strong>
+              Blue Hour
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="look reveal delay-2">
+
+          <img src="https://images.unsplash.com/photo-1654764745388-978ac6cb8f82?auto=format&fit=crop&w=1000&q=90"
+            alt="Woman wearing pink Indian saree" loading="lazy">
+
+          <div class="look-caption">
+
+            <small>
+              THE MODERN MOOD
+            </small>
+
+            <strong>
+              Golden Light
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="look reveal delay-1">
+
+          <img src="https://images.unsplash.com/photo-1549261472-fcd48d0b6709?auto=format&fit=crop&w=1000&q=90"
+            alt="Indian traditional fashion" loading="lazy">
+
+          <div class="look-caption">
+
+            <small>
+              THE FESTIVE MOOD
+            </small>
+
+            <strong>
+              Celebration
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="look reveal delay-2">
+
+          <img src="https://images.unsplash.com/photo-1760461804456-df82b15b07c0?auto=format&fit=crop&w=1000&q=90"
+            alt="Woman in traditional Indian attire" loading="lazy">
+
+          <div class="look-caption">
+
+            <small>
+              THE ARTISAN MOOD
+            </small>
+
+            <strong>
+              Tradition
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+         STYLE GUIDE
+    ========================================================= -->
+
+  <section class="section style-section">
+
+    <div class="container">
+
+      <div class="style-grid">
+
+
+        <div class="reveal">
+
+          <p class="section-label">
+            05 / STYLE NOTES
+          </p>
+
+          <h2>
+
+            One drape.
+
+            <br>
+
+            <em>Many occasions.</em>
+
+          </h2>
+
+          <p>
+
+            Let the saree set the mood.
+            Keep the rest intentional — jewellery,
+            blouse, footwear and the confidence to
+            make it yours.
+
+          </p>
+
+
+          <a href="https://wa.me/919999999999?text=Hello%20Vastraa!%20I%20need%20help%20choosing%20a%20saree"
+            target="_blank" class="btn btn-outline">
+
+            Ask Our Stylist
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+          </a>
+
+        </div>
+
+
+        <div class="style-cards">
+
+
+          <div class="style-card reveal delay-1">
+
+            <i class="fa-solid fa-sun"></i>
+
+            <h3>
+              Day Celebration
+            </h3>
+
+            <span>
+              Choose lighter tones, delicate
+              jewellery and an easy, fluid drape.
+            </span>
+
+          </div>
+
+
+          <div class="style-card reveal delay-2">
+
+            <i class="fa-solid fa-gem"></i>
+
+            <h3>
+              Wedding Guest
+            </h3>
+
+            <span>
+              Reach for richer colour, luminous
+              silk and a statement border.
+            </span>
+
+          </div>
+
+
+          <div class="style-card reveal delay-1">
+
+            <i class="fa-solid fa-moon"></i>
+
+            <h3>
+              Evening Edit
+            </h3>
+
+            <span>
+              Deep jewel tones and metallic accents
+              create an effortless evening mood.
+            </span>
+
+          </div>
+
+
+          <div class="style-card reveal delay-2">
+
+            <i class="fa-solid fa-heart"></i>
+
+            <h3>
+              Bridal Moment
+            </h3>
+
+            <span>
+              Traditional richness, heritage details
+              and jewellery that becomes part of
+              the story.
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+         WHATSAPP CTA
+    ========================================================= -->
+
+  <section class="cta">
+
+    <div class="container">
+
+      <div class="cta-content reveal">
+
+        <small>
+          YOUR NEXT DRAPE IS A MESSAGE AWAY
+        </small>
+
+        <h2>
+          Found your
+          <em>Vastraa?</em>
+        </h2>
+
+        <p>
+
+          Send us the saree name you love.
+          We'll help with size, blouse options,
+          colours, availability and ordering.
+
+        </p>
+
+
+        <a class="btn" target="_blank"
+          href="https://wa.me/919999999999?text=Hello%20Vastraa!%20I%20found%20a%20saree%20I%20love%20and%20would%20like%20to%20know%20more">
+
+          <i class="fa-brands fa-whatsapp"></i>
+
+          Start on WhatsApp
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+  <footer>
+
+    <div class="footer-grid">
+
+
+      <!-- BRAND -->
+
+      <div class="footer-brand">
+
+        <a href="index.html" class="footer-logo">
+
+          <span>V</span>astraa
+
+        </a>
+
+        <p>
+          Tradition. Style. You.
+        </p>
+
+
+        <div class="socials">
+
+          <a href="#" aria-label="Instagram">
+
+            <i class="fa-brands fa-instagram"></i>
+
+          </a>
+
+          <a href="#" aria-label="Facebook">
+
+            <i class="fa-brands fa-facebook-f"></i>
+
+          </a>
+
+          <a href="#" aria-label="Pinterest">
+
+            <i class="fa-brands fa-pinterest-p"></i>
+
+          </a>
+
+          <a href="https://wa.me/919999999999" aria-label="WhatsApp" target="_blank">
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- EXPLORE -->
+
+      <div>
+
+        <h4>
+          Explore
+        </h4>
+
+        <ul>
+
+          <li>
+            <a href="collections.html">
+              Collections
+            </a>
+          </li>
+
+          <li>
+            <a href="sarees.html">
+              Sarees
+            </a>
+          </li>
+
+          <li>
+            <a href="kurtis.html">
+              Kurtis
+            </a>
+          </li>
+
+          <li>
+            <a href="lehengas.html">
+              Lehengas
+            </a>
+          </li>
+
+          <li>
+            <a href="dresses.html">
+              Dresses
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- VASTRAA -->
+
+      <div>
+
+        <h4>
+          Vastraa
+        </h4>
+
+        <ul>
+
+          <li>
+            <a href="new-arrivals.html">
+              New Arrivals
+            </a>
+          </li>
+
+          <li>
+            <a href="about.html">
+              Our Story
+            </a>
+          </li>
+
+          <li>
+            <a href="faq.html">
+              FAQs
+            </a>
+          </li>
+
+          <li>
+            <a href="contact.html">
+              Contact
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- CONTACT -->
+
+      <div>
+
+        <h4>
+          Let's Talk
+        </h4>
+
+        <ul>
+
+          <li>
+
+            <a href="https://wa.me/919999999999" target="_blank">
+
+              Chat on WhatsApp
+
+            </a>
+
+          </li>
+
+          <li>
+
+            <a href="mailto:hello@vastraa.com">
+
+              hello@vastraa.com
+
+            </a>
+
+          </li>
+
+          <li>
+
+            <a href="#products">
+
+              Browse Sarees
+
+            </a>
+
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 Vastraa. All Rights Reserved.
+      </span>
+
+      <span>
+        Tradition · Style · You.
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================================================
+         FLOATING WHATSAPP
+    ========================================================= -->
+
+  <a class="floating-whatsapp"
+    href="https://wa.me/919999999999?text=Hello%20Vastraa!%20I%20would%20like%20to%20explore%20your%20sarees."
+    target="_blank" aria-label="Chat with Vastraa on WhatsApp">
+
+    <i class="fa-brands fa-whatsapp"></i>
+
+  </a>
+
+
+  <!-- =========================================================
+         BACK TO TOP
+    ========================================================= -->
+
+  <button class="back-top" id="backTop" aria-label="Back to top">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+  </button>
+
+
+  <!-- =========================================================
+         JAVASCRIPT
+    ========================================================= -->
+
+  <script>
+
+    /* =====================================================
+       PRELOADER
+    ===================================================== */
+
+    const preloader =
+      document.getElementById("preloader");
+
+    window.addEventListener("load", () => {
+
+      setTimeout(() => {
+
+        preloader.classList.add("hide");
+
+      }, 500);
+
+    });
+
+
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
+
+    const revealObserver =
+      new IntersectionObserver(
+
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("show");
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.12
+        }
+
+      );
+
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach((element) => {
+
+        revealObserver.observe(element);
+
+      });
+
+
+    /* =====================================================
+       WISHLIST
+    ===================================================== */
+
+    document
+      .querySelectorAll(".wishlist")
+      .forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+          const icon =
+            button.querySelector("i");
+
+          button.classList.toggle("active");
+
+          icon.classList.toggle(
+            "fa-regular"
+          );
+
+          icon.classList.toggle(
+            "fa-solid"
+          );
+
+        });
+
+      });
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    const menuToggle =
+      document.getElementById("menuToggle");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+
+    function closeMobileMenu() {
+
+      menuToggle.classList.remove("active");
+
+      mobileMenu.classList.remove("active");
+
+      document.body.classList.remove(
+        "menu-open"
+      );
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      menuToggle.setAttribute(
+        "aria-label",
+        "Open menu"
+      );
+
+    }
+
+
+    menuToggle.addEventListener("click", () => {
+
+      const isOpen =
+        mobileMenu.classList.contains("active");
+
+
+      if (isOpen) {
+
+        closeMobileMenu();
+
+      } else {
+
+        menuToggle.classList.add("active");
+
+        mobileMenu.classList.add("active");
+
+        document.body.classList.add(
+          "menu-open"
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "true"
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          "Close menu"
+        );
+
+      }
+
+    });
+
+
+    /* CLOSE MOBILE MENU WHEN LINK IS CLICKED */
+
+    document
+      .querySelectorAll(".mobile-links a")
+      .forEach((link) => {
+
+        link.addEventListener(
+          "click",
+          closeMobileMenu
+        );
+
+      });
+
+
+    /* ESCAPE KEY */
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (
+          event.key === "Escape" &&
+          mobileMenu.classList.contains("active")
+        ) {
+
+          closeMobileMenu();
+
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       BACK TO TOP
+    ===================================================== */
+
+    const backTop =
+      document.getElementById("backTop");
+
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (window.scrollY > 700) {
+
+          backTop.classList.add("show");
+
+        } else {
+
+          backTop.classList.remove("show");
+
+        }
+
+      }
+    );
+
+
+    backTop.addEventListener(
+      "click",
+      () => {
+
+        window.scrollTo({
+
+          top: 0,
+
+          behavior: "smooth"
+
+        });
+
+      }
+    );
+
+
+    /* =====================================================
+       ACTIVE CATEGORY PILL
+    ===================================================== */
+
+    const categoryPills =
+      document.querySelectorAll(
+        ".category-pill"
+      );
+
+
+    categoryPills.forEach((pill) => {
+
+      pill.addEventListener(
+        "click",
+        () => {
+
+          categoryPills.forEach(
+            (item) => {
+
+              item.classList.remove(
+                "active"
+              );
+
+            }
+          );
+
+          pill.classList.add("active");
+
+        }
+      );
+
+    });
+
+
+    /* =====================================================
+       CUSTOM CURSOR
+    ===================================================== */
+
+    const cursor =
+      document.querySelector(".cursor");
+
+    const cursorRing =
+      document.querySelector(".cursor-ring");
+
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let ringX = 0;
+    let ringY = 0;
+
+
+    document.addEventListener(
+      "mousemove",
+      (event) => {
+
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+
+        cursor.style.left =
+          mouseX + "px";
+
+        cursor.style.top =
+          mouseY + "px";
+
+      }
+    );
+
+
+    function animateCursor() {
+
+      ringX +=
+        (mouseX - ringX) * 0.15;
+
+      ringY +=
+        (mouseY - ringY) * 0.15;
+
+
+      cursorRing.style.left =
+        ringX + "px";
+
+      cursorRing.style.top =
+        ringY + "px";
+
+
+      requestAnimationFrame(
+        animateCursor
+      );
+
+    }
+
+    animateCursor();
+
+
+    /* =====================================================
+       CURSOR HOVER EFFECT
+    ===================================================== */
+
+    document
+      .querySelectorAll(
+        "a, button, .product-card, .look, .style-card"
+      )
+      .forEach((element) => {
+
+        element.addEventListener(
+          "mouseenter",
+          () => {
+
+            document.body.classList.add(
+              "cursor-hover"
+            );
+
+          }
+        );
+
+
+        element.addEventListener(
+          "mouseleave",
+          () => {
+
+            document.body.classList.remove(
+              "cursor-hover"
+            );
+
+          }
+        );
+
+      });
+
+
+    /* =====================================================
+       MAGNETIC BUTTON EFFECT
+    ===================================================== */
+
+    document
+      .querySelectorAll(".btn")
+      .forEach((button) => {
+
+        button.addEventListener(
+          "mousemove",
+          (event) => {
+
+            const rect =
+              button.getBoundingClientRect();
+
+            const x =
+              event.clientX -
+              rect.left -
+              rect.width / 2;
+
+            const y =
+              event.clientY -
+              rect.top -
+              rect.height / 2;
+
+
+            button.style.transform =
+              `translate(${x * .12}px, ${y * .12}px)`;
+
+          }
+        );
+
+
+        button.addEventListener(
+          "mouseleave",
+          () => {
+
+            button.style.transform =
+              "";
+
+          }
+        );
+
+      });
+
+
+    /* =====================================================
+       PARALLAX HERO
+    ===================================================== */
+
+    const heroImage =
+      document.querySelector(".hero-image");
+
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (window.innerWidth > 800) {
+
+          const scroll =
+            window.scrollY;
+
+          if (scroll < 700) {
+
+            heroImage.style.transform =
+              `translateY(${scroll * .06}px)`;
+
+          }
+
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       IMAGE TILT
+    ===================================================== */
+
+    document
+      .querySelectorAll(".product-card")
+      .forEach((card) => {
+
+        card.addEventListener(
+          "mousemove",
+          (event) => {
+
+            if (window.innerWidth < 900)
+              return;
+
+
+            const rect =
+              card.getBoundingClientRect();
+
+
+            const x =
+              event.clientX -
+              rect.left;
+
+
+            const y =
+              event.clientY -
+              rect.top;
+
+
+            const rotateX =
+              ((y / rect.height) - .5) * -2;
+
+
+            const rotateY =
+              ((x / rect.width) - .5) * 2;
+
+
+            card.style.transform =
+              `perspective(1000px)
+                             rotateX(${rotateX}deg)
+                             rotateY(${rotateY}deg)
+                             translateY(-6px)`;
+
+          }
+        );
+
+
+        card.addEventListener(
+          "mouseleave",
+          () => {
+
+            card.style.transform = "";
+
+          }
+        );
+
+      });
+
+
+    /* =====================================================
+       IMAGE ERROR FALLBACK
+    ===================================================== */
+
+    document
+      .querySelectorAll("img")
+      .forEach((image) => {
+
+        image.addEventListener(
+          "error",
+          () => {
+
+            image.style.background =
+              "#f2e4dc";
+
+          }
+        );
+
+      });
+
+  </script>
+
+</body>
+
+</html>

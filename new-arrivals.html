@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>New Arrivals | Vastraa</title>
+
+  <meta name="description"
+    content="Discover the newest arrivals at Vastraa — timeless Indian fashion with a contemporary soul.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="/css/new-arrivals.css">
+</head>
+
+<body>
+
+  <!-- =========================================
+         PAGE LOADER
+    ========================================== -->
+
+  <div class="page-loader">
+    <div class="loader-logo">V</div>
+    <p>VASTRAA</p>
+  </div>
+
+
+  <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+  <header class="navbar">
+
+    <a href="index.html" class="brand">
+      <span class="brand-main">Vastraa</span>
+      <span class="brand-tagline">Tradition. Style. You.</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+
+      <a href="index.html">Home</a>
+      <a href="sarees.html">Sarees</a>
+      <a href="lehengas.html">Lehengas</a>
+      <a href="new-arrivals.html" class="active">New Arrivals</a>
+      <a href="collections.html">Collections</a>
+      <a href="about.html">About</a>
+
+    </nav>
+
+    <div class="nav-actions">
+
+      <button class="nav-icon" aria-label="Search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+      <button class="nav-icon" aria-label="Wishlist">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+
+      <!-- MOBILE HAMBURGER -->
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+
+  </header>
+  <!-- =========================================
+         HERO
+    ========================================== -->
+
+  <main>
+
+    <section class="new-arrivals-hero">
+
+      <div class="hero-decoration hero-decoration-one"></div>
+      <div class="hero-decoration hero-decoration-two"></div>
+
+      <div class="hero-content">
+
+        <span class="eyebrow">
+          <span></span>
+          THE LATEST EDIT
+          <span></span>
+        </span>
+
+        <h1>
+          New
+          <em>Arrivals</em>
+        </h1>
+
+        <p>
+          A fresh expression of Indian elegance.
+          Discover silhouettes, colours and details
+          made for your next unforgettable moment.
+        </p>
+
+        <a href="#new-collection" class="hero-btn">
+          Explore New Arrivals
+          <i class="fa-solid fa-arrow-down"></i>
+        </a>
+
+      </div>
+
+      <div class="hero-image-wrapper">
+
+        <div class="hero-image-frame">
+
+          <!-- Free fashion image source -->
+          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=90"
+            alt="Elegant Indian fashion">
+
+        </div>
+
+        <div class="floating-card">
+
+          <span>NEW</span>
+
+          <strong>
+            The
+            <br>
+            Festive Edit
+          </strong>
+
+          <small>
+            2026 Collection
+          </small>
+
+        </div>
+
+      </div>
+
+      <div class="hero-scroll">
+        <span>SCROLL TO DISCOVER</span>
+        <div class="scroll-line"></div>
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+             INTRO
+        ========================================== -->
+
+    <section class="arrival-intro reveal">
+
+      <div class="intro-number">
+        01
+      </div>
+
+      <div class="intro-text">
+
+        <span class="section-label">
+          JUST IN
+        </span>
+
+        <h2>
+          Made for the
+          <span>moment.</span>
+        </h2>
+
+      </div>
+
+      <p>
+        From graceful sarees to statement lehengas,
+        our newest pieces blend heritage craftsmanship
+        with effortless contemporary style.
+      </p>
+
+    </section>
+
+
+    <!-- =========================================
+             FILTERS
+        ========================================== -->
+
+    <section class="collection-section" id="new-collection">
+
+      <div class="collection-header reveal">
+
+        <div>
+          <span class="section-label">
+            VASTRAA NEWNESS
+          </span>
+
+          <h2>
+            The New Edit
+          </h2>
+        </div>
+
+        <p>
+          Curated pieces.
+          Fresh silhouettes.
+          Endless occasions.
+        </p>
+
+      </div>
+
+
+      <div class="filters reveal">
+
+        <button class="filter-btn active" data-filter="all">
+          All
+        </button>
+
+        <button class="filter-btn" data-filter="saree">
+          Sarees
+        </button>
+
+        <button class="filter-btn" data-filter="lehenga">
+          Lehengas
+        </button>
+
+        <button class="filter-btn" data-filter="anarkali">
+          Anarkali
+        </button>
+
+        <button class="filter-btn" data-filter="festive">
+          Festive
+        </button>
+
+      </div>
+
+
+      <!-- =====================================
+                 PRODUCT GRID
+            ====================================== -->
+
+      <div class="products-grid">
+
+
+        <!-- PRODUCT 01 -->
+
+        <article class="product-card large-card reveal" data-category="saree festive">
+
+          <div class="product-image">
+
+            <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=90"
+              alt="Royal festive saree" loading="lazy">
+
+            <div class="new-badge">
+              NEW
+            </div>
+
+            <button class="wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+            <div class="product-overlay">
+
+              <button class="quick-view">
+                Quick View
+              </button>
+
+              <a href="https://wa.me/?text=Hello%20Vastraa%2C%20I%20am%20interested%20in%20the%20Royal%20Festive%20Saree."
+                target="_blank" class="whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                Order
+              </a>
+
+            </div>
+
+          </div>
+
+          <div class="product-info">
+
+            <div>
+              <span class="product-category">
+                FESTIVE SAREE
+              </span>
+
+              <h3>
+                Royal Bloom Saree
+              </h3>
+            </div>
+
+            <span class="product-price">
+              ₹4,999
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 02 -->
+
+        <article class="product-card reveal" data-category="lehenga">
+
+          <div class="product-image">
+
+            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=900&q=90"
+              alt="Contemporary Indian outfit" loading="lazy">
+
+            <div class="new-badge">
+              NEW
+            </div>
+
+            <button class="wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+            <div class="product-overlay">
+
+              <button class="quick-view">
+                Quick View
+              </button>
+
+              <a href="https://wa.me/?text=Hello%20Vastraa%2C%20I%20am%20interested%20in%20the%20Rose%20Mist%20Lehenga."
+                target="_blank" class="whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                Order
+              </a>
+
+            </div>
+
+          </div>
+
+          <div class="product-info">
+
+            <div>
+              <span class="product-category">
+                LEHENGA
+              </span>
+
+              <h3>
+                Rose Mist
+              </h3>
+            </div>
+
+            <span class="product-price">
+              ₹7,499
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 03 -->
+
+        <article class="product-card reveal" data-category="anarkali">
+
+          <div class="product-image">
+
+            <img src="https://images.unsplash.com/photo-1756483529948-e0cf68c16e18?auto=format&fit=crop&w=900&q=90"
+              alt="Elegant ethnic fashion" loading="lazy">
+
+            <div class="new-badge">
+              NEW
+            </div>
+
+            <button class="wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+            <div class="product-overlay">
+
+              <button class="quick-view">
+                Quick View
+              </button>
+
+              <a href="https://wa.me/?text=Hello%20Vastraa%2C%20I%20am%20interested%20in%20the%20Ivory%20Muse%20Anarkali."
+                target="_blank" class="whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                Order
+              </a>
+
+            </div>
+
+          </div>
+
+          <div class="product-info">
+
+            <div>
+              <span class="product-category">
+                ANARKALI
+              </span>
+
+              <h3>
+                Ivory Muse
+              </h3>
+            </div>
+
+            <span class="product-price">
+              ₹5,499
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 04 -->
+        <article class="product-card reveal" data-category="saree">
+
+          <div class="product-image">
+
+            <img src="https://www.karagiri.com/cdn/shop/files/JF2608-1.jpg?v=1762698754" alt="Elegant silk saree"
+              loading="lazy">
+
+            <div class="new-badge">
+              NEW
+            </div>
+
+            <button class="wishlist" aria-label="Add Midnight Silk to wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+            <div class="product-overlay">
+
+              <button class="quick-view">
+                Quick View
+              </button>
+
+              <a href="https://wa.me/?text=Hello%20Vastraa%2C%20I%20am%20interested%20in%20the%20Midnight%20Silk%20Saree"
+                target="_blank" rel="noopener" class="whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                Order
+              </a>
+
+            </div>
+          </div>
+
+          <div class="product-info">
+
+            <div>
+              <span class="product-category">
+                SILK SAREE
+              </span>
+
+              <h3>
+                Midnight Silk
+              </h3>
+            </div>
+
+            <span class="product-price">
+              ₹6,299
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 05 -->
+
+        <article class="product-card large-card reveal" data-category="lehenga festive">
+
+          <div class="product-image">
+
+            <img src="https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=1200&q=90"
+              alt="Luxury festive lehenga" loading="lazy">
+
+            <div class="new-badge">
+              NEW
+            </div>
+
+            <button class="wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+            <div class="product-overlay">
+
+              <button class="quick-view">
+                Quick View
+              </button>
+
+              <a href="https://wa.me/?text=Hello%20Vastraa%2C%20I%20am%20interested%20in%20the%20Champagne%20Dreams%20Lehenga."
+                target="_blank" class="whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                Order
+              </a>
+
+            </div>
+
+          </div>
+
+          <div class="product-info">
+
+            <div>
+              <span class="product-category">
+                BRIDAL LEHENGA
+              </span>
+
+              <h3>
+                Champagne Dreams
+              </h3>
+            </div>
+
+            <span class="product-price">
+              ₹12,999
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 06 -->
+
+        <article class="product-card reveal" data-category="festive">
+
+          <div class="product-image">
+
+            <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=900&q=90"
+              alt="Festive Indian fashion" loading="lazy">
+
+            <div class="new-badge">
+              NEW
+            </div>
+
+            <button class="wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+            <div class="product-overlay">
+
+              <button class="quick-view">
+                Quick View
+              </button>
+
+              <a href="https://wa.me/?text=Hello%20Vastraa%2C%20I%20am%20interested%20in%20the%20Saffron%20Glow%20Set."
+                target="_blank" class="whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                Order
+              </a>
+
+            </div>
+
+          </div>
+
+          <div class="product-info">
+
+            <div>
+              <span class="product-category">
+                FESTIVE SET
+              </span>
+
+              <h3>
+                Saffron Glow
+              </h3>
+            </div>
+
+            <span class="product-price">
+              ₹4,799
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 07 -->
+
+        <article class="product-card reveal" data-category="saree">
+
+          <div class="product-image">
+
+            <img src="https://images.unsplash.com/photo-1750008564980-46ad2279cd89?auto=format&fit=crop&w=900&q=90"
+              alt="Traditional Indian saree" loading="lazy">
+
+            <div class="new-badge">
+              NEW
+            </div>
+
+            <button class="wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+            <div class="product-overlay">
+
+              <button class="quick-view">
+                Quick View
+              </button>
+
+              <a href="https://wa.me/?text=Hello%20Vastraa%2C%20I%20am%20interested%20in%20the%20Blush%20Petal%20Saree."
+                target="_blank" class="whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                Order
+              </a>
+
+            </div>
+
+          </div>
+
+          <div class="product-info">
+
+            <div>
+              <span class="product-category">
+                SAREE
+              </span>
+
+              <h3>
+                Blush Petal
+              </h3>
+            </div>
+
+            <span class="product-price">
+              ₹3,999
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 08 -->
+
+        <article class="product-card reveal" data-category="lehenga">
+
+          <div class="product-image">
+
+            <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=900&q=90"
+              alt="Designer fashion outfit" loading="lazy">
+
+            <div class="new-badge">
+              NEW
+            </div>
+
+            <button class="wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+            <div class="product-overlay">
+
+              <button class="quick-view">
+                Quick View
+              </button>
+
+              <a href="https://wa.me/?text=Hello%20Vastraa%2C%20I%20am%20interested%20in%20the%20Pearl%20Garden%20Lehenga."
+                target="_blank" class="whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                Order
+              </a>
+
+            </div>
+
+          </div>
+
+          <div class="product-info">
+
+            <div>
+              <span class="product-category">
+                DESIGNER LEHENGA
+              </span>
+
+              <h3>
+                Pearl Garden
+              </h3>
+            </div>
+
+            <span class="product-price">
+              ₹8,999
+            </span>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+             EDITORIAL BANNER
+        ========================================== -->
+
+    <section class="editorial reveal">
+
+      <div class="editorial-image">
+
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=90"
+          alt="Vastraa fashion editorial" loading="lazy">
+
+      </div>
+
+      <div class="editorial-content">
+
+        <span class="section-label">
+          VASTRAA EDIT
+        </span>
+
+        <h2>
+          Wear the
+          <em>new.</em>
+        </h2>
+
+        <p>
+          Discover pieces that turn everyday moments
+          into occasions worth remembering.
+        </p>
+
+        <a href="collections.html" class="editorial-btn">
+          Discover Collections
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+             NEWSLETTER
+        ========================================== -->
+
+    <section class="newsletter reveal">
+
+      <span class="section-label">
+        STAY IN THE LOOP
+      </span>
+
+      <h2>
+        First looks.
+        <span>Always.</span>
+      </h2>
+
+      <p>
+        Be the first to discover new drops,
+        exclusive edits and festive collections.
+      </p>
+
+      <form class="newsletter-form">
+
+        <input type="email" placeholder="Enter your email address" required>
+
+        <button type="submit">
+          Join Us
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+      </form>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+  <footer class="footer">
+
+    <div class="footer-top">
+
+      <div class="footer-brand">
+
+        <a href="index.html" class="footer-logo">
+          Vastraa
+        </a>
+
+        <p>
+          Tradition. Style. You.
+        </p>
+
+        <p class="footer-description">
+          Contemporary Indian fashion
+          rooted in timeless elegance.
+        </p>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>Explore</h4>
+
+        <a href="sarees.html">Sarees</a>
+        <a href="lehengas.html">Lehengas</a>
+        <a href="new-arrivals.html">New Arrivals</a>
+        <a href="collections.html">Collections</a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>Vastraa</h4>
+
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>Follow</h4>
+
+        <a href="#">Instagram</a>
+        <a href="#">Pinterest</a>
+        <a href="#">Facebook</a>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 Vastraa. All Rights Reserved.
+      </p>
+
+      <p>
+        Crafted with elegance.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================================
+         FLOATING WHATSAPP
+    ========================================== -->
+
+  <a href="https://wa.me/?text=Hello%20Vastraa%2C%20I%20would%20like%20to%20explore%20your%20new%20arrivals."
+    target="_blank" class="floating-whatsapp" aria-label="Order on WhatsApp">
+
+    <i class="fa-brands fa-whatsapp"></i>
+
+    <span>
+      Order on WhatsApp
+    </span>
+
+  </a>
+
+
+  <!-- JavaScript -->
+  <script src="/js/new-arrivals.js"></script>
+
+</body>
+
+</html>

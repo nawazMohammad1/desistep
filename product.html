@@ -1,0 +1,2729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+    content="Ivory Grace Saree — Vastraa curated Indian fashion. Tradition. Style. You. Order directly on WhatsApp.">
+
+  <title>Ivory Grace Saree | Vastraa</title>
+
+  <!-- =====================================================
+       GOOGLE FONTS
+  ====================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- =====================================================
+       FONT AWESOME
+  ====================================================== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- =====================================================
+       ALL CSS
+  ====================================================== -->
+  <style>
+    /* =====================================================
+       ROOT
+    ====================================================== */
+
+    :root {
+      --cream: #f8f3ec;
+      --cream-dark: #eee4d7;
+      --white: #ffffff;
+
+      --black: #171412;
+      --dark: #211c19;
+      --brown: #6b4b3e;
+      --brown-dark: #392821;
+
+      --gold: #b28a57;
+      --gold-light: #d7bd91;
+
+      --rose: #c68e82;
+
+      --text: #332b27;
+      --muted: #81766f;
+
+      --border: rgba(51, 43, 39, 0.14);
+
+      --serif: "Cormorant Garamond", serif;
+      --sans: "DM Sans", sans-serif;
+
+      --transition: 0.5s cubic-bezier(.22, 1, .36, 1);
+    }
+
+
+    /* =====================================================
+       RESET
+    ====================================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+
+    /* =====================================================
+       PRELOADER
+    ====================================================== */
+
+    .preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: var(--brown-dark);
+
+      transition:
+        opacity .8s ease,
+        visibility .8s ease;
+    }
+
+    .preloader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-inner {
+      text-align: center;
+      color: var(--cream);
+    }
+
+    .loader-logo {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 8vw, 6rem);
+      letter-spacing: -2px;
+    }
+
+    .loader-logo span {
+      color: var(--gold-light);
+    }
+
+    .loader-line {
+      width: 0;
+      height: 1px;
+      margin: 18px auto;
+
+      background: var(--gold-light);
+
+      animation: loaderLine 1.5s ease forwards;
+    }
+
+    .loader-inner small {
+      letter-spacing: 4px;
+      font-size: 10px;
+      color: rgba(255, 255, 255, .65);
+    }
+
+    @keyframes loaderLine {
+      to {
+        width: 180px;
+      }
+    }
+
+
+    /* =====================================================
+       ANNOUNCEMENT BAR
+    ====================================================== */
+
+    .announcement {
+      height: 34px;
+      overflow: hidden;
+
+      background: var(--brown-dark);
+      color: var(--cream);
+
+      display: flex;
+      align-items: center;
+    }
+
+    .announcement-track {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+
+      width: max-content;
+
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+
+      white-space: nowrap;
+
+      animation: marquee 28s linear infinite;
+    }
+
+    .announcement-track i {
+      color: var(--gold-light);
+      font-size: 7px;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-35%);
+      }
+    }
+
+
+    /* =====================================================
+       NAVBAR
+    ====================================================== */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background: rgba(248, 243, 236, .94);
+      backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1450px;
+      min-height: 78px;
+
+      margin: auto;
+      padding: 0 5%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 30px;
+    }
+
+    .logo {
+      flex-shrink: 0;
+
+      font-family: var(--serif);
+      font-size: 34px;
+      font-weight: 600;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(15px, 2vw, 30px);
+
+      margin-left: auto;
+    }
+
+    .nav-menu a {
+      position: relative;
+
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+
+      color: var(--brown-dark);
+
+      transition: color .3s ease;
+    }
+
+    .nav-menu a::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+
+      width: 0;
+      height: 1px;
+
+      background: var(--gold);
+
+      transition: width .3s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--gold);
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .search-btn {
+      width: 40px;
+      height: 40px;
+
+      border: 1px solid var(--border);
+      border-radius: 50%;
+
+      background: transparent;
+      color: var(--brown-dark);
+
+      cursor: pointer;
+
+      transition: var(--transition);
+    }
+
+    .search-btn:hover {
+      background: var(--brown-dark);
+      color: var(--cream);
+      transform: rotate(10deg);
+    }
+
+    .whatsapp-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 11px 17px;
+
+      border-radius: 30px;
+
+      background: var(--brown-dark);
+      color: var(--white);
+
+      font-size: 11px;
+      font-weight: 600;
+
+      transition: var(--transition);
+    }
+
+    .whatsapp-nav i {
+      color: #6be28a;
+      font-size: 15px;
+    }
+
+    .whatsapp-nav:hover {
+      background: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      display: none;
+
+      width: 44px;
+      height: 44px;
+
+      border: none;
+      background: transparent;
+
+      color: var(--brown-dark);
+      font-size: 22px;
+
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+
+    /* =====================================================
+       PRODUCT MAIN
+    ====================================================== */
+
+    .product-main {
+      padding: 70px 5% 100px;
+    }
+
+    .product-container {
+      max-width: 1350px;
+
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+
+      gap: clamp(40px, 7vw, 110px);
+
+      align-items: start;
+    }
+
+
+    /* =====================================================
+       GALLERY
+    ====================================================== */
+
+    .product-gallery {
+      position: sticky;
+      top: 120px;
+    }
+
+    .main-image-wrap {
+      position: relative;
+
+      overflow: hidden;
+
+      aspect-ratio: 4 / 5;
+
+      background: var(--cream-dark);
+    }
+
+    .main-image-wrap::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(120deg,
+          transparent 45%,
+          rgba(255, 255, 255, .25),
+          transparent 55%);
+
+      transform: translateX(-120%);
+
+      transition: transform 1.2s ease;
+
+      pointer-events: none;
+    }
+
+    .main-image-wrap:hover::after {
+      transform: translateX(120%);
+    }
+
+    #mainImage {
+      height: 100%;
+      object-fit: cover;
+
+      transition:
+        transform 1.2s cubic-bezier(.2, .7, .2, 1),
+        opacity .35s ease;
+    }
+
+    .main-image-wrap:hover #mainImage {
+      transform: scale(1.045);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+
+      z-index: 2;
+
+      padding: 9px 14px;
+
+      background: var(--brown-dark);
+      color: var(--white);
+
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    .wishlist-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+
+      z-index: 3;
+
+      width: 46px;
+      height: 46px;
+
+      border: none;
+      border-radius: 50%;
+
+      background: rgba(255, 255, 255, .9);
+
+      color: var(--brown-dark);
+
+      cursor: pointer;
+
+      font-size: 17px;
+
+      transition: var(--transition);
+    }
+
+    .wishlist-btn:hover,
+    .wishlist-btn.active {
+      background: var(--brown-dark);
+      color: #ff7f9c;
+
+      transform: scale(1.1);
+    }
+
+    .thumbnail-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 12px;
+
+      margin-top: 12px;
+    }
+
+    .thumb-btn {
+      padding: 0;
+
+      border: 1px solid transparent;
+
+      background: transparent;
+
+      cursor: pointer;
+
+      overflow: hidden;
+    }
+
+    .thumb-btn img {
+      height: 120px;
+      object-fit: cover;
+
+      opacity: .65;
+
+      transition: var(--transition);
+    }
+
+    .thumb-btn:hover img,
+    .thumb-btn.active img {
+      opacity: 1;
+      transform: scale(1.04);
+    }
+
+    .thumb-btn.active {
+      border-color: var(--gold);
+    }
+
+
+    /* =====================================================
+       PRODUCT DETAILS
+    ====================================================== */
+
+    .product-details {
+      padding-top: 5px;
+    }
+
+    .breadcrumb {
+      margin-bottom: 35px;
+
+      font-size: 11px;
+      color: var(--muted);
+
+      letter-spacing: .5px;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--gold);
+    }
+
+    .eyebrow {
+      margin-bottom: 12px;
+
+      color: var(--gold);
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .product-details h1 {
+      margin-bottom: 20px;
+
+      font-family: var(--serif);
+
+      font-size: clamp(3rem, 5vw, 5.2rem);
+
+      line-height: .9;
+
+      font-weight: 500;
+
+      color: var(--brown-dark);
+
+      letter-spacing: -2px;
+    }
+
+    .price-box {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+
+      margin-bottom: 25px;
+    }
+
+    .current-price {
+      font-family: var(--serif);
+
+      font-size: 32px;
+      font-weight: 600;
+
+      color: var(--brown-dark);
+    }
+
+    .original-price {
+      color: #a49a93;
+      text-decoration: line-through;
+
+      font-size: 14px;
+    }
+
+    .discount {
+      padding: 6px 9px;
+
+      background: rgba(178, 138, 87, .13);
+
+      color: var(--gold);
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .product-short-desc {
+      max-width: 570px;
+
+      margin-bottom: 35px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+
+    /* =====================================================
+       SELECTION
+    ====================================================== */
+
+    .selection-group {
+      margin-bottom: 30px;
+    }
+
+    .selection-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 13px;
+
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .8px;
+    }
+
+    .size-guide-link {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .size-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .size-btn {
+      padding: 12px 17px;
+
+      border: 1px solid var(--border);
+
+      background: transparent;
+
+      color: var(--brown-dark);
+
+      font-size: 11px;
+
+      cursor: pointer;
+
+      transition: .3s ease;
+    }
+
+    .size-btn:hover,
+    .size-btn.active {
+      border-color: var(--brown-dark);
+      background: var(--brown-dark);
+      color: var(--white);
+    }
+
+
+    /* =====================================================
+       QUANTITY
+    ====================================================== */
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+
+      width: max-content;
+
+      border: 1px solid var(--border);
+    }
+
+    .quantity-selector button,
+    .quantity-selector span {
+      width: 42px;
+      height: 42px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quantity-selector button {
+      border: none;
+      background: transparent;
+
+      color: var(--brown-dark);
+
+      cursor: pointer;
+
+      font-size: 18px;
+    }
+
+    .quantity-selector button:hover {
+      background: var(--cream-dark);
+    }
+
+    .quantity-selector span {
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+
+    /* =====================================================
+       WHATSAPP BUTTON
+    ====================================================== */
+
+    .action-buttons {
+      margin: 30px 0;
+    }
+
+    .btn-whatsapp {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+
+      width: 100%;
+
+      padding: 18px 25px;
+
+      overflow: hidden;
+
+      background: var(--brown-dark);
+      color: var(--white);
+
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .7px;
+
+      transition: var(--transition);
+    }
+
+    .btn-whatsapp::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background: var(--gold);
+
+      transform: translateX(-101%);
+
+      transition: transform .55s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .btn-whatsapp:hover::before {
+      transform: translateX(0);
+    }
+
+    .btn-whatsapp i,
+    .btn-whatsapp {
+      z-index: 1;
+    }
+
+    .btn-whatsapp i {
+      color: #72e38a;
+      font-size: 18px;
+    }
+
+    .btn-whatsapp:hover i {
+      color: white;
+    }
+
+
+    /* =====================================================
+       PERKS
+    ====================================================== */
+
+    .product-perks {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+
+      padding: 22px 0;
+
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .product-perks div {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+    }
+
+    .product-perks i {
+      width: 25px;
+
+      color: var(--gold);
+
+      font-size: 15px;
+    }
+
+
+    /* =====================================================
+       ACCORDION
+    ====================================================== */
+
+    .product-accordion {
+      margin-top: 25px;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .accordion-header {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 20px 0;
+
+      border: none;
+      background: transparent;
+
+      color: var(--brown-dark);
+
+      font-size: 12px;
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+    .accordion-header i {
+      transition: transform .4s ease;
+    }
+
+    .accordion-item.active .accordion-header i {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+
+      transition: max-height .5s ease;
+    }
+
+    .accordion-content p {
+      padding-bottom: 20px;
+
+      color: var(--muted);
+
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+
+    /* =====================================================
+       RELATED SECTION
+    ====================================================== */
+
+    .related-section {
+      padding: 100px 5%;
+
+      background: var(--white);
+    }
+
+    .wrap {
+      max-width: 1350px;
+      margin: auto;
+    }
+
+    .section-head {
+      margin-bottom: 45px;
+
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .section-head h2 {
+      font-family: var(--serif);
+
+      font-size: clamp(3rem, 5vw, 5rem);
+
+      line-height: .9;
+
+      font-weight: 500;
+
+      color: var(--brown-dark);
+    }
+
+    .section-head h2 em {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 25px;
+    }
+
+    .product-card {
+      overflow: hidden;
+
+      background: var(--cream);
+
+      transition: var(--transition);
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .product-image {
+      position: relative;
+
+      overflow: hidden;
+
+      aspect-ratio: 4 / 5;
+    }
+
+    .product-image img {
+      height: 100%;
+      object-fit: cover;
+
+      transition: transform .9s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.07);
+    }
+
+    .tag {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+
+      z-index: 2;
+
+      padding: 7px 10px;
+
+      background: var(--brown-dark);
+      color: var(--white);
+
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    .product-info {
+      padding: 20px;
+
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      gap: 15px;
+    }
+
+    .product-info small {
+      color: var(--gold);
+
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .product-info h3 {
+      margin-top: 5px;
+
+      font-family: var(--serif);
+
+      font-size: 25px;
+      font-weight: 500;
+
+      color: var(--brown-dark);
+    }
+
+    .product-info strong {
+      font-family: var(--serif);
+
+      font-size: 20px;
+
+      white-space: nowrap;
+    }
+
+    .product-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      margin: 0 20px 20px;
+      padding: 12px;
+
+      border: 1px solid var(--border);
+
+      font-size: 10px;
+      font-weight: 700;
+
+      transition: .3s ease;
+    }
+
+    .product-whatsapp i {
+      color: #25d366;
+      font-size: 15px;
+    }
+
+    .product-whatsapp:hover {
+      background: var(--brown-dark);
+      border-color: var(--brown-dark);
+      color: white;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ====================================================== */
+
+    .footer {
+      padding: 80px 5% 25px;
+
+      background: var(--brown-dark);
+
+      color: var(--cream);
+    }
+
+    .footer-grid {
+      max-width: 1350px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: 1.7fr 1fr 1fr 1fr;
+
+      gap: 50px;
+
+      padding-bottom: 60px;
+
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+
+      font-size: 45px;
+    }
+
+    .footer-logo span {
+      color: var(--gold-light);
+    }
+
+    .footer-brand p {
+      margin-top: 10px;
+
+      color: rgba(255, 255, 255, .6);
+
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+
+      margin-top: 25px;
+    }
+
+    .socials a {
+      width: 38px;
+      height: 38px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 50%;
+
+      transition: .3s ease;
+    }
+
+    .socials a:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .footer h4 {
+      margin-bottom: 20px;
+
+      color: var(--gold-light);
+
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .footer ul {
+      list-style: none;
+    }
+
+    .footer li {
+      margin-bottom: 12px;
+    }
+
+    .footer li a {
+      color: rgba(255, 255, 255, .62);
+
+      font-size: 11px;
+
+      transition: .3s ease;
+    }
+
+    .footer li a:hover {
+      color: var(--gold-light);
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      max-width: 1350px;
+
+      margin: 25px auto 0;
+
+      display: flex;
+      justify-content: space-between;
+
+      color: rgba(255, 255, 255, .4);
+
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+
+
+    /* =====================================================
+       BACK TO TOP
+    ====================================================== */
+
+    .back-top {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+
+      width: 48px;
+      height: 48px;
+
+      z-index: 900;
+
+      border: none;
+      border-radius: 50%;
+
+      background: var(--brown-dark);
+      color: white;
+
+      cursor: pointer;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transform: translateY(20px);
+
+      transition: .4s ease;
+    }
+
+    .back-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-top:hover {
+      background: var(--gold);
+      transform: translateY(-4px);
+    }
+
+
+    /* =====================================================
+       SCROLL REVEAL
+    ====================================================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+
+      transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 {
+      transition-delay: .12s;
+    }
+
+    .delay-2 {
+      transition-delay: .24s;
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ====================================================== */
+
+    @media (max-width: 1200px) {
+
+      .nav-menu {
+        gap: 14px;
+      }
+
+      .nav-menu a {
+        font-size: 9px;
+      }
+
+      .whatsapp-nav {
+        padding: 10px 12px;
+      }
+    }
+
+
+    @media (max-width: 1000px) {
+
+      .nav-menu {
+        position: fixed;
+
+        top: 112px;
+        right: 0;
+
+        width: 100%;
+        height: calc(100vh - 112px);
+
+        padding: 60px 30px;
+
+        background: var(--cream);
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 28px;
+
+        transform: translateX(100%);
+
+        transition: transform .5s cubic-bezier(.22, 1, .36, 1);
+
+        overflow-y: auto;
+      }
+
+      .nav-menu.active {
+        transform: translateX(0);
+      }
+
+      .nav-menu a {
+        font-family: var(--serif);
+
+        font-size: 32px;
+        font-weight: 500;
+
+        text-transform: none;
+
+        letter-spacing: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .product-container {
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+      }
+
+      .product-gallery {
+        position: relative;
+        top: auto;
+      }
+
+      .product-details {
+        max-width: 750px;
+      }
+    }
+
+
+    @media (max-width: 700px) {
+
+      .announcement {
+        height: 30px;
+      }
+
+      .announcement-track {
+        font-size: 8px;
+      }
+
+      .nav-container {
+        min-height: 70px;
+      }
+
+      .logo {
+        font-size: 29px;
+      }
+
+      .nav-actions .search-btn,
+      .whatsapp-nav {
+        display: none;
+      }
+
+      .product-main {
+        padding: 35px 20px 70px;
+      }
+
+      .product-details h1 {
+        font-size: 3.5rem;
+      }
+
+      .thumbnail-list {
+        gap: 7px;
+      }
+
+      .thumb-btn img {
+        height: 90px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .related-section {
+        padding: 70px 20px;
+      }
+
+      .footer {
+        padding: 60px 20px 25px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 35px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+
+    @media (max-width: 450px) {
+
+      .product-details h1 {
+        font-size: 3rem;
+      }
+
+      .size-btn {
+        flex: 1;
+        min-width: 110px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
+
+      .back-top {
+        right: 15px;
+        bottom: 15px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =====================================================
+       PRELOADER
+  ====================================================== -->
+
+  <div class="preloader" id="preloader">
+
+    <div class="loader-inner">
+
+      <div class="loader-logo">
+        <span>V</span>astraa
+      </div>
+
+      <div class="loader-line"></div>
+
+      <small>VASTRAA EDIT · 2026</small>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       ANNOUNCEMENT BAR
+  ====================================================== -->
+
+  <div class="announcement">
+
+    <div class="announcement-track">
+
+      <span>HANDPICKED INDIAN FASHION</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>ORDER DIRECTLY ON WHATSAPP</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>FREE WORLDWIDE SHIPPING ON ORDERS OVER ₹5,000</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>HANDPICKED INDIAN FASHION</span>
+      <i class="fa-solid fa-star"></i>
+
+      <span>ORDER DIRECTLY ON WHATSAPP</span>
+      <i class="fa-solid fa-star"></i>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       NAVBAR
+  ====================================================== -->
+
+  <header class="navbar">
+
+    <div class="nav-container">
+
+      <a href="index.html" class="logo">
+        <span>V</span>astraa
+      </a>
+
+
+      <nav class="nav-menu" id="navMenu">
+
+        <a href="index.html">Home</a>
+        <a href="collections.html">Collections</a>
+        <a href="sarees.html">Sarees</a>
+        <a href="kurtis.html">Kurtis</a>
+        <a href="lehengas.html">Lehengas</a>
+        <a href="dresses.html">Dresses</a>
+        <a href="new-arrivals.html">New Arrivals</a>
+        <a href="about.html">About</a>
+
+      </nav>
+
+
+      <div class="nav-actions">
+
+        <button class="search-btn" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+
+        <a class="whatsapp-nav" target="_blank"
+          href="https://wa.me/919999999999?text=Hello%20Vastraa!%20I%20would%20like%20to%20explore%20your%20collections.">
+          <i class="fa-brands fa-whatsapp"></i>
+          WhatsApp
+        </a>
+
+      </div>
+
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       PRODUCT
+  ====================================================== -->
+
+  <main class="product-main">
+
+    <div class="product-container">
+
+
+      <!-- =================================================
+           PRODUCT GALLERY
+      ================================================== -->
+
+      <div class="product-gallery reveal">
+
+        <div class="main-image-wrap">
+
+          <span class="product-tag">
+            NEW ARRIVAL
+          </span>
+
+
+          <button class="wishlist-btn" id="wishlistBtn" aria-label="Add to Wishlist">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+
+          <img id="mainImage"
+            src="https://images.unsplash.com/photo-1774437891003-69cb5996ca82?auto=format&fit=crop&w=1200&q=90"
+            alt="Ivory Grace Saree">
+
+        </div>
+
+
+        <div class="thumbnail-list">
+
+          <button class="thumb-btn active"
+            data-image="https://images.unsplash.com/photo-1774437891003-69cb5996ca82?auto=format&fit=crop&w=1200&q=90">
+            <img src="https://images.unsplash.com/photo-1774437891003-69cb5996ca82?auto=format&fit=crop&w=300&q=80"
+              alt="Ivory Grace Saree view 1">
+          </button>
+
+
+          <button class="thumb-btn"
+            data-image="https://images.unsplash.com/photo-1654764745365-f276bf7ba58a?auto=format&fit=crop&w=1200&q=90">
+            <img src="https://images.unsplash.com/photo-1654764745365-f276bf7ba58a?auto=format&fit=crop&w=300&q=80"
+              alt="Ivory Grace Saree view 2">
+          </button>
+
+
+          <button class="thumb-btn"
+            data-image="https://images.unsplash.com/photo-1769275061786-c33ab1a284c8?auto=format&fit=crop&w=1200&q=90">
+            <img src="https://images.unsplash.com/photo-1769275061786-c33ab1a284c8?auto=format&fit=crop&w=300&q=80"
+              alt="Ivory Grace Saree view 3">
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           PRODUCT DETAILS
+      ================================================== -->
+
+      <div class="product-details reveal delay-1">
+
+
+        <div class="breadcrumb">
+
+          <a href="index.html">Home</a>
+
+          /
+
+          <a href="sarees.html">Sarees</a>
+
+          /
+
+          <span>Ivory Grace Saree</span>
+
+        </div>
+
+
+        <p class="eyebrow">
+          HERITAGE SILK EDIT
+        </p>
+
+
+        <h1>
+          Ivory Grace Saree
+        </h1>
+
+
+        <div class="price-box">
+
+          <span class="current-price">
+            ₹2,499
+          </span>
+
+          <span class="original-price">
+            ₹3,499
+          </span>
+
+          <span class="discount">
+            28% OFF
+          </span>
+
+        </div>
+
+
+        <p class="product-short-desc">
+
+          Crafted from breathable luxury silk with delicate gold zari
+          borders. Designed for graceful movement, intimate celebrations,
+          and timeless elegance.
+
+        </p>
+
+
+        <!-- =================================================
+             SIZE
+        ================================================== -->
+
+        <div class="selection-group">
+
+          <div class="selection-label">
+
+            <span>
+              Select Blouse Stitching / Size
+            </span>
+
+            <a href="#size-guide" class="size-guide-link">
+              Size Guide
+            </a>
+
+          </div>
+
+
+          <div class="size-options">
+
+            <button class="size-btn active" data-size="Unstitched Blouse">
+              Unstitched
+            </button>
+
+            <button class="size-btn" data-size="Size 38 (M)">
+              38 (M)
+            </button>
+
+            <button class="size-btn" data-size="Size 40 (L)">
+              40 (L)
+            </button>
+
+            <button class="size-btn" data-size="Size 42 (XL)">
+              42 (XL)
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             QUANTITY
+        ================================================== -->
+
+        <div class="selection-group">
+
+          <span class="selection-label">
+            Quantity
+          </span>
+
+
+          <div class="quantity-selector">
+
+            <button id="decreaseQty">
+              −
+            </button>
+
+            <span id="quantityVal">
+              1
+            </span>
+
+            <button id="increaseQty">
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             WHATSAPP ORDER
+        ================================================== -->
+
+        <div class="action-buttons">
+
+          <a id="whatsappOrderBtn" target="_blank" class="btn btn-whatsapp" href="#">
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            <span>
+              Order on WhatsApp Now
+            </span>
+
+          </a>
+
+        </div>
+
+
+        <!-- =================================================
+             PERKS
+        ================================================== -->
+
+        <div class="product-perks">
+
+          <div>
+
+            <i class="fa-solid fa-truck-fast"></i>
+
+            <span>
+              Express Delivery Available
+            </span>
+
+          </div>
+
+
+          <div>
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <span>
+              100% Handpicked Quality
+            </span>
+
+          </div>
+
+
+          <div>
+
+            <i class="fa-solid fa-headset"></i>
+
+            <span>
+              24/7 WhatsApp Styling Support
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             ACCORDIONS
+        ================================================== -->
+
+        <div class="product-accordion">
+
+
+          <div class="accordion-item active">
+
+            <button class="accordion-header">
+
+              <span>
+                Fabric & Craftsmanship
+              </span>
+
+              <i class="fa-solid fa-chevron-down"></i>
+
+            </button>
+
+
+            <div class="accordion-content">
+
+              <p>
+
+                Made from premium pure-feel art silk blend.
+                Features intricate woven zari motifs along the
+                pallu and borders. Soft against the skin and
+                lightweight for effortless draping.
+
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="accordion-item">
+
+            <button class="accordion-header">
+
+              <span>
+                Shipping & Returns
+              </span>
+
+              <i class="fa-solid fa-chevron-down"></i>
+
+            </button>
+
+
+            <div class="accordion-content">
+
+              <p>
+
+                Dispatched within 24–48 hours.
+                Easy exchange or return window within 7 days
+                of delivery for unworn items with original tags.
+
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="accordion-item">
+
+            <button class="accordion-header">
+
+              <span>
+                Styling Notes
+              </span>
+
+              <i class="fa-solid fa-chevron-down"></i>
+
+            </button>
+
+
+            <div class="accordion-content">
+
+              <p>
+
+                Pair the Ivory Grace Saree with delicate gold
+                jewellery, neutral heels and a soft clutch for
+                an elegant festive look.
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- =====================================================
+       RELATED PRODUCTS
+  ====================================================== -->
+
+  <section class="related-section">
+
+    <div class="wrap">
+
+
+      <div class="section-head reveal">
+
+        <div>
+
+          <p class="eyebrow">
+            COMPLETE THE LOOK
+          </p>
+
+          <h2>
+            You may also <em>love.</em>
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="product-grid">
+
+
+        <!-- PRODUCT 1 -->
+
+        <article class="product-card reveal">
+
+          <div class="product-image">
+
+            <span class="tag">
+              NEW
+            </span>
+
+            <img src="https://images.unsplash.com/photo-1614881064213-180b1c28f743?auto=format&fit=crop&w=900&q=85"
+              alt="Rosewood Ensemble" loading="lazy">
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <small>
+                Ethnic Set
+              </small>
+
+              <h3>
+                Rosewood Ensemble
+              </h3>
+
+            </div>
+
+            <strong>
+              ₹3,299
+            </strong>
+
+          </div>
+
+
+          <a href="product.html" class="product-whatsapp">
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            Order on WhatsApp
+
+          </a>
+
+        </article>
+
+
+        <!-- PRODUCT 2 -->
+
+        <article class="product-card reveal delay-1">
+
+          <div class="product-image">
+
+            <span class="tag">
+              TRENDING
+            </span>
+
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=85"
+              alt="Midnight Bloom Dress" loading="lazy">
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <small>
+                Dress
+              </small>
+
+              <h3>
+                Midnight Bloom
+              </h3>
+
+            </div>
+
+            <strong>
+              ₹1,999
+            </strong>
+
+          </div>
+
+
+          <a href="product.html" class="product-whatsapp">
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            Order on WhatsApp
+
+          </a>
+
+        </article>
+
+
+        <!-- PRODUCT 3 -->
+
+        <article class="product-card reveal delay-2">
+
+          <div class="product-image">
+
+            <span class="tag">
+              LIMITED
+            </span>
+
+            <img src="https://images.unsplash.com/photo-1767968037382-8eb9c564339f?auto=format&fit=crop&w=900&q=85"
+              alt="Golden Hour Kurti" loading="lazy">
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div>
+
+              <small>
+                Kurti
+              </small>
+
+              <h3>
+                Golden Hour
+              </h3>
+
+            </div>
+
+            <strong>
+              ₹1,499
+            </strong>
+
+          </div>
+
+
+          <a href="product.html" class="product-whatsapp">
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            Order on WhatsApp
+
+          </a>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer class="footer">
+
+    <div class="footer-grid">
+
+
+      <div class="footer-brand">
+
+        <a href="index.html" class="footer-logo">
+          <span>V</span>astraa
+        </a>
+
+        <p>
+          Tradition. Style. You.
+        </p>
+
+
+        <div class="socials">
+
+          <a href="#" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="#" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+
+          <a href="#" aria-label="Pinterest">
+            <i class="fa-brands fa-pinterest-p"></i>
+          </a>
+
+          <a href="https://wa.me/919999999999" aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Explore
+        </h4>
+
+        <ul>
+
+          <li>
+            <a href="collections.html">
+              Collections
+            </a>
+          </li>
+
+          <li>
+            <a href="sarees.html">
+              Sarees
+            </a>
+          </li>
+
+          <li>
+            <a href="kurtis.html">
+              Kurtis
+            </a>
+          </li>
+
+          <li>
+            <a href="lehengas.html">
+              Lehengas
+            </a>
+          </li>
+
+          <li>
+            <a href="dresses.html">
+              Dresses
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Vastraa
+        </h4>
+
+        <ul>
+
+          <li>
+            <a href="new-arrivals.html">
+              New Arrivals
+            </a>
+          </li>
+
+          <li>
+            <a href="about.html">
+              Our Story
+            </a>
+          </li>
+
+          <li>
+            <a href="faq.html">
+              FAQs
+            </a>
+          </li>
+
+          <li>
+            <a href="contact.html">
+              Contact
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Let's Talk
+        </h4>
+
+        <ul>
+
+          <li>
+
+            <a target="_blank" href="https://wa.me/919999999999">
+              Chat on WhatsApp
+            </a>
+
+          </li>
+
+          <li>
+
+            <a href="mailto:hello@vastraa.com">
+              hello@vastraa.com
+            </a>
+
+          </li>
+
+        </ul>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 Vastraa. All Rights Reserved.
+      </span>
+
+      <span>
+        Tradition · Style · You.
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =====================================================
+       BACK TO TOP
+  ====================================================== -->
+
+  <button class="back-top" id="backTop" aria-label="Back to top">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+  </button>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script>
+
+    /* =====================================================
+       PRELOADER
+    ====================================================== */
+
+    window.addEventListener("load", function () {
+
+      setTimeout(function () {
+
+        document
+          .getElementById("preloader")
+          .classList.add("hide");
+
+      }, 700);
+
+    });
+
+
+    /* =====================================================
+       MOBILE MENU
+    ====================================================== */
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    menuToggle.addEventListener("click", function () {
+
+      const isOpen = navMenu.classList.toggle("active");
+
+      document.body.classList.toggle("menu-open", isOpen);
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        isOpen
+      );
+
+      menuToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+
+    });
+
+
+    /* Close mobile menu */
+
+    navMenu.querySelectorAll("a").forEach(function (link) {
+
+      link.addEventListener("click", function () {
+
+        navMenu.classList.remove("active");
+
+        document.body.classList.remove("menu-open");
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        menuToggle.innerHTML =
+          '<i class="fa-solid fa-bars"></i>';
+
+      });
+
+    });
+
+
+    /* =====================================================
+       PRODUCT IMAGE GALLERY
+    ====================================================== */
+
+    const mainImage =
+      document.getElementById("mainImage");
+
+    const thumbnails =
+      document.querySelectorAll(".thumb-btn");
+
+
+    thumbnails.forEach(function (thumbnail) {
+
+      thumbnail.addEventListener("click", function () {
+
+        const newImage =
+          thumbnail.getAttribute("data-image");
+
+        mainImage.style.opacity = "0";
+
+        setTimeout(function () {
+
+          mainImage.src = newImage;
+
+          mainImage.style.opacity = "1";
+
+        }, 180);
+
+
+        thumbnails.forEach(function (item) {
+
+          item.classList.remove("active");
+
+        });
+
+        thumbnail.classList.add("active");
+
+      });
+
+    });
+
+
+    /* =====================================================
+       WISHLIST
+    ====================================================== */
+
+    const wishlistBtn =
+      document.getElementById("wishlistBtn");
+
+    wishlistBtn.addEventListener("click", function () {
+
+      wishlistBtn.classList.toggle("active");
+
+      const icon =
+        wishlistBtn.querySelector("i");
+
+      if (wishlistBtn.classList.contains("active")) {
+
+        icon.classList.remove("fa-regular");
+        icon.classList.add("fa-solid");
+
+        wishlistBtn.setAttribute(
+          "aria-label",
+          "Remove from Wishlist"
+        );
+
+      } else {
+
+        icon.classList.remove("fa-solid");
+        icon.classList.add("fa-regular");
+
+        wishlistBtn.setAttribute(
+          "aria-label",
+          "Add to Wishlist"
+        );
+
+      }
+
+    });
+
+
+    /* =====================================================
+       SIZE SELECTOR
+    ====================================================== */
+
+    const sizeButtons =
+      document.querySelectorAll(".size-btn");
+
+    let selectedSize = "Unstitched Blouse";
+
+
+    sizeButtons.forEach(function (button) {
+
+      button.addEventListener("click", function () {
+
+        sizeButtons.forEach(function (item) {
+
+          item.classList.remove("active");
+
+        });
+
+        button.classList.add("active");
+
+        selectedSize =
+          button.dataset.size;
+
+        updateWhatsApp();
+
+      });
+
+    });
+
+
+    /* =====================================================
+       QUANTITY
+    ====================================================== */
+
+    const quantityValue =
+      document.getElementById("quantityVal");
+
+    const decreaseQty =
+      document.getElementById("decreaseQty");
+
+    const increaseQty =
+      document.getElementById("increaseQty");
+
+    let quantity = 1;
+
+
+    decreaseQty.addEventListener("click", function () {
+
+      if (quantity > 1) {
+
+        quantity--;
+
+        quantityValue.textContent = quantity;
+
+        updateWhatsApp();
+
+      }
+
+    });
+
+
+    increaseQty.addEventListener("click", function () {
+
+      if (quantity < 10) {
+
+        quantity++;
+
+        quantityValue.textContent = quantity;
+
+        updateWhatsApp();
+
+      }
+
+    });
+
+
+    /* =====================================================
+       WHATSAPP ORDER
+    ====================================================== */
+
+    const whatsappOrderBtn =
+      document.getElementById("whatsappOrderBtn");
+
+
+    function updateWhatsApp() {
+
+      const phoneNumber =
+        "919999999999";
+
+      const product =
+        "Ivory Grace Saree";
+
+      const price =
+        "₹2,499";
+
+      const message =
+        `Hello Vastraa! I would like to order the ${product} (${price}) - Option: ${selectedSize}, Qty: ${quantity}`;
+
+      whatsappOrderBtn.href =
+        `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    }
+
+
+    updateWhatsApp();
+
+
+    /* =====================================================
+       ACCORDION
+    ====================================================== */
+
+    const accordionItems =
+      document.querySelectorAll(".accordion-item");
+
+
+    accordionItems.forEach(function (item) {
+
+      const header =
+        item.querySelector(".accordion-header");
+
+      const content =
+        item.querySelector(".accordion-content");
+
+
+      if (item.classList.contains("active")) {
+
+        content.style.maxHeight =
+          content.scrollHeight + "px";
+
+      }
+
+
+      header.addEventListener("click", function () {
+
+        const isActive =
+          item.classList.contains("active");
+
+
+        accordionItems.forEach(function (otherItem) {
+
+          otherItem.classList.remove("active");
+
+          otherItem.querySelector(
+            ".accordion-content"
+          ).style.maxHeight = null;
+
+        });
+
+
+        if (!isActive) {
+
+          item.classList.add("active");
+
+          content.style.maxHeight =
+            content.scrollHeight + "px";
+
+        }
+
+      });
+
+    });
+
+
+    /* =====================================================
+       SCROLL REVEAL
+    ====================================================== */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+      new IntersectionObserver(
+
+        function (entries, observer) {
+
+          entries.forEach(function (entry) {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("show");
+
+              observer.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.12
+        }
+
+      );
+
+
+    revealElements.forEach(function (element) {
+
+      revealObserver.observe(element);
+
+    });
+
+
+    /* =====================================================
+       BACK TO TOP
+    ====================================================== */
+
+    const backTop =
+      document.getElementById("backTop");
+
+
+    window.addEventListener("scroll", function () {
+
+      if (window.scrollY > 500) {
+
+        backTop.classList.add("show");
+
+      } else {
+
+        backTop.classList.remove("show");
+
+      }
+
+    });
+
+
+    backTop.addEventListener("click", function () {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    });
+
+
+    /* =====================================================
+       IMAGE PARALLAX
+    ====================================================== */
+
+    window.addEventListener("scroll", function () {
+
+      const image =
+        document.getElementById("mainImage");
+
+      if (!image) return;
+
+      const rect =
+        image.getBoundingClientRect();
+
+      if (
+        rect.top < window.innerHeight &&
+        rect.bottom > 0
+      ) {
+
+        const movement =
+          (window.innerHeight - rect.top) * 0.015;
+
+        image.style.transform =
+          `scale(1.02) translateY(${movement}px)`;
+
+      }
+
+    });
+
+
+    /* =====================================================
+       MAGNETIC WHATSAPP BUTTON
+    ====================================================== */
+
+    const whatsappButton =
+      document.querySelector(".btn-whatsapp");
+
+
+    if (whatsappButton) {
+
+      whatsappButton.addEventListener(
+        "mousemove",
+        function (event) {
+
+          const rect =
+            whatsappButton.getBoundingClientRect();
+
+          const x =
+            event.clientX - rect.left - rect.width / 2;
+
+          const y =
+            event.clientY - rect.top - rect.height / 2;
+
+          whatsappButton.style.transform =
+            `translate(${x * .04}px, ${y * .04}px)`;
+
+        }
+      );
+
+
+      whatsappButton.addEventListener(
+        "mouseleave",
+        function () {
+
+          whatsappButton.style.transform =
+            "translate(0,0)";
+
+        }
+      );
+
+    }
+
+
+    /* =====================================================
+       ESC KEY
+    ====================================================== */
+
+    document.addEventListener("keydown", function (event) {
+
+      if (event.key === "Escape") {
+
+        navMenu.classList.remove("active");
+
+        document.body.classList.remove("menu-open");
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        menuToggle.innerHTML =
+          '<i class="fa-solid fa-bars"></i>';
+
+      }
+
+    });
+
+  </script>
+
+</body>
+
+</html>

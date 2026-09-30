@@ -1,0 +1,2944 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Journal | Vastraa</title>
+
+  <meta name="description"
+    content="The Vastraa Journal — stories, styling inspiration, Indian craftsmanship, festive fashion and timeless elegance.">
+
+  <!-- =====================================================
+       GOOGLE FONTS
+       ===================================================== -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- =====================================================
+       FONT AWESOME
+       ===================================================== -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+  <style>
+    /* =====================================================
+       VASTRAA JOURNAL
+       ===================================================== */
+
+    :root {
+
+      --emerald: #14382b;
+      --deep: #081d15;
+      --sage: #7d9a83;
+
+      --gold: #c6a15b;
+      --gold-light: #e2ca91;
+
+      --cream: #fbfaf5;
+      --paper: #f0eadc;
+      --white: #ffffff;
+
+      --ink: #18241f;
+      --muted: #68736d;
+
+      --line: rgba(20, 56, 43, 0.13);
+
+      --shadow:
+        0 25px 70px rgba(14, 41, 32, 0.12);
+
+      --transition:
+        0.45s cubic-bezier(.2, .8, .2, 1);
+    }
+
+
+    /* =====================================================
+       RESET
+       ===================================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    input {
+      font-family: inherit;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+
+    /* =====================================================
+       PRELOADER
+       ===================================================== */
+
+    .preloader {
+
+      position: fixed;
+      inset: 0;
+
+      background: var(--deep);
+
+      z-index: 9999;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      transition:
+        opacity .7s ease,
+        visibility .7s ease;
+    }
+
+    .preloader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-content {
+      text-align: center;
+      color: white;
+    }
+
+    .loader-logo {
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 4rem;
+
+      letter-spacing: 5px;
+
+      color: var(--gold-light);
+
+      animation:
+        loaderPulse 1.5s ease-in-out infinite;
+    }
+
+    .loader-line {
+
+      width: 130px;
+      height: 1px;
+
+      background: var(--gold);
+
+      margin: 15px auto;
+
+      transform-origin: left;
+
+      animation:
+        loaderLine 1.5s ease-in-out infinite;
+    }
+
+    .loader-text {
+
+      font-size: 9px;
+
+      letter-spacing: 4px;
+
+      text-transform: uppercase;
+
+      color: rgba(255, 255, 255, .6);
+    }
+
+    @keyframes loaderPulse {
+
+      0%,
+      100% {
+        opacity: .5;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes loaderLine {
+
+      0% {
+        transform: scaleX(0);
+      }
+
+      50% {
+        transform: scaleX(1);
+      }
+
+      100% {
+        transform: scaleX(0);
+      }
+    }
+
+
+    /* =====================================================
+       ANNOUNCEMENT
+       ===================================================== */
+
+    .announcement {
+
+      height: 34px;
+
+      background: var(--deep);
+
+      color: white;
+
+      display: flex;
+      align-items: center;
+
+      overflow: hidden;
+
+      white-space: nowrap;
+    }
+
+    .announcement-track {
+
+      display: flex;
+
+      gap: 45px;
+
+      animation:
+        marquee 28s linear infinite;
+
+      font-size: 10px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+    }
+
+    .announcement-track span {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+    }
+
+    .announcement-track i {
+
+      color: var(--gold);
+
+      font-size: 7px;
+    }
+
+    @keyframes marquee {
+
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+
+    /* =====================================================
+       NAVBAR
+       ===================================================== */
+
+    .navbar {
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 1000;
+
+      background:
+        rgba(251, 250, 245, .95);
+
+      backdrop-filter:
+        blur(16px);
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .nav-container {
+
+      max-width: 1400px;
+
+      margin: auto;
+
+      min-height: 82px;
+
+      padding: 0 5%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 25px;
+    }
+
+    .brand {
+
+      display: flex;
+
+      flex-direction: column;
+
+      line-height: 1;
+
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+
+      font-family:
+        "Cormorant Garamond", serif;
+
+      font-size: 38px;
+
+      font-weight: 600;
+
+      letter-spacing: 3px;
+
+      color: var(--emerald);
+    }
+
+    .brand-tagline {
+
+      margin-top: 6px;
+
+      font-size: 7px;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      color: var(--gold);
+    }
+
+    .nav-links {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 23px;
+    }
+
+    .nav-links a {
+
+      position: relative;
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      padding: 8px 0;
+    }
+
+    .nav-links a::after {
+
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      bottom: 0;
+
+      width: 0;
+      height: 1px;
+
+      background: var(--gold);
+
+      transition:
+        width var(--transition);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+
+      width: 100%;
+    }
+
+    .nav-actions {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+    }
+
+    .nav-icon {
+
+      width: 38px;
+      height: 38px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 50%;
+
+      display: grid;
+
+      place-items: center;
+
+      color: var(--emerald);
+
+      transition:
+        var(--transition);
+    }
+
+    .nav-icon:hover {
+
+      background: var(--emerald);
+
+      color: white;
+
+      transform:
+        translateY(-3px);
+    }
+
+    .menu-toggle {
+
+      display: none;
+
+      width: 42px;
+      height: 42px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 50%;
+
+      background: transparent;
+
+      color: var(--emerald);
+
+      cursor: pointer;
+    }
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    .hero {
+
+      position: relative;
+
+      min-height: 650px;
+
+      display: flex;
+
+      align-items: center;
+
+      overflow: hidden;
+
+      background:
+
+        linear-gradient(90deg,
+          rgba(8, 29, 21, .96),
+          rgba(8, 29, 21, .72),
+          rgba(8, 29, 21, .25)),
+
+        url("https://images.unsplash.com/photo-1610030469668-8e9e9c5c8c2c?auto=format&fit=crop&w=1900&q=90") center/cover;
+    }
+
+    .hero::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 520px;
+      height: 520px;
+
+      border:
+        1px solid rgba(226, 202, 145, .28);
+
+      border-radius: 50%;
+
+      right: -180px;
+      top: -130px;
+
+      animation:
+        rotateRing 25s linear infinite;
+    }
+
+    .hero::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 270px;
+      height: 270px;
+
+      border:
+        1px solid rgba(226, 202, 145, .18);
+
+      border-radius: 50%;
+
+      right: 130px;
+      bottom: -140px;
+
+      animation:
+        rotateRing 18s linear infinite reverse;
+    }
+
+    @keyframes rotateRing {
+
+      from {
+        transform: rotate(0);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .hero-content {
+
+      position: relative;
+
+      z-index: 2;
+
+      width: min(780px, 90%);
+
+      margin-left: 8%;
+
+      color: white;
+    }
+
+    .eyebrow {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-bottom: 20px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      letter-spacing: 4px;
+
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+
+      content: "";
+
+      width: 38px;
+
+      height: 1px;
+
+      background: var(--gold);
+    }
+
+    .hero h1 {
+
+      font-family:
+        "Cormorant Garamond", serif;
+
+      font-size:
+        clamp(65px, 9vw, 120px);
+
+      font-weight: 500;
+
+      line-height: .82;
+
+      margin-bottom: 30px;
+    }
+
+    .hero h1 span {
+
+      display: block;
+
+      color: var(--gold-light);
+
+      font-style: italic;
+    }
+
+    .hero p {
+
+      max-width: 600px;
+
+      color:
+        rgba(255, 255, 255, .75);
+
+      font-size: 16px;
+
+      line-height: 1.8;
+    }
+
+
+    /* =====================================================
+       INTRO
+       ===================================================== */
+
+    .intro {
+
+      padding: 100px 7% 55px;
+
+      text-align: center;
+    }
+
+    .section-label {
+
+      color: var(--gold);
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+    }
+
+    .intro h2 {
+
+      margin-top: 12px;
+
+      font-family:
+        "Cormorant Garamond", serif;
+
+      font-size:
+        clamp(42px, 5vw, 68px);
+
+      font-weight: 500;
+
+      color: var(--emerald);
+    }
+
+    .intro p {
+
+      max-width: 680px;
+
+      margin: 20px auto 0;
+
+      color: var(--muted);
+
+      line-height: 1.8;
+    }
+
+
+    /* =====================================================
+       FILTER
+       ===================================================== */
+
+    .filter-section {
+
+      padding:
+        20px 7% 50px;
+    }
+
+    .filters {
+
+      display: flex;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+    }
+
+    .filter-btn {
+
+      border:
+        1px solid var(--line);
+
+      background: white;
+
+      color: var(--emerald);
+
+      padding:
+        12px 23px;
+
+      border-radius: 100px;
+
+      cursor: pointer;
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      transition:
+        var(--transition);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+
+      background: var(--emerald);
+
+      color: white;
+
+      border-color:
+        var(--emerald);
+
+      transform:
+        translateY(-2px);
+    }
+
+
+    /* =====================================================
+       FEATURED STORY
+       ===================================================== */
+
+    .featured-section {
+
+      padding:
+        20px 7% 100px;
+    }
+
+    .featured-card {
+
+      max-width: 1250px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns:
+        1.2fr 1fr;
+
+      min-height: 540px;
+
+      background: white;
+
+      box-shadow:
+        var(--shadow);
+
+      overflow: hidden;
+    }
+
+    .featured-image {
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .featured-image img {
+
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform 1s ease;
+    }
+
+    .featured-card:hover .featured-image img {
+
+      transform:
+        scale(1.05);
+    }
+
+    .featured-tag {
+
+      position: absolute;
+
+      left: 25px;
+      top: 25px;
+
+      padding:
+        9px 15px;
+
+      background:
+        var(--gold);
+
+      color:
+        var(--deep);
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+    }
+
+    .featured-content {
+
+      padding:
+        60px 55px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+    }
+
+    .story-meta {
+
+      color: var(--gold);
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 18px;
+    }
+
+    .featured-content h2 {
+
+      font-family:
+        "Cormorant Garamond", serif;
+
+      font-size:
+        clamp(42px, 4vw, 65px);
+
+      font-weight: 500;
+
+      line-height: .95;
+
+      color: var(--emerald);
+
+      margin-bottom: 22px;
+    }
+
+    .featured-content p {
+
+      color: var(--muted);
+
+      line-height: 1.8;
+
+      font-size: 14px;
+    }
+
+    .read-link {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-top: 28px;
+
+      color: var(--emerald);
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+    }
+
+    .read-link i {
+
+      color: var(--gold);
+
+      transition:
+        transform .3s ease;
+    }
+
+    .read-link:hover i {
+
+      transform:
+        translateX(5px);
+    }
+
+
+    /* =====================================================
+       ARTICLE GRID
+       ===================================================== */
+
+    .journal-section {
+
+      padding:
+        0 7% 110px;
+    }
+
+    .section-heading {
+
+      max-width: 1250px;
+
+      margin:
+        0 auto 45px;
+
+      display: flex;
+
+      align-items: end;
+
+      justify-content: space-between;
+
+      gap: 25px;
+    }
+
+    .section-heading h2 {
+
+      margin-top: 10px;
+
+      font-family:
+        "Cormorant Garamond", serif;
+
+      font-size: 55px;
+
+      font-weight: 500;
+
+      color: var(--emerald);
+    }
+
+    .section-heading p {
+
+      max-width: 400px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.7;
+    }
+
+    .article-grid {
+
+      max-width: 1250px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 25px;
+    }
+
+    .article-card {
+
+      background: white;
+
+      border:
+        1px solid var(--line);
+
+      overflow: hidden;
+
+      transition:
+        var(--transition);
+    }
+
+    .article-card:hover {
+
+      transform:
+        translateY(-10px);
+
+      box-shadow:
+        var(--shadow);
+    }
+
+    .article-image {
+
+      position: relative;
+
+      height: 330px;
+
+      overflow: hidden;
+    }
+
+    .article-image img {
+
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform .8s ease;
+    }
+
+    .article-card:hover .article-image img {
+
+      transform:
+        scale(1.07);
+    }
+
+    .article-category {
+
+      position: absolute;
+
+      left: 18px;
+      bottom: 18px;
+
+      background:
+        rgba(10, 31, 23, .92);
+
+      color: var(--gold-light);
+
+      padding:
+        8px 12px;
+
+      font-size: 8px;
+
+      font-weight: 700;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+    }
+
+    .article-content {
+
+      padding:
+        27px 25px 30px;
+    }
+
+    .article-date {
+
+      color: var(--gold);
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+    }
+
+    .article-content h3 {
+
+      font-family:
+        "Cormorant Garamond", serif;
+
+      font-size: 31px;
+
+      font-weight: 600;
+
+      line-height: 1;
+
+      color: var(--emerald);
+
+      margin:
+        12px 0 13px;
+    }
+
+    .article-content p {
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.7;
+    }
+
+    .article-read {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      margin-top: 20px;
+
+      color: var(--emerald);
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =====================================================
+       QUOTE SECTION
+       ===================================================== */
+
+    .quote-section {
+
+      padding:
+        110px 7%;
+
+      background:
+        var(--paper);
+
+      text-align: center;
+    }
+
+    .quote-mark {
+
+      color: var(--gold);
+
+      font-family:
+        "Cormorant Garamond", serif;
+
+      font-size: 90px;
+
+      line-height: .5;
+    }
+
+    .quote-section blockquote {
+
+      max-width: 900px;
+
+      margin:
+        20px auto;
+
+      font-family:
+        "Cormorant Garamond", serif;
+
+      font-size:
+        clamp(34px, 5vw, 60px);
+
+      line-height: 1;
+
+      color: var(--emerald);
+
+      font-style: italic;
+    }
+
+    .quote-section span {
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =====================================================
+       STORY STRIP
+       ===================================================== */
+
+    .story-strip {
+
+      padding:
+        110px 7%;
+    }
+
+    .story-layout {
+
+      max-width: 1250px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 70px;
+
+      align-items: center;
+    }
+
+    .story-image {
+
+      height: 550px;
+
+      overflow: hidden;
+    }
+
+    .story-image img {
+
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform 1s ease;
+    }
+
+    .story-image:hover img {
+
+      transform:
+        scale(1.04);
+    }
+
+    .story-content .section-label {
+
+      display: block;
+
+      margin-bottom: 15px;
+    }
+
+    .story-content h2 {
+
+      font-family:
+        "Cormorant Garamond", serif;
+
+      font-size:
+        clamp(45px, 5vw, 70px);
+
+      line-height: .9;
+
+      font-weight: 500;
+
+      color: var(--emerald);
+
+      margin-bottom: 25px;
+    }
+
+    .story-content p {
+
+      color: var(--muted);
+
+      line-height: 1.9;
+
+      font-size: 14px;
+
+      margin-bottom: 18px;
+    }
+
+    .story-button {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin-top: 15px;
+
+      padding:
+        14px 23px;
+
+      background:
+        var(--emerald);
+
+      color: white;
+
+      border-radius: 100px;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+
+      transition:
+        var(--transition);
+    }
+
+    .story-button:hover {
+
+      background:
+        var(--gold);
+
+      color: var(--deep);
+
+      transform:
+        translateY(-3px);
+    }
+
+
+    /* =====================================================
+       NEWSLETTER
+       ===================================================== */
+
+    .newsletter {
+
+      margin:
+        0 5% 100px;
+
+      padding:
+        80px 8%;
+
+      background:
+        var(--deep);
+
+      border-radius:
+        30px;
+
+      color: white;
+
+      text-align: center;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .newsletter::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 350px;
+      height: 350px;
+
+      border:
+        1px solid rgba(198, 161, 91, .25);
+
+      border-radius: 50%;
+
+      left: -150px;
+      top: -170px;
+    }
+
+    .newsletter h2 {
+
+      position: relative;
+
+      font-family:
+        "Cormorant Garamond", serif;
+
+      font-size:
+        clamp(40px, 5vw, 65px);
+
+      font-weight: 500;
+
+      margin:
+        10px 0 15px;
+    }
+
+    .newsletter p {
+
+      position: relative;
+
+      max-width: 580px;
+
+      margin: auto;
+
+      color:
+        rgba(255, 255, 255, .65);
+
+      line-height: 1.7;
+
+      font-size: 13px;
+    }
+
+    .newsletter-form {
+
+      position: relative;
+
+      max-width: 550px;
+
+      margin:
+        30px auto 0;
+
+      display: flex;
+
+      gap: 8px;
+    }
+
+    .newsletter-form input {
+
+      flex: 1;
+
+      min-width: 0;
+
+      padding:
+        16px 20px;
+
+      border: none;
+
+      outline: none;
+
+      border-radius: 100px;
+
+      background:
+        rgba(255, 255, 255, .1);
+
+      color: white;
+
+      border:
+        1px solid rgba(255, 255, 255, .12);
+    }
+
+    .newsletter-form input::placeholder {
+
+      color:
+        rgba(255, 255, 255, .4);
+    }
+
+    .newsletter-form button {
+
+      border: none;
+
+      padding:
+        0 24px;
+
+      border-radius: 100px;
+
+      background:
+        var(--gold);
+
+      color:
+        var(--deep);
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      transition:
+        var(--transition);
+    }
+
+    .newsletter-form button:hover {
+
+      background:
+        var(--gold-light);
+
+      transform:
+        translateY(-2px);
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    footer {
+
+      background:
+        #071810;
+
+      color: white;
+
+      padding:
+        70px 7% 30px;
+    }
+
+    .footer-grid {
+
+      max-width: 1300px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns:
+        1.5fr 1fr 1fr 1fr;
+
+      gap: 50px;
+    }
+
+    .footer-brand h2 {
+
+      font-family:
+        "Cormorant Garamond", serif;
+
+      font-size: 46px;
+
+      color:
+        var(--gold-light);
+
+      font-weight: 500;
+    }
+
+    .footer-brand p {
+
+      max-width: 330px;
+
+      margin-top: 15px;
+
+      color:
+        rgba(255, 255, 255, .5);
+
+      line-height: 1.7;
+
+      font-size: 13px;
+    }
+
+    .footer-column h4 {
+
+      color:
+        var(--gold-light);
+
+      font-size: 11px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 20px;
+    }
+
+    .footer-column a {
+
+      display: block;
+
+      margin-bottom: 12px;
+
+      color:
+        rgba(255, 255, 255, .55);
+
+      font-size: 13px;
+
+      transition:
+        .3s ease;
+    }
+
+    .footer-column a:hover {
+
+      color: white;
+
+      transform:
+        translateX(4px);
+    }
+
+    .footer-bottom {
+
+      max-width: 1300px;
+
+      margin:
+        50px auto 0;
+
+      padding-top: 25px;
+
+      border-top:
+        1px solid rgba(255, 255, 255, .1);
+
+      display: flex;
+
+      justify-content: space-between;
+
+      color:
+        rgba(255, 255, 255, .4);
+
+      font-size: 10px;
+    }
+
+
+    /* =====================================================
+       BACK TO TOP
+       ===================================================== */
+
+    .back-top {
+
+      position: fixed;
+
+      right: 25px;
+      bottom: 25px;
+
+      width: 45px;
+      height: 45px;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background:
+        var(--gold);
+
+      color:
+        var(--deep);
+
+      cursor: pointer;
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      transform:
+        translateY(15px);
+
+      transition:
+        var(--transition);
+
+      z-index: 900;
+    }
+
+    .back-top.show {
+
+      opacity: 1;
+
+      visibility: visible;
+
+      transform:
+        translateY(0);
+    }
+
+
+    /* =====================================================
+       REVEAL ANIMATION
+       ===================================================== */
+
+    .reveal {
+
+      opacity: 0;
+
+      transform:
+        translateY(35px);
+
+      transition:
+        opacity .8s ease,
+        transform .8s ease;
+    }
+
+    .reveal.visible {
+
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+
+    /* =====================================================
+       FILTER ANIMATION
+       ===================================================== */
+
+    .article-card.hidden {
+
+      display: none;
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 1100px) {
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .nav-links a {
+        font-size: 10px;
+      }
+
+      .article-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+    }
+
+
+    @media (max-width: 850px) {
+
+      .nav-links {
+
+        position: absolute;
+
+        left: 0;
+        right: 0;
+
+        top: 82px;
+
+        padding:
+          25px 7%;
+
+        background:
+          rgba(251, 250, 245, .98);
+
+        backdrop-filter:
+          blur(15px);
+
+        border-bottom:
+          1px solid var(--line);
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 5px;
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        transform:
+          translateY(-10px);
+
+        transition:
+          var(--transition);
+      }
+
+      .nav-links.active {
+
+        opacity: 1;
+
+        visibility: visible;
+
+        transform:
+          translateY(0);
+      }
+
+      .nav-links a {
+
+        width: 100%;
+
+        padding: 13px 0;
+      }
+
+      .menu-toggle {
+
+        display: grid;
+
+        place-items: center;
+      }
+
+      .nav-icon {
+
+        display: none;
+      }
+
+      .featured-card {
+
+        grid-template-columns:
+          1fr;
+      }
+
+      .featured-image {
+
+        height: 500px;
+      }
+
+      .story-layout {
+
+        grid-template-columns:
+          1fr;
+
+        gap: 45px;
+      }
+
+      .story-image {
+
+        height: 500px;
+      }
+
+      .section-heading {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+    }
+
+
+    @media (max-width: 600px) {
+
+      .announcement {
+
+        height: 30px;
+      }
+
+      .announcement-track {
+
+        font-size: 8px;
+      }
+
+      .nav-container {
+
+        min-height: 72px;
+      }
+
+      .nav-links {
+
+        top: 72px;
+      }
+
+      .brand-name {
+
+        font-size: 32px;
+      }
+
+      .hero {
+
+        min-height: 500px;
+
+        background-position:
+          65% center;
+      }
+
+      .hero-content {
+
+        margin-left: 7%;
+      }
+
+      .hero h1 {
+
+        font-size: 60px;
+      }
+
+      .hero p {
+
+        font-size: 14px;
+      }
+
+      .intro,
+      .featured-section,
+      .journal-section,
+      .quote-section,
+      .story-strip {
+
+        padding-top: 75px;
+
+        padding-bottom: 75px;
+      }
+
+      .featured-content {
+
+        padding:
+          45px 28px;
+      }
+
+      .featured-image {
+
+        height: 420px;
+      }
+
+      .article-grid {
+
+        grid-template-columns:
+          1fr;
+      }
+
+      .article-image {
+
+        height: 380px;
+      }
+
+      .section-heading h2 {
+
+        font-size: 48px;
+      }
+
+      .newsletter {
+
+        margin:
+          0 4% 70px;
+
+        padding:
+          60px 22px;
+      }
+
+      .newsletter-form {
+
+        flex-direction:
+          column;
+      }
+
+      .newsletter-form button {
+
+        height: 50px;
+      }
+
+      .footer-grid {
+
+        grid-template-columns:
+          1fr;
+
+        gap: 35px;
+      }
+
+      .footer-bottom {
+
+        flex-direction:
+          column;
+
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       PRELOADER
+       ===================================================== -->
+
+  <div class="preloader">
+
+    <div class="loader-content">
+
+      <div class="loader-logo">
+        Vastraa
+      </div>
+
+      <div class="loader-line"></div>
+
+      <div class="loader-text">
+        Tradition. Style. You.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       ANNOUNCEMENT
+       ===================================================== -->
+
+  <div class="announcement">
+
+    <div class="announcement-track">
+
+      <span>
+        <i class="fa-solid fa-star"></i>
+        The Vastraa Journal
+      </span>
+
+      <span>
+        <i class="fa-solid fa-circle"></i>
+        Stories • Style • Tradition
+      </span>
+
+      <span>
+        <i class="fa-solid fa-star"></i>
+        Fashion with meaning
+      </span>
+
+      <span>
+        <i class="fa-solid fa-circle"></i>
+        Discover your next look
+      </span>
+
+      <span>
+        <i class="fa-solid fa-star"></i>
+        The Vastraa Journal
+      </span>
+
+      <span>
+        <i class="fa-solid fa-circle"></i>
+        Stories • Style • Tradition
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       NAVBAR
+       ===================================================== -->
+
+  <nav class="navbar">
+
+    <div class="nav-container">
+
+
+      <a href="index.html" class="brand">
+
+        <span class="brand-name">
+          Vastraa
+        </span>
+
+        <span class="brand-tagline">
+          Tradition. Style. You.
+        </span>
+
+      </a>
+
+
+      <div class="nav-links" id="navLinks">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="sarees.html">
+          Sarees
+        </a>
+
+        <a href="kurtis.html">
+          Kurtis
+        </a>
+
+        <a href="lehengas.html">
+          Lehengas
+        </a>
+
+        <a href="dresses.html">
+          Dresses
+        </a>
+
+        <a href="new-arrivals.html">
+          New Arrivals
+        </a>
+
+        <a href="journal.html" class="active">
+          Journal
+        </a>
+
+        <a href="faq.html">
+          FAQs
+        </a>
+
+      </div>
+
+
+      <div class="nav-actions">
+
+        <a href="https://wa.me/919999999999" target="_blank" rel="noopener" class="nav-icon" aria-label="WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
+
+  <header class="hero">
+
+    <div class="hero-content reveal">
+
+      <div class="eyebrow">
+        The Vastraa Journal
+      </div>
+
+      <h1>
+        Stories
+        <span>worth wearing.</span>
+      </h1>
+
+      <p>
+        A space for stories, styling inspiration, Indian craftsmanship,
+        festive dressing and the little details that make every outfit
+        feel uniquely yours.
+      </p>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       INTRO
+       ===================================================== -->
+
+  <section class="intro reveal">
+
+    <span class="section-label">
+      Welcome to our journal
+    </span>
+
+    <h2>
+      More than fashion.
+    </h2>
+
+    <p>
+      At Vastraa, every outfit carries a story.
+      Explore our guides, inspirations and stories created
+      for the modern woman who loves tradition with a contemporary soul.
+    </p>
+
+  </section>
+
+
+  <!-- =====================================================
+       FILTERS
+       ===================================================== -->
+
+  <section class="filter-section">
+
+    <div class="filters reveal">
+
+      <button class="filter-btn active" data-filter="all">
+        All Stories
+      </button>
+
+      <button class="filter-btn" data-filter="style">
+        Style
+      </button>
+
+      <button class="filter-btn" data-filter="tradition">
+        Tradition
+      </button>
+
+      <button class="filter-btn" data-filter="guides">
+        Style Guides
+      </button>
+
+      <button class="filter-btn" data-filter="festive">
+        Festive
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       FEATURED STORY
+       ===================================================== -->
+
+  <section class="featured-section">
+
+    <article class="featured-card reveal">
+
+      <div class="featured-image">
+
+        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=90"
+          alt="Woman wearing elegant Indian saree" loading="lazy">
+
+        <span class="featured-tag">
+          Featured Story
+        </span>
+
+      </div>
+
+
+      <div class="featured-content">
+
+        <div class="story-meta">
+          STYLE • 8 MIN READ
+        </div>
+
+        <h2>
+          The Art of Draping:
+          Finding Your Signature Saree Style
+        </h2>
+
+        <p>
+          From timeless traditional drapes to contemporary silhouettes,
+          discover how the way you drape a saree can completely transform
+          your look and express your personality.
+        </p>
+
+        <a href="#" class="read-link">
+          Read the story
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+      </div>
+
+    </article>
+
+  </section>
+
+
+  <!-- =====================================================
+       JOURNAL ARTICLES
+       ===================================================== -->
+
+  <section class="journal-section">
+
+    <div class="section-heading reveal">
+
+      <div>
+
+        <span class="section-label">
+          Latest Stories
+        </span>
+
+        <h2>
+          From the journal.
+        </h2>
+
+      </div>
+
+      <p>
+        Inspiration for celebrations, everyday elegance,
+        thoughtful styling and everything in between.
+      </p>
+
+    </div>
+
+
+    <div class="article-grid">
+
+
+      <!-- ARTICLE 01 -->
+
+      <article class="article-card reveal" data-category="style">
+
+        <div class="article-image">
+
+          <img src="https://images.unsplash.com/photo-1778148046511-27141f5f01ae?auto=format&fit=crop&w=900&q=90"
+            alt="Elegant saree styling" loading="lazy">
+          <span class="article-category">
+            Style
+          </span>
+
+        </div>
+
+        <div class="article-content">
+
+          <span class="article-date">
+            September 2026 • 5 min read
+          </span>
+
+          <h3>
+            5 Ways to Style a Saree for Modern Occasions
+          </h3>
+
+          <p>
+            Simple styling ideas that bring a contemporary
+            personality to one of India's most timeless silhouettes.
+          </p>
+
+          <a href="#" class="article-read">
+            Read more
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- ARTICLE 02 -->
+
+      <article class="article-card reveal" data-category="tradition">
+
+        <div class="article-image">
+
+          <img src="https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=900&q=90"
+            alt="Traditional Indian fashion" loading="lazy">
+
+          <span class="article-category">
+            Tradition
+          </span>
+
+        </div>
+
+        <div class="article-content">
+
+          <span class="article-date">
+            September 2026 • 6 min read
+          </span>
+
+          <h3>
+            Why Indian Textiles Tell Stories
+          </h3>
+
+          <p>
+            Explore the cultural meaning behind fabrics,
+            patterns, craftsmanship and the traditions passed
+            from one generation to another.
+          </p>
+
+          <a href="#" class="article-read">
+            Read more
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- ARTICLE 03 -->
+      <article class="article-card reveal" data-category="guides">
+
+        <div class="article-image">
+
+          <img src="https://images.unsplash.com/photo-1754391851702-e5275cf80e34?auto=format&fit=crop&w=900&q=90"
+            alt="Elegant Indian kurti" loading="lazy">
+
+          <span class="article-category">
+            Style Guide
+          </span>
+
+        </div>
+
+        <div class="article-content">
+
+          <span class="article-date">
+            August 2026 • 4 min read
+          </span>
+
+          <h3>
+            How to Choose the Right Kurti for Your Body Shape
+          </h3>
+
+          <p>
+            A simple guide to silhouettes, lengths and details
+            that can help you find a kurti that feels naturally you.
+          </p>
+
+          <a href="#" class="article-read">
+            Read more
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+
+        </div>
+
+      </article>
+
+      <!-- ARTICLE 04 -->
+
+      <article class="article-card reveal" data-category="festive">
+
+        <div class="article-image">
+
+          <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=900&q=90"
+            alt="Indian festive fashion" loading="lazy">
+
+          <span class="article-category">
+            Festive
+          </span>
+
+        </div>
+
+        <div class="article-content">
+
+          <span class="article-date">
+            August 2026 • 7 min read
+          </span>
+
+          <h3>
+            Your Festive Wardrobe Starts Here
+          </h3>
+
+          <p>
+            Build a versatile festive wardrobe with statement
+            pieces you can style across weddings, celebrations and gatherings.
+          </p>
+
+          <a href="#" class="article-read">
+            Read more
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- ARTICLE 05 -->
+
+      <article class="article-card reveal" data-category="style">
+
+        <div class="article-image">
+
+          <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=900&q=90"
+            alt="Elegant Indian ethnic outfit" loading="lazy">
+
+          <span class="article-category">
+            Style
+          </span>
+
+        </div>
+
+        <div class="article-content">
+
+          <span class="article-date">
+            August 2026 • 5 min read
+          </span>
+
+          <h3>
+            The Quiet Luxury of Indian Fashion
+          </h3>
+
+          <p>
+            Discover how understated details, beautiful fabrics
+            and thoughtful silhouettes create effortless elegance.
+          </p>
+
+          <a href="#" class="article-read">
+            Read more
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- ARTICLE 06 -->
+
+      <article class="article-card reveal" data-category="tradition">
+
+        <div class="article-image">
+
+          <img src="https://images.unsplash.com/photo-1708534246055-d7b149acb731?auto=format&fit=crop&w=900&q=90"
+            alt="Elegant maroon Indian kurti" loading="lazy">
+            
+          <span class="article-category">
+            Tradition
+          </span>
+
+        </div>
+
+        <div class="article-content">
+
+          <span class="article-date">
+            July 2026 • 6 min read
+          </span>
+
+          <h3>
+            Tradition, Reimagined
+          </h3>
+
+          <p>
+            How today's Indian fashion is blending heritage techniques
+            with fresh silhouettes and modern styling.
+          </p>
+
+          <a href="#" class="article-read">
+            Read more
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       QUOTE
+       ===================================================== -->
+
+  <section class="quote-section reveal">
+
+    <div class="quote-mark">
+      “
+    </div>
+
+    <blockquote>
+      Fashion changes.
+      The stories we carry with us never do.
+    </blockquote>
+
+    <span>
+      The Vastraa Philosophy
+    </span>
+
+  </section>
+
+
+  <!-- =====================================================
+       STORY / BRAND SECTION
+       ===================================================== -->
+
+  <section class="story-strip">
+
+    <div class="story-layout">
+
+
+      <div class="story-image reveal">
+
+        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1100&q=90"
+          alt="Vastraa Indian fashion inspiration" loading="lazy">
+
+      </div>
+
+
+      <div class="story-content reveal">
+
+        <span class="section-label">
+          The Vastraa Story
+        </span>
+
+        <h2>
+          Rooted in tradition.
+          Made for today.
+        </h2>
+
+        <p>
+          Vastraa was created around a simple idea:
+          traditional Indian fashion can feel timeless
+          without feeling dated.
+        </p>
+
+        <p>
+          From elegant sarees to expressive kurtis and
+          statement lehengas, every collection celebrates
+          craftsmanship while leaving room for your own style.
+        </p>
+
+        <a href="about.html" class="story-button">
+          Discover Our Story
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       NEWSLETTER
+       ===================================================== -->
+
+  <section class="newsletter reveal">
+
+    <span class="section-label">
+      Stay Inspired
+    </span>
+
+    <h2>
+      Stories delivered beautifully.
+    </h2>
+
+    <p>
+      Join the Vastraa journal and receive styling inspiration,
+      collection updates and stories from the world of Indian fashion.
+    </p>
+
+
+    <form class="newsletter-form" id="newsletterForm">
+
+      <input type="email" id="emailInput" placeholder="Your email address" required>
+
+      <button type="submit">
+        Subscribe
+      </button>
+
+    </form>
+
+  </section>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+  <footer>
+
+    <div class="footer-grid">
+
+
+      <div class="footer-brand">
+
+        <h2>
+          Vastraa
+        </h2>
+
+        <p>
+          Tradition. Style. You.
+          Discover timeless Indian fashion designed
+          for modern celebrations and everyday elegance.
+        </p>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Shop
+        </h4>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="sarees.html">
+          Sarees
+        </a>
+
+        <a href="kurtis.html">
+          Kurtis
+        </a>
+
+        <a href="lehengas.html">
+          Lehengas
+        </a>
+
+        <a href="dresses.html">
+          Dresses
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Explore
+        </h4>
+
+        <a href="new-arrivals.html">
+          New Arrivals
+        </a>
+
+        <a href="about.html">
+          Our Story
+        </a>
+
+        <a href="journal.html">
+          Journal
+        </a>
+
+        <a href="size-guide.html">
+          Size Guide
+        </a>
+
+        <a href="faq.html">
+          FAQs
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Connect
+        </h4>
+
+        <a href="https://wa.me/919999999999" target="_blank" rel="noopener">
+          WhatsApp
+        </a>
+
+        <a href="mailto:hello@vastraa.com">
+          hello@vastraa.com
+        </a>
+
+        <a href="#">
+          Instagram
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 Vastraa. All rights reserved.
+      </span>
+
+      <span>
+        Tradition. Style. You.
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =====================================================
+       BACK TO TOP
+       ===================================================== -->
+
+  <button class="back-top" id="backTop" aria-label="Back to top">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+  </button>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+  <script>
+
+
+    /* =====================================================
+       PRELOADER
+       ===================================================== */
+
+    window.addEventListener("load", () => {
+
+      const preloader =
+        document.querySelector(".preloader");
+
+      setTimeout(() => {
+
+        preloader.classList.add("hide");
+
+      }, 700);
+
+    });
+
+
+    /* =====================================================
+       MOBILE MENU
+       ===================================================== */
+
+    const menuToggle =
+      document.getElementById("menuToggle");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+
+    menuToggle.addEventListener("click", () => {
+
+      navLinks.classList.toggle("active");
+
+      const icon =
+        menuToggle.querySelector("i");
+
+
+      if (navLinks.classList.contains("active")) {
+
+        icon.classList.remove("fa-bars");
+
+        icon.classList.add("fa-xmark");
+
+      } else {
+
+        icon.classList.remove("fa-xmark");
+
+        icon.classList.add("fa-bars");
+
+      }
+
+    });
+
+
+    /* Close menu after clicking */
+
+    document.querySelectorAll(".nav-links a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          navLinks.classList.remove("active");
+
+          const icon =
+            menuToggle.querySelector("i");
+
+          icon.classList.remove("fa-xmark");
+
+          icon.classList.add("fa-bars");
+
+        });
+
+      });
+
+
+    /* =====================================================
+       JOURNAL FILTER
+       ===================================================== */
+
+    const filterButtons =
+      document.querySelectorAll(".filter-btn");
+
+    const articles =
+      document.querySelectorAll(".article-card");
+
+
+    filterButtons.forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const filter =
+          button.dataset.filter;
+
+
+        filterButtons.forEach(btn => {
+
+          btn.classList.remove("active");
+
+        });
+
+
+        button.classList.add("active");
+
+
+        articles.forEach(article => {
+
+          const category =
+            article.dataset.category;
+
+
+          if (
+            filter === "all" ||
+            category === filter
+          ) {
+
+            article.classList.remove("hidden");
+
+          } else {
+
+            article.classList.add("hidden");
+
+          }
+
+        });
+
+      });
+
+    });
+
+
+    /* =====================================================
+       SCROLL REVEAL
+       ===================================================== */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+      new IntersectionObserver(
+
+        (entries, observer) => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.12
+        }
+
+      );
+
+
+    revealElements.forEach(element => {
+
+      revealObserver.observe(element);
+
+    });
+
+
+    /* =====================================================
+       NEWSLETTER
+       ===================================================== */
+
+    const newsletterForm =
+      document.getElementById("newsletterForm");
+
+
+    newsletterForm.addEventListener(
+      "submit",
+      function (event) {
+
+        event.preventDefault();
+
+
+        const email =
+          document.getElementById(
+            "emailInput"
+          ).value.trim();
+
+
+        if (!email) {
+
+          return;
+
+        }
+
+
+        alert(
+          "Thank you for joining the Vastraa Journal."
+        );
+
+
+        newsletterForm.reset();
+
+      }
+    );
+
+
+    /* =====================================================
+       BACK TO TOP
+       ===================================================== */
+
+    const backTop =
+      document.getElementById("backTop");
+
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 500) {
+
+        backTop.classList.add("show");
+
+      } else {
+
+        backTop.classList.remove("show");
+
+      }
+
+    });
+
+
+    backTop.addEventListener("click", () => {
+
+      window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+      });
+
+    });
+
+  </script>
+
+</body>
+
+</html>
